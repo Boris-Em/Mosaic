@@ -23,7 +23,6 @@ public final class Mosaic {
         }
         
         poolManager = ImagePoolManager(images: imagePool)
-        print("\(Date()) - Finished Generating Image Pool")
     }
     
     public func generateMosaic(for image: UIImage) -> UIImage? {
@@ -42,17 +41,13 @@ public final class Mosaic {
         }
         
         var averageColors = Array(repeating: UIColor.black, count: frames.count)
-        
-        print("\(Date()) - Started Getting Average Colors")
-                
+
         DispatchQueue.concurrentPerform(iterations: frames.count) { (iteration) in
             let frame = frames[iteration]
             let averageColor = averageColorFinder.computeAverageColor(for: frame)!
             averageColors[iteration] = averageColor
         }
-        
-        print("\(Date()) - Finished Getting Average Colors")
-        
+
         guard averageColors.count == frames.count else {
             fatalError()
         }
@@ -64,13 +59,9 @@ public final class Mosaic {
             let imagePositionMap = ImagePositionMap(image: closestTileResizedImage, position: frame.origin)
             tileImagePositions.append(imagePositionMap)
         }
-        
-        print("\(Date()) - Finished Getting Right Resized Pool Image")
-                
+
         let mosaicImage = ImageStitcher.stitch(images: tileImagePositions, to: imageSize)
-        
-        print("\(Date()) - Finished Stitching")
-        
+
         return mosaicImage
     }
     

@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImage {
     
-    static let ciContext = CIContext()
+    static let ciContext = CIContext(options: [.workingColorSpace: kCFNull as Any])
     
     /// Resizes the image to the passed in size.
     func resize(to size: CGSize) -> UIImage? {
