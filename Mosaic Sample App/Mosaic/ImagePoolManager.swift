@@ -33,7 +33,7 @@ class ImagePoolManager {
     
     func closestImage(from color: UIColor) -> UIImage {
         var bestImageColorMap = pool.first!
-        var bestScore = bestImageColorMap.averageColor.CIE94(compare: color)
+        var bestScore = bestImageColorMap.averageColor.CIEDE2000(compare: color)
         
         pool.forEach { (imageColorMap) in
             let score = imageColorMap.averageColor.CIE94(compare: color)
