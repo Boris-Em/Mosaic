@@ -11,7 +11,7 @@ import UIKit
 public final class Mosaic {
     
     /// The numbner of tiles in the mosaic per length (width & height).
-    static let numberOfTiles: CGFloat = 10
+    static let numberOfTiles: CGFloat = 40
     
     private let poolManager: ImagePoolManager
     private let resizedImageManager = ResizedImageManager()

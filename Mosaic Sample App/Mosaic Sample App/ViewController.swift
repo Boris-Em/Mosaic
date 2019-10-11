@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         let images = [#imageLiteral(resourceName: "IMG_2006.jpeg"), #imageLiteral(resourceName: "IMG_2055.jpeg"), #imageLiteral(resourceName: "IMG_3991.jpeg"), #imageLiteral(resourceName: "IMG_4414.jpeg"), #imageLiteral(resourceName: "IMG_8293.jpeg"), #imageLiteral(resourceName: "IMG_9945.jpeg")]
         let mosaic = try! Mosaic(imagePool: images)
         
-        let mosaicImage = mosaic.generateMosaic(for: #imageLiteral(resourceName: "IMG_5400.jpg"))
+        let mosaicImage = mosaic.generateMosaic(for: #imageLiteral(resourceName: "IMG_5400"))
         imageView.image = mosaicImage
     }
 
