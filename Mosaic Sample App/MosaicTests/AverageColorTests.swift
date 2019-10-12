@@ -13,7 +13,8 @@ class AverageColorTests: XCTestCase {
 
     func testRedImage() {
         let image = UIImage(named: "RedRectangle.jpg")!
-        let averageColor = image.computeAverageColor()
+        let averageColorFinder = AverageColorFinder(image: image)
+        let averageColor = averageColorFinder.computeAverageColor()
         
         var red: CGFloat = -1
         var green: CGFloat = -1
@@ -24,6 +25,15 @@ class AverageColorTests: XCTestCase {
         XCTAssertGreaterThanOrEqual(red, 0.9)
         XCTAssertEqual(green, 0)
         XCTAssertEqual(blue, 0)
+    }
+    
+    func testPerformance() {
+        let image = UIImage(named: "Test_image_1.jpg")!
+        let averageColorFinder = AverageColorFinder(image: image)
+
+        measure {
+            _ = averageColorFinder.computeAverageColor()
+        }
     }
     
 }

@@ -11,7 +11,6 @@ import UIKit
 class AverageColorFinder {
     
     private let image: UIImage
-    
     private var ciImage: CIImage
     
     init(image: UIImage, canResizeImage: Bool = false) {
