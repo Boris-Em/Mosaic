@@ -16,6 +16,10 @@
 		A15783A3235136E500CCAEDD /* Test_image_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A15783A1235136E500CCAEDD /* Test_image_1.jpg */; };
 		A1B0E2922351C1BB0011040B /* AverageZoneColorFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2912351C1BB0011040B /* AverageZoneColorFinder.swift */; };
 		A1B0E2942351C5230011040B /* ImageTileSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */; };
+		A1B0E2962351C9670011040B /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2952351C9670011040B /* AverageColorZone_kernel.metal */; };
+		A1B0E2982351CF2B0011040B /* AverageZoneColorFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2972351CF2B0011040B /* AverageZoneColorFinderTests.swift */; };
+		A1B0E29A2351D0B30011040B /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2952351C9670011040B /* AverageColorZone_kernel.metal */; };
+		A1B0E29B2351D0DD0011040B /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2952351C9670011040B /* AverageColorZone_kernel.metal */; };
 		A1CDE03223506DC00024548F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE03123506DC00024548F /* AppDelegate.swift */; };
 		A1CDE03423506DC00024548F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE03323506DC00024548F /* SceneDelegate.swift */; };
 		A1CDE03623506DC00024548F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE03523506DC00024548F /* ViewController.swift */; };
@@ -29,10 +33,26 @@
 		A1CDE06D23506DD50024548F /* Mosaic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1CDE05823506DD50024548F /* Mosaic.framework */; };
 		A1CDE06E23506DD50024548F /* Mosaic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1CDE05823506DD50024548F /* Mosaic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A1CDE07723506F5F0024548F /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE07623506F5F0024548F /* UIImageExtensions.swift */; };
-		A1CDE07B2350731D0024548F /* RedRectangle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CDE07A2350731D0024548F /* RedRectangle.jpg */; };
-		A1CDE07C235074000024548F /* RedRectangle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CDE07A2350731D0024548F /* RedRectangle.jpg */; };
 		A1CDE07E235076470024548F /* Mosaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE07D235076470024548F /* Mosaic.swift */; };
 		A1CDE08023507D4A0024548F /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE07F23507D4A0024548F /* UIColorExtensions.swift */; };
+		A1CE3A2423550BF400EC3E2D /* RedRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A2323550BF400EC3E2D /* RedRectangle_2x2.jpg */; };
+		A1CE3A2523550BF400EC3E2D /* RedRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A2323550BF400EC3E2D /* RedRectangle_2x2.jpg */; };
+		A1CE3A2723550C2300EC3E2D /* RedRectangle_10x10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A2623550C2300EC3E2D /* RedRectangle_10x10.jpg */; };
+		A1CE3A2823550C2300EC3E2D /* RedRectangle_10x10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A2623550C2300EC3E2D /* RedRectangle_10x10.jpg */; };
+		A1CE3A2A23550CEE00EC3E2D /* RedRectangle_500x500.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A2923550CEE00EC3E2D /* RedRectangle_500x500.jpg */; };
+		A1CE3A2B23550CEE00EC3E2D /* RedRectangle_500x500.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A2923550CEE00EC3E2D /* RedRectangle_500x500.jpg */; };
+		A1CE3A2D23550E3600EC3E2D /* RedRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A2C23550E3600EC3E2D /* RedRectangle_50x50.jpg */; };
+		A1CE3A2E23550E3600EC3E2D /* RedRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A2C23550E3600EC3E2D /* RedRectangle_50x50.jpg */; };
+		A1CE3A3023550E8700EC3E2D /* RedRectangle_20x20.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A2F23550E8700EC3E2D /* RedRectangle_20x20.jpg */; };
+		A1CE3A3123550E8700EC3E2D /* RedRectangle_20x20.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A2F23550E8700EC3E2D /* RedRectangle_20x20.jpg */; };
+		A1CE3A3323550ED400EC3E2D /* RedRectangle_30x30.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3223550ED400EC3E2D /* RedRectangle_30x30.jpg */; };
+		A1CE3A3423550ED400EC3E2D /* RedRectangle_30x30.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3223550ED400EC3E2D /* RedRectangle_30x30.jpg */; };
+		A1CE3A3623550EF700EC3E2D /* RedRectangle_40x40.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3523550EF700EC3E2D /* RedRectangle_40x40.jpg */; };
+		A1CE3A3723550EF700EC3E2D /* RedRectangle_40x40.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3523550EF700EC3E2D /* RedRectangle_40x40.jpg */; };
+		A1CE3A39235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */; };
+		A1CE3A3A235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */; };
+		A1CE3A3C2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */; };
+		A1CE3A3D2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +109,8 @@
 		A15783A1235136E500CCAEDD /* Test_image_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test_image_1.jpg; sourceTree = "<group>"; };
 		A1B0E2912351C1BB0011040B /* AverageZoneColorFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinder.swift; sourceTree = "<group>"; };
 		A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTileSequenceTests.swift; sourceTree = "<group>"; };
+		A1B0E2952351C9670011040B /* AverageColorZone_kernel.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AverageColorZone_kernel.metal; sourceTree = "<group>"; };
+		A1B0E2972351CF2B0011040B /* AverageZoneColorFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinderTests.swift; sourceTree = "<group>"; };
 		A1CDE02E23506DC00024548F /* Mosaic Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mosaic Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1CDE03123506DC00024548F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1CDE03323506DC00024548F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,9 +129,17 @@
 		A1CDE06723506DD50024548F /* AverageColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageColorTests.swift; sourceTree = "<group>"; };
 		A1CDE06923506DD50024548F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1CDE07623506F5F0024548F /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
-		A1CDE07A2350731D0024548F /* RedRectangle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RedRectangle.jpg; sourceTree = "<group>"; };
 		A1CDE07D235076470024548F /* Mosaic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mosaic.swift; sourceTree = "<group>"; };
 		A1CDE07F23507D4A0024548F /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		A1CE3A2323550BF400EC3E2D /* RedRectangle_2x2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RedRectangle_2x2.jpg; sourceTree = "<group>"; };
+		A1CE3A2623550C2300EC3E2D /* RedRectangle_10x10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RedRectangle_10x10.jpg; sourceTree = "<group>"; };
+		A1CE3A2923550CEE00EC3E2D /* RedRectangle_500x500.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RedRectangle_500x500.jpg; sourceTree = "<group>"; };
+		A1CE3A2C23550E3600EC3E2D /* RedRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RedRectangle_50x50.jpg; sourceTree = "<group>"; };
+		A1CE3A2F23550E8700EC3E2D /* RedRectangle_20x20.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RedRectangle_20x20.jpg; sourceTree = "<group>"; };
+		A1CE3A3223550ED400EC3E2D /* RedRectangle_30x30.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RedRectangle_30x30.jpg; sourceTree = "<group>"; };
+		A1CE3A3523550EF700EC3E2D /* RedRectangle_40x40.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RedRectangle_40x40.jpg; sourceTree = "<group>"; };
+		A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_10x10.jpg; sourceTree = "<group>"; };
+		A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_2x2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +234,7 @@
 				A1CDE07623506F5F0024548F /* UIImageExtensions.swift */,
 				A157839F2350AC7700CCAEDD /* AverageColorFinder.swift */,
 				A1B0E2912351C1BB0011040B /* AverageZoneColorFinder.swift */,
+				A1B0E2952351C9670011040B /* AverageColorZone_kernel.metal */,
 				A1CDE07F23507D4A0024548F /* UIColorExtensions.swift */,
 			);
 			path = Mosaic;
@@ -215,6 +246,7 @@
 				A1CDE0792350731D0024548F /* Resources */,
 				A1CDE06723506DD50024548F /* AverageColorTests.swift */,
 				A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */,
+				A1B0E2972351CF2B0011040B /* AverageZoneColorFinderTests.swift */,
 				A1CDE06923506DD50024548F /* Info.plist */,
 			);
 			path = MosaicTests;
@@ -224,7 +256,15 @@
 			isa = PBXGroup;
 			children = (
 				A15783A1235136E500CCAEDD /* Test_image_1.jpg */,
-				A1CDE07A2350731D0024548F /* RedRectangle.jpg */,
+				A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */,
+				A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */,
+				A1CE3A2923550CEE00EC3E2D /* RedRectangle_500x500.jpg */,
+				A1CE3A2C23550E3600EC3E2D /* RedRectangle_50x50.jpg */,
+				A1CE3A3523550EF700EC3E2D /* RedRectangle_40x40.jpg */,
+				A1CE3A3223550ED400EC3E2D /* RedRectangle_30x30.jpg */,
+				A1CE3A2F23550E8700EC3E2D /* RedRectangle_20x20.jpg */,
+				A1CE3A2623550C2300EC3E2D /* RedRectangle_10x10.jpg */,
+				A1CE3A2323550BF400EC3E2D /* RedRectangle_2x2.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -370,11 +410,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1CE3A3623550EF700EC3E2D /* RedRectangle_40x40.jpg in Resources */,
+				A1CE3A3323550ED400EC3E2D /* RedRectangle_30x30.jpg in Resources */,
+				A1CE3A2423550BF400EC3E2D /* RedRectangle_2x2.jpg in Resources */,
+				A1CE3A3023550E8700EC3E2D /* RedRectangle_20x20.jpg in Resources */,
+				A1CE3A2A23550CEE00EC3E2D /* RedRectangle_500x500.jpg in Resources */,
 				A15783A2235136E500CCAEDD /* Test_image_1.jpg in Resources */,
+				A1CE3A2723550C2300EC3E2D /* RedRectangle_10x10.jpg in Resources */,
 				A1CDE03E23506DC10024548F /* LaunchScreen.storyboard in Resources */,
+				A1CE3A39235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */,
 				A1CDE03B23506DC10024548F /* Assets.xcassets in Resources */,
+				A1CE3A3C2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */,
+				A1CE3A2D23550E3600EC3E2D /* RedRectangle_50x50.jpg in Resources */,
 				A1CDE03923506DC00024548F /* Main.storyboard in Resources */,
-				A1CDE07C235074000024548F /* RedRectangle.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,7 +444,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1CDE07B2350731D0024548F /* RedRectangle.jpg in Resources */,
+				A1CE3A2E23550E3600EC3E2D /* RedRectangle_50x50.jpg in Resources */,
+				A1CE3A2B23550CEE00EC3E2D /* RedRectangle_500x500.jpg in Resources */,
+				A1CE3A3423550ED400EC3E2D /* RedRectangle_30x30.jpg in Resources */,
+				A1CE3A2523550BF400EC3E2D /* RedRectangle_2x2.jpg in Resources */,
+				A1CE3A3723550EF700EC3E2D /* RedRectangle_40x40.jpg in Resources */,
+				A1CE3A3A235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */,
+				A1CE3A3D2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */,
+				A1CE3A2823550C2300EC3E2D /* RedRectangle_10x10.jpg in Resources */,
+				A1CE3A3123550E8700EC3E2D /* RedRectangle_20x20.jpg in Resources */,
 				A15783A3235136E500CCAEDD /* Test_image_1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +464,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B0E29B2351D0DD0011040B /* AverageColorZone_kernel.metal in Sources */,
 				A1CDE03623506DC00024548F /* ViewController.swift in Sources */,
 				A1CDE03223506DC00024548F /* AppDelegate.swift in Sources */,
 				A1CDE03423506DC00024548F /* SceneDelegate.swift in Sources */,
@@ -432,6 +489,7 @@
 				A1CDE07723506F5F0024548F /* UIImageExtensions.swift in Sources */,
 				A1CDE07E235076470024548F /* Mosaic.swift in Sources */,
 				A15783A02350AC7700CCAEDD /* AverageColorFinder.swift in Sources */,
+				A1B0E2962351C9670011040B /* AverageColorZone_kernel.metal in Sources */,
 				A157839C2350A31F00CCAEDD /* ResizedImageManager.swift in Sources */,
 				A1B0E2922351C1BB0011040B /* AverageZoneColorFinder.swift in Sources */,
 				A15783982350A10100CCAEDD /* ImageStitcher.swift in Sources */,
@@ -442,8 +500,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B0E29A2351D0B30011040B /* AverageColorZone_kernel.metal in Sources */,
 				A1B0E2942351C5230011040B /* ImageTileSequenceTests.swift in Sources */,
 				A1CDE06823506DD50024548F /* AverageColorTests.swift in Sources */,
+				A1B0E2982351CF2B0011040B /* AverageZoneColorFinderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

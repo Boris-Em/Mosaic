@@ -11,7 +11,7 @@ import UIKit
 public final class Mosaic {
     
     /// The numbner of tiles in the mosaic per length (width & height).
-    static let numberOfTiles: CGFloat = 15
+    static let numberOfTiles: CGFloat = 2
     
     private let poolManager: ImagePoolManager
     private let resizedImageManager = ResizedImageManager()
@@ -31,8 +31,8 @@ public final class Mosaic {
         
         let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
         let averageColorFinder = AverageColorFinder(image: image)
-        
-        var tileImagePositions = [ImagePositionMap]()
+                
+        // Start
         
         var frames = [CGRect.zero]
         
@@ -47,10 +47,14 @@ public final class Mosaic {
             let averageColor = averageColorFinder.computeAverageColor(for: frame)!
             averageColors[iteration] = averageColor
         }
+        
+        // End
 
         guard averageColors.count == frames.count else {
             fatalError()
         }
+        
+        var tileImagePositions = [ImagePositionMap]()
         
         for (index, averageColor) in averageColors.enumerated() {
             let frame = frames[index]

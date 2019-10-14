@@ -13,11 +13,13 @@ struct ImageTileSequence: Sequence {
     let imageSize: CGSize
     
     let count: Int
+    let numberOfTiles: Int
     
     init(tileSize: CGSize, imageSize: CGSize) {
         self.tileSize = tileSize
         self.imageSize = imageSize
         self.count = Int(imageSize.width / tileSize.width) * Int(imageSize.height / tileSize.height)
+        self.numberOfTiles = Int(sqrt(Double(count)))
     }
 
     func makeIterator() -> ImageTileIterator {
