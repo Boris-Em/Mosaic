@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// This class provides a fast way of finding the average color of a picture.
+/// This class provides a fast way of finding the average color of a single image.
 class AverageColorFinder {
     
     private let image: UIImage

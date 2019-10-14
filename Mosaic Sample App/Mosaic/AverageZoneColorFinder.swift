@@ -31,7 +31,7 @@ class AverageZoneColorFinder {
         self.cgImage = image.cgImage!
     }
     
-    func find() {
+    func find() -> [UInt16] {
         let commandQueue = device.makeCommandQueue()!
         let commandBuffer = commandQueue.makeCommandBuffer()!
         let encoder = commandBuffer.makeComputeCommandEncoder()!
@@ -62,8 +62,8 @@ class AverageZoneColorFinder {
         var result = [UInt16](repeating: 0, count: imageSequence.count * 4)
         let data = NSData(bytesNoCopy: (outputBuffer?.contents())!, length: MemoryLayout<UInt16>.stride * imageSequence.count * 4, freeWhenDone: false)
         data.getBytes(&result, length: MemoryLayout<UInt16>.stride * imageSequence.count * 4)
-
-        print(result)
+        
+        return result
     }
     
 }

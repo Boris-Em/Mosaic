@@ -32,23 +32,14 @@ public final class Mosaic {
         let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
         let averageColorFinder = AverageColorFinder(image: image)
                 
-        // Start
+        let averageZoneColorFinder = AverageZoneColorFinder(image: image, imageSequence: imageSequence)
+        let averageColors = averageZoneColorFinder.find()
         
         var frames = [CGRect.zero]
         
         imageSequence.forEach { (frame) in
             frames.append(frame)
         }
-        
-        var averageColors = Array(repeating: UIColor.black, count: frames.count)
-
-        DispatchQueue.concurrentPerform(iterations: frames.count) { (iteration) in
-            let frame = frames[iteration]
-            let averageColor = averageColorFinder.computeAverageColor(for: frame)!
-            averageColors[iteration] = averageColor
-        }
-        
-        // End
 
         guard averageColors.count == frames.count else {
             fatalError()
@@ -57,11 +48,11 @@ public final class Mosaic {
         var tileImagePositions = [ImagePositionMap]()
         
         for (index, averageColor) in averageColors.enumerated() {
-            let frame = frames[index]
-            let closestTileImage = poolManager.closestImage(from: averageColor)
-            let closestTileResizedImage = resizedImageManager.resizedImage(for: closestTileImage, size: tileSize)
-            let imagePositionMap = ImagePositionMap(image: closestTileResizedImage, position: frame.origin)
-            tileImagePositions.append(imagePositionMap)
+//            let frame = frames[index]
+//            let closestTileImage = poolManager.closestImage(from: averageColor)
+//            let closestTileResizedImage = resizedImageManager.resizedImage(for: closestTileImage, size: tileSize)
+//            let imagePositionMap = ImagePositionMap(image: closestTileResizedImage, position: frame.origin)
+//            tileImagePositions.append(imagePositionMap)
         }
 
         let mosaicImage = ImageStitcher.stitch(images: tileImagePositions, to: imageSize)

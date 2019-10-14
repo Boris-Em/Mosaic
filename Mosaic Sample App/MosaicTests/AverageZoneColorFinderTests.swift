@@ -10,17 +10,47 @@ import XCTest
 @testable import Mosaic
 
 class AverageZoneColorFinderTests: XCTestCase {
+    
+    private static let numberOfTiles: CGFloat = 20
 
-    func test() {
-        let image = UIImage(named: "MultiRectangle_2x2.jpg")!
-        let numberOfTiles: CGFloat = 2
-        
-        let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
-        let tileSize = CGSize(width: imageSize.width / numberOfTiles, height: imageSize.height / numberOfTiles)
-        let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
-        
-        let averageZoneColorFinder = AverageZoneColorFinder(image: image, imageSequence: imageSequence)
-        averageZoneColorFinder.find()
+    func testMetal() {
+        measure {
+            let image = UIImage(named: "RedRectangle_40x40.jpg")!
+            
+            let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
+            let tileSize = CGSize(width: imageSize.width / AverageZoneColorFinderTests.numberOfTiles, height: imageSize.height / AverageZoneColorFinderTests.numberOfTiles)
+            let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
+            
+            let averageZoneColorFinder = AverageZoneColorFinder(image: image, imageSequence: imageSequence)
+            let _ = averageZoneColorFinder.find()
+        }
+    }
+    
+    func testConcurrent() {
+        measure {
+            let image = UIImage(named: "RedRectangle_40x40.jpg")!
+            
+            let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
+            let tileSize = CGSize(width: imageSize.width / AverageZoneColorFinderTests.numberOfTiles, height: imageSize.height / AverageZoneColorFinderTests.numberOfTiles)
+            let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
+
+            var frames = [CGRect.zero]
+            
+            imageSequence.forEach { (frame) in
+                frames.append(frame)
+            }
+            
+            var averageColors = Array(repeating: UIColor.black, count: frames.count)
+            
+            let averageColorFinder = AverageColorFinder(image: image)
+
+            DispatchQueue.concurrentPerform(iterations: imageSequence.count) { (iteration) in
+                let frame = frames[iteration]
+                let averageColor = averageColorFinder.computeAverageColor(for: frame)!
+                averageColors[iteration] = averageColor
+            }
+        }
+
     }
 
 }
