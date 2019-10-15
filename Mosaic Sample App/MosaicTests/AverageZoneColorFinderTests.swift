@@ -55,6 +55,68 @@ class AverageZoneColorFinderTests: XCTestCase {
         
         assertAll(red: 0, green: 0, blue: 255, colors: colors)
     }
+    
+    func testMulti() {
+        let image = UIImage(named: "MultiRectangle_10x10.jpg")!
+        
+        let numberOfTiles: CGFloat = 2
+
+        let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
+        let tileSize = CGSize(width: imageSize.width / numberOfTiles, height: imageSize.height / numberOfTiles)
+        let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
+        
+        let averageZoneColorFinder = AverageZoneColorFinder(image: image, imageSequence: imageSequence)
+        let colors = averageZoneColorFinder.find()
+        
+        // Red
+        let topLeftRed = colors[0]
+        let topLeftGreen = colors[1]
+        let topLeftBlue = colors[2]
+        
+        XCTAssertGreaterThanOrEqual(topLeftRed, 250)
+        XCTAssertLessThanOrEqual(topLeftRed, 255)
+        
+        XCTAssertLessThanOrEqual(topLeftGreen, 5)
+        XCTAssertLessThanOrEqual(topLeftBlue, 5)
+        
+        // Blue
+        let bottomLeftRed = colors[4]
+        let bottomLeftGreen = colors[5]
+        let bottomLeftBlue = colors[6]
+        
+        XCTAssertLessThanOrEqual(bottomLeftRed, 5)
+        
+        XCTAssertLessThanOrEqual(bottomLeftGreen, 5)
+        
+        XCTAssertGreaterThanOrEqual(bottomLeftBlue, 250)
+        XCTAssertLessThanOrEqual(bottomLeftBlue, 255)
+        
+        // Green
+        let topRightRed = colors[8]
+        let topRightGreen = colors[9]
+        let topRightBlue = colors[10]
+        
+        XCTAssertLessThanOrEqual(topRightRed, 5)
+        
+        XCTAssertGreaterThanOrEqual(topRightGreen, 250)
+        XCTAssertLessThanOrEqual(topRightGreen, 255)
+        
+        XCTAssertLessThanOrEqual(topRightBlue, 5)
+        
+        // Purple
+        let bottomRightRed = colors[12]
+        let bottomRightGreen = colors[13]
+        let bottomRightBlue = colors[14]
+        
+        XCTAssertGreaterThanOrEqual(bottomRightRed, 144)
+        XCTAssertLessThanOrEqual(bottomRightRed, 147)
+
+        XCTAssertGreaterThanOrEqual(bottomRightGreen, 10)
+        XCTAssertLessThanOrEqual(bottomRightGreen, 15)
+        
+        XCTAssertGreaterThanOrEqual(bottomRightBlue, 250)
+        XCTAssertLessThanOrEqual(bottomRightBlue, 255)
+    }
 
 }
 
