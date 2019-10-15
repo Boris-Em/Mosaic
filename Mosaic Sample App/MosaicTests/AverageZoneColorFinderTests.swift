@@ -56,6 +56,51 @@ class AverageZoneColorFinderTests: XCTestCase {
         assertAll(red: 0, green: 0, blue: 255, colors: colors)
     }
     
+    func testAllBlack() {
+        let image = UIImage(named: "BlackRectangle_50x50.jpg")!
+        
+        let numberOfTiles: CGFloat = 50
+        
+        let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
+        let tileSize = CGSize(width: imageSize.width / numberOfTiles, height: imageSize.height / numberOfTiles)
+        let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
+        
+        let averageZoneColorFinder = AverageZoneColorFinder(image: image, imageSequence: imageSequence)
+        let colors = averageZoneColorFinder.find()
+        
+        assertAll(red: 0, green: 0, blue: 0, colors: colors)
+    }
+    
+    func testAllWhite() {
+        let image = UIImage(named: "WhiteRectangle_50x50.jpg")!
+        
+        let numberOfTiles: CGFloat = 50
+        
+        let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
+        let tileSize = CGSize(width: imageSize.width / numberOfTiles, height: imageSize.height / numberOfTiles)
+        let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
+        
+        let averageZoneColorFinder = AverageZoneColorFinder(image: image, imageSequence: imageSequence)
+        let colors = averageZoneColorFinder.find()
+        
+        assertAll(red: 255, green: 255, blue: 255, colors: colors)
+    }
+
+    func testAllGray() {
+        let image = UIImage(named: "GrayRectangle_50x50.jpg")!
+        
+        let numberOfTiles: CGFloat = 50
+        
+        let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
+        let tileSize = CGSize(width: imageSize.width / numberOfTiles, height: imageSize.height / numberOfTiles)
+        let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
+        
+        let averageZoneColorFinder = AverageZoneColorFinder(image: image, imageSequence: imageSequence)
+        let colors = averageZoneColorFinder.find()
+        
+        assertAll(red: 150, green: 150, blue: 150, colors: colors)
+    }
+    
     func testMulti() {
         let image = UIImage(named: "MultiRectangle_10x10.jpg")!
         

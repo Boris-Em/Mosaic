@@ -58,6 +58,12 @@
 		A1F2925023565CAE00B0C099 /* GreenRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2924E23565CAA00B0C099 /* GreenRectangle_50x50.jpg */; };
 		A1F2925223565CF200B0C099 /* BlueRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2925123565CF200B0C099 /* BlueRectangle_50x50.jpg */; };
 		A1F2925323565CF200B0C099 /* BlueRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2925123565CF200B0C099 /* BlueRectangle_50x50.jpg */; };
+		A1F292552356626A00B0C099 /* BlackRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F292542356626A00B0C099 /* BlackRectangle_50x50.jpg */; };
+		A1F292562356626A00B0C099 /* BlackRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F292542356626A00B0C099 /* BlackRectangle_50x50.jpg */; };
+		A1F29258235662A800B0C099 /* WhiteRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F29257235662A800B0C099 /* WhiteRectangle_50x50.jpg */; };
+		A1F29259235662A800B0C099 /* WhiteRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F29257235662A800B0C099 /* WhiteRectangle_50x50.jpg */; };
+		A1F2925B235662F400B0C099 /* GrayRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2925A235662F400B0C099 /* GrayRectangle_50x50.jpg */; };
+		A1F2925C235662F400B0C099 /* GrayRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2925A235662F400B0C099 /* GrayRectangle_50x50.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +154,9 @@
 		A1F2924C2356590900B0C099 /* AverageZoneColorFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinderTests.swift; sourceTree = "<group>"; };
 		A1F2924E23565CAA00B0C099 /* GreenRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GreenRectangle_50x50.jpg; sourceTree = "<group>"; };
 		A1F2925123565CF200B0C099 /* BlueRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BlueRectangle_50x50.jpg; sourceTree = "<group>"; };
+		A1F292542356626A00B0C099 /* BlackRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BlackRectangle_50x50.jpg; sourceTree = "<group>"; };
+		A1F29257235662A800B0C099 /* WhiteRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WhiteRectangle_50x50.jpg; sourceTree = "<group>"; };
+		A1F2925A235662F400B0C099 /* GrayRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GrayRectangle_50x50.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +285,9 @@
 				A1CE3A2323550BF400EC3E2D /* RedRectangle_2x2.jpg */,
 				A1F2924E23565CAA00B0C099 /* GreenRectangle_50x50.jpg */,
 				A1F2925123565CF200B0C099 /* BlueRectangle_50x50.jpg */,
+				A1F292542356626A00B0C099 /* BlackRectangle_50x50.jpg */,
+				A1F29257235662A800B0C099 /* WhiteRectangle_50x50.jpg */,
+				A1F2925A235662F400B0C099 /* GrayRectangle_50x50.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -421,16 +433,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1F29258235662A800B0C099 /* WhiteRectangle_50x50.jpg in Resources */,
 				A1CE3A3623550EF700EC3E2D /* RedRectangle_40x40.jpg in Resources */,
 				A1CE3A3323550ED400EC3E2D /* RedRectangle_30x30.jpg in Resources */,
 				A1CE3A2423550BF400EC3E2D /* RedRectangle_2x2.jpg in Resources */,
 				A1CE3A3023550E8700EC3E2D /* RedRectangle_20x20.jpg in Resources */,
+				A1F2925B235662F400B0C099 /* GrayRectangle_50x50.jpg in Resources */,
 				A1CE3A2A23550CEE00EC3E2D /* RedRectangle_500x500.jpg in Resources */,
 				A15783A2235136E500CCAEDD /* Test_image_1.jpg in Resources */,
 				A1CE3A2723550C2300EC3E2D /* RedRectangle_10x10.jpg in Resources */,
 				A1CDE03E23506DC10024548F /* LaunchScreen.storyboard in Resources */,
 				A1CE3A39235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */,
 				A1CDE03B23506DC10024548F /* Assets.xcassets in Resources */,
+				A1F292552356626A00B0C099 /* BlackRectangle_50x50.jpg in Resources */,
 				A1F2925023565CAE00B0C099 /* GreenRectangle_50x50.jpg in Resources */,
 				A1CE3A3C2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */,
 				A1CE3A2D23550E3600EC3E2D /* RedRectangle_50x50.jpg in Resources */,
@@ -459,16 +474,19 @@
 			files = (
 				A1CE3A2E23550E3600EC3E2D /* RedRectangle_50x50.jpg in Resources */,
 				A1CE3A2B23550CEE00EC3E2D /* RedRectangle_500x500.jpg in Resources */,
+				A1F29259235662A800B0C099 /* WhiteRectangle_50x50.jpg in Resources */,
 				A1CE3A3423550ED400EC3E2D /* RedRectangle_30x30.jpg in Resources */,
 				A1CE3A2523550BF400EC3E2D /* RedRectangle_2x2.jpg in Resources */,
 				A1CE3A3723550EF700EC3E2D /* RedRectangle_40x40.jpg in Resources */,
 				A1CE3A3A235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */,
 				A1CE3A3D2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */,
+				A1F292562356626A00B0C099 /* BlackRectangle_50x50.jpg in Resources */,
 				A1CE3A2823550C2300EC3E2D /* RedRectangle_10x10.jpg in Resources */,
 				A1F2925323565CF200B0C099 /* BlueRectangle_50x50.jpg in Resources */,
 				A1F2924F23565CAA00B0C099 /* GreenRectangle_50x50.jpg in Resources */,
 				A1CE3A3123550E8700EC3E2D /* RedRectangle_20x20.jpg in Resources */,
 				A15783A3235136E500CCAEDD /* Test_image_1.jpg in Resources */,
+				A1F2925C235662F400B0C099 /* GrayRectangle_50x50.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
