@@ -1,5 +1,5 @@
 //
-//  AverageZoneColorFinderTests.swift
+//  AverageZoneColorFinderPerformanceTests.swift
 //  MosaicTests
 //
 //  Created by Boris Emorine on 10/12/19.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Mosaic
 
-class AverageZoneColorFinderTests: XCTestCase {
+class AverageZoneColorFinderPerformanceTests: XCTestCase {
     
     func test() {
         let image = UIImage(named: "RedRectangle_50x50.jpg")!
@@ -38,7 +38,7 @@ class AverageZoneColorFinderTests: XCTestCase {
             let image = UIImage(named: "RedRectangle_40x40.jpg")!
             
             let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
-            let tileSize = CGSize(width: imageSize.width / AverageZoneColorFinderTests.numberOfTiles, height: imageSize.height / AverageZoneColorFinderTests.numberOfTiles)
+            let tileSize = CGSize(width: imageSize.width / AverageZoneColorFinderPerformanceTests.numberOfTiles, height: imageSize.height / AverageZoneColorFinderPerformanceTests.numberOfTiles)
             let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
             
             let averageZoneColorFinder = AverageZoneColorFinder(image: image, imageSequence: imageSequence)
@@ -51,7 +51,7 @@ class AverageZoneColorFinderTests: XCTestCase {
             let image = UIImage(named: "RedRectangle_40x40.jpg")!
             
             let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
-            let tileSize = CGSize(width: imageSize.width / AverageZoneColorFinderTests.numberOfTiles, height: imageSize.height / AverageZoneColorFinderTests.numberOfTiles)
+            let tileSize = CGSize(width: imageSize.width / AverageZoneColorFinderPerformanceTests.numberOfTiles, height: imageSize.height / AverageZoneColorFinderPerformanceTests.numberOfTiles)
             let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
 
             var frames = [CGRect.zero]
