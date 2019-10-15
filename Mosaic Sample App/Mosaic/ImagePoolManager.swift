@@ -36,7 +36,7 @@ class ImagePoolManager {
         var bestScore = bestImageColorMap.averageColor.CIEDE2000(compare: color)
         
         pool.forEach { (imageColorMap) in
-            let score = imageColorMap.averageColor.CIE94(compare: color)
+            let score = imageColorMap.averageColor.CIEDE2000(compare: color)
             if score < bestScore {
                 bestImageColorMap = imageColorMap
                 bestScore = score
