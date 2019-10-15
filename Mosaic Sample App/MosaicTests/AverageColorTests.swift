@@ -12,7 +12,7 @@ import XCTest
 class AverageColorTests: XCTestCase {
 
     func testRedImage() {
-        let image = UIImage(named: "RedRectangle.jpg")!
+        let image = UIImage(named: "RedRectangle_500x500.jpg")!
         let averageColorFinder = AverageColorFinder(image: image)
         let averageColor = averageColorFinder.computeAverageColor()
         
