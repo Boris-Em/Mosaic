@@ -11,7 +11,7 @@ import UIKit
 public final class Mosaic {
     
     /// The numbner of tiles in the mosaic per length (width & height).
-    static let numberOfTiles: CGFloat = 2
+    static let numberOfTiles: CGFloat = 50
     
     private let poolManager: ImagePoolManager
     private let resizedImageManager = ResizedImageManager()
@@ -30,29 +30,23 @@ public final class Mosaic {
         let tileSize = CGSize(width: imageSize.width / Mosaic.numberOfTiles, height: imageSize.height / Mosaic.numberOfTiles)
         
         let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
-        let averageColorFinder = AverageColorFinder(image: image)
                 
         let averageZoneColorFinder = AverageZoneColorFinder(image: image, imageSequence: imageSequence)
         let averageColors = averageZoneColorFinder.find()
         
-        var frames = [CGRect.zero]
-        
-        imageSequence.forEach { (frame) in
-            frames.append(frame)
-        }
-
-        guard averageColors.count == frames.count else {
-            fatalError()
-        }
-        
         var tileImagePositions = [ImagePositionMap]()
         
-        for (index, averageColor) in averageColors.enumerated() {
-//            let frame = frames[index]
-//            let closestTileImage = poolManager.closestImage(from: averageColor)
-//            let closestTileResizedImage = resizedImageManager.resizedImage(for: closestTileImage, size: tileSize)
-//            let imagePositionMap = ImagePositionMap(image: closestTileResizedImage, position: frame.origin)
-//            tileImagePositions.append(imagePositionMap)
+        for (index, frame) in imageSequence.enumerated() {
+            let red = averageColors[index * 4]
+            let green = averageColors[index * 4 + 1]
+            let blue = averageColors[index * 4 + 2]
+            let alpha = averageColors[index * 4 + 3]
+            let averageColor = UIColor(r: CGFloat(red / 255), g: CGFloat(green / 255), b: CGFloat(blue / 255), a: CGFloat(alpha))
+            
+            let closestTileImage = poolManager.closestImage(from: averageColor)
+            let closestTileResizedImage = resizedImageManager.resizedImage(for: closestTileImage, size: tileSize)
+            let imagePositionMap = ImagePositionMap(image: closestTileResizedImage, position: frame.origin)
+            tileImagePositions.append(imagePositionMap)
         }
 
         let mosaicImage = ImageStitcher.stitch(images: tileImagePositions, to: imageSize)
