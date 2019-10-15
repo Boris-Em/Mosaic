@@ -53,6 +53,11 @@
 		A1CE3A3A235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */; };
 		A1CE3A3C2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */; };
 		A1CE3A3D2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */; };
+		A1F2924D2356590900B0C099 /* AverageZoneColorFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2924C2356590900B0C099 /* AverageZoneColorFinderTests.swift */; };
+		A1F2924F23565CAA00B0C099 /* GreenRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2924E23565CAA00B0C099 /* GreenRectangle_50x50.jpg */; };
+		A1F2925023565CAE00B0C099 /* GreenRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2924E23565CAA00B0C099 /* GreenRectangle_50x50.jpg */; };
+		A1F2925223565CF200B0C099 /* BlueRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2925123565CF200B0C099 /* BlueRectangle_50x50.jpg */; };
+		A1F2925323565CF200B0C099 /* BlueRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2925123565CF200B0C099 /* BlueRectangle_50x50.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +145,9 @@
 		A1CE3A3523550EF700EC3E2D /* RedRectangle_40x40.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RedRectangle_40x40.jpg; sourceTree = "<group>"; };
 		A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_10x10.jpg; sourceTree = "<group>"; };
 		A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_2x2.jpg; sourceTree = "<group>"; };
+		A1F2924C2356590900B0C099 /* AverageZoneColorFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinderTests.swift; sourceTree = "<group>"; };
+		A1F2924E23565CAA00B0C099 /* GreenRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GreenRectangle_50x50.jpg; sourceTree = "<group>"; };
+		A1F2925123565CF200B0C099 /* BlueRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BlueRectangle_50x50.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +255,7 @@
 				A1CDE06723506DD50024548F /* AverageColorTests.swift */,
 				A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */,
 				A1B0E2972351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift */,
+				A1F2924C2356590900B0C099 /* AverageZoneColorFinderTests.swift */,
 				A1CDE06923506DD50024548F /* Info.plist */,
 			);
 			path = MosaicTests;
@@ -265,6 +274,8 @@
 				A1CE3A2F23550E8700EC3E2D /* RedRectangle_20x20.jpg */,
 				A1CE3A2623550C2300EC3E2D /* RedRectangle_10x10.jpg */,
 				A1CE3A2323550BF400EC3E2D /* RedRectangle_2x2.jpg */,
+				A1F2924E23565CAA00B0C099 /* GreenRectangle_50x50.jpg */,
+				A1F2925123565CF200B0C099 /* BlueRectangle_50x50.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -420,9 +431,11 @@
 				A1CDE03E23506DC10024548F /* LaunchScreen.storyboard in Resources */,
 				A1CE3A39235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */,
 				A1CDE03B23506DC10024548F /* Assets.xcassets in Resources */,
+				A1F2925023565CAE00B0C099 /* GreenRectangle_50x50.jpg in Resources */,
 				A1CE3A3C2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */,
 				A1CE3A2D23550E3600EC3E2D /* RedRectangle_50x50.jpg in Resources */,
 				A1CDE03923506DC00024548F /* Main.storyboard in Resources */,
+				A1F2925223565CF200B0C099 /* BlueRectangle_50x50.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +465,8 @@
 				A1CE3A3A235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */,
 				A1CE3A3D2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */,
 				A1CE3A2823550C2300EC3E2D /* RedRectangle_10x10.jpg in Resources */,
+				A1F2925323565CF200B0C099 /* BlueRectangle_50x50.jpg in Resources */,
+				A1F2924F23565CAA00B0C099 /* GreenRectangle_50x50.jpg in Resources */,
 				A1CE3A3123550E8700EC3E2D /* RedRectangle_20x20.jpg in Resources */,
 				A15783A3235136E500CCAEDD /* Test_image_1.jpg in Resources */,
 			);
@@ -502,6 +517,7 @@
 			files = (
 				A1B0E29A2351D0B30011040B /* AverageColorZone_kernel.metal in Sources */,
 				A1B0E2942351C5230011040B /* ImageTileSequenceTests.swift in Sources */,
+				A1F2924D2356590900B0C099 /* AverageZoneColorFinderTests.swift in Sources */,
 				A1CDE06823506DD50024548F /* AverageColorTests.swift in Sources */,
 				A1B0E2982351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift in Sources */,
 			);

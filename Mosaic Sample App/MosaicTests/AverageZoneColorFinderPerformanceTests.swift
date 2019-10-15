@@ -11,26 +11,6 @@ import XCTest
 
 class AverageZoneColorFinderPerformanceTests: XCTestCase {
     
-    func test() {
-        let image = UIImage(named: "RedRectangle_50x50.jpg")!
-        
-        let numberOfTiles: CGFloat = 2
-        
-        let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
-        let tileSize = CGSize(width: imageSize.width / numberOfTiles, height: imageSize.height / numberOfTiles)
-        let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
-        
-        let averageZoneColorFinder = AverageZoneColorFinder(image: image, imageSequence: imageSequence)
-        let result = averageZoneColorFinder.find()
-        
-        // The average red value of the first tile
-        let red = result[0]
-        XCTAssertGreaterThanOrEqual(red, 250)
-        XCTAssertLessThanOrEqual(red, 255)
-    }
-    
-    // MARK - Performance
-    
     private static let numberOfTiles: CGFloat = 20
 
     func testSpeedMetal() {
