@@ -38,7 +38,7 @@ class AverageZoneColorFinder {
         encoder.setComputePipelineState(pipelineState)
         
         let textureLoader = MTKTextureLoader(device: device)
-        let texture = try! textureLoader.newTexture(cgImage: cgImage, options: nil)
+        let texture = try! textureLoader.newTexture(cgImage: cgImage, options: [MTKTextureLoader.Option.SRGB: 0])
         encoder.setTexture(texture, index: 0)
         
         var output = [UInt16](repeating: 0, count: imageSequence.count * 4)
