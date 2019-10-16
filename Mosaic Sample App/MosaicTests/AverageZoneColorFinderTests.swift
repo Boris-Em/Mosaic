@@ -41,6 +41,21 @@ class AverageZoneColorFinderTests: XCTestCase {
         assertAll(red: 0, green: 255, blue: 0, colors: colors)
     }
     
+    func testAllLightGreen() {
+        let image = UIImage(named: "LightGreenRectangle_50x50.jpg")!
+        
+        let numberOfTiles: CGFloat = 10
+        
+        let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
+        let tileSize = CGSize(width: imageSize.width / numberOfTiles, height: imageSize.height / numberOfTiles)
+        let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
+        
+        let averageZoneColorFinder = AverageZoneColorFinder(image: image, imageSequence: imageSequence)
+        let colors = averageZoneColorFinder.find()
+        
+        assertAll(red: 55, green: 165, blue: 63, colors: colors)
+    }
+    
     func testAllBlue() {
         let image = UIImage(named: "BlueRectangle_50x50.jpg")!
         

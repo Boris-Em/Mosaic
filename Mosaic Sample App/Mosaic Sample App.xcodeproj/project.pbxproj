@@ -64,6 +64,8 @@
 		A1F29259235662A800B0C099 /* WhiteRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F29257235662A800B0C099 /* WhiteRectangle_50x50.jpg */; };
 		A1F2925B235662F400B0C099 /* GrayRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2925A235662F400B0C099 /* GrayRectangle_50x50.jpg */; };
 		A1F2925C235662F400B0C099 /* GrayRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2925A235662F400B0C099 /* GrayRectangle_50x50.jpg */; };
+		A1F2925E23573D7200B0C099 /* LightGreenRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2925D23573D7200B0C099 /* LightGreenRectangle_50x50.jpg */; };
+		A1F2925F23573D7200B0C099 /* LightGreenRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2925D23573D7200B0C099 /* LightGreenRectangle_50x50.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +159,7 @@
 		A1F292542356626A00B0C099 /* BlackRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BlackRectangle_50x50.jpg; sourceTree = "<group>"; };
 		A1F29257235662A800B0C099 /* WhiteRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WhiteRectangle_50x50.jpg; sourceTree = "<group>"; };
 		A1F2925A235662F400B0C099 /* GrayRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GrayRectangle_50x50.jpg; sourceTree = "<group>"; };
+		A1F2925D23573D7200B0C099 /* LightGreenRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LightGreenRectangle_50x50.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +291,7 @@
 				A1F292542356626A00B0C099 /* BlackRectangle_50x50.jpg */,
 				A1F29257235662A800B0C099 /* WhiteRectangle_50x50.jpg */,
 				A1F2925A235662F400B0C099 /* GrayRectangle_50x50.jpg */,
+				A1F2925D23573D7200B0C099 /* LightGreenRectangle_50x50.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -446,6 +450,7 @@
 				A1CE3A39235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */,
 				A1CDE03B23506DC10024548F /* Assets.xcassets in Resources */,
 				A1F292552356626A00B0C099 /* BlackRectangle_50x50.jpg in Resources */,
+				A1F2925E23573D7200B0C099 /* LightGreenRectangle_50x50.jpg in Resources */,
 				A1F2925023565CAE00B0C099 /* GreenRectangle_50x50.jpg in Resources */,
 				A1CE3A3C2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */,
 				A1CE3A2D23550E3600EC3E2D /* RedRectangle_50x50.jpg in Resources */,
@@ -483,6 +488,7 @@
 				A1F292562356626A00B0C099 /* BlackRectangle_50x50.jpg in Resources */,
 				A1CE3A2823550C2300EC3E2D /* RedRectangle_10x10.jpg in Resources */,
 				A1F2925323565CF200B0C099 /* BlueRectangle_50x50.jpg in Resources */,
+				A1F2925F23573D7200B0C099 /* LightGreenRectangle_50x50.jpg in Resources */,
 				A1F2924F23565CAA00B0C099 /* GreenRectangle_50x50.jpg in Resources */,
 				A1CE3A3123550E8700EC3E2D /* RedRectangle_20x20.jpg in Resources */,
 				A15783A3235136E500CCAEDD /* Test_image_1.jpg in Resources */,
