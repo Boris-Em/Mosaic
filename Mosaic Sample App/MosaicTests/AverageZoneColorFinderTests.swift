@@ -168,11 +168,11 @@ class AverageZoneColorFinderTests: XCTestCase {
         let bottomRightGreen = colors[13]
         let bottomRightBlue = colors[14]
         
-        XCTAssertGreaterThanOrEqual(bottomRightRed, 144)
-        XCTAssertLessThanOrEqual(bottomRightRed, 147)
+        XCTAssertGreaterThanOrEqual(bottomRightRed, 197)
+        XCTAssertLessThanOrEqual(bottomRightRed, 200)
 
-        XCTAssertGreaterThanOrEqual(bottomRightGreen, 10)
-        XCTAssertLessThanOrEqual(bottomRightGreen, 15)
+        XCTAssertGreaterThanOrEqual(bottomRightGreen, 60)
+        XCTAssertLessThanOrEqual(bottomRightGreen, 62)
         
         XCTAssertGreaterThanOrEqual(bottomRightBlue, 250)
         XCTAssertLessThanOrEqual(bottomRightBlue, 255)
