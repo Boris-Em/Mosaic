@@ -13,6 +13,10 @@ class ResizedImageManager {
     private var cache: [UIImage : UIImage] = [UIImage : UIImage]()
     
     func resizedImage(for image: UIImage, size: CGSize) -> UIImage {
+        guard image.size != size else {
+            return image
+        }
+        
         if let cachedResizedImage = cache[image] {
             return cachedResizedImage
         }
