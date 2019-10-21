@@ -12,6 +12,7 @@
 		A1421D7C235E2EB9004C0286 /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */; };
 		A1421D85235E2FC7004C0286 /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */; };
 		A1421D86235E2FC8004C0286 /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */; };
+		A1421D8A235E3297004C0286 /* PoolTileMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1421D89235E3297004C0286 /* PoolTileMapperTests.swift */; };
 		A15783982350A10100CCAEDD /* ImageStitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15783972350A10100CCAEDD /* ImageStitcher.swift */; };
 		A157839A2350A30200CCAEDD /* ImagePoolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15783992350A30200CCAEDD /* ImagePoolManager.swift */; };
 		A157839C2350A31F00CCAEDD /* ResizedImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157839B2350A31F00CCAEDD /* ResizedImageManager.swift */; };
@@ -52,6 +53,7 @@
 		A1CE3A3A235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */; };
 		A1CE3A3C2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */; };
 		A1CE3A3D2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */; };
+		A1F23F33235E45720030FAC0 /* ImagePoolManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F23F32235E45720030FAC0 /* ImagePoolManagerTests.swift */; };
 		A1F2924D2356590900B0C099 /* AverageZoneColorFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2924C2356590900B0C099 /* AverageZoneColorFinderTests.swift */; };
 		A1F2924F23565CAA00B0C099 /* GreenRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2924E23565CAA00B0C099 /* GreenRectangle_50x50.jpg */; };
 		A1F2925023565CAE00B0C099 /* GreenRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2924E23565CAA00B0C099 /* GreenRectangle_50x50.jpg */; };
@@ -119,6 +121,7 @@
 		A118B5CD235E233A00770A48 /* Mosaic Sample AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mosaic Sample AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A118B5CE235E233A00770A48 /* MosaicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MosaicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = AverageColorZone_kernel.metal; sourceTree = "<group>"; };
+		A1421D89235E3297004C0286 /* PoolTileMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolTileMapperTests.swift; sourceTree = "<group>"; };
 		A15783972350A10100CCAEDD /* ImageStitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStitcher.swift; sourceTree = "<group>"; };
 		A15783992350A30200CCAEDD /* ImagePoolManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePoolManager.swift; sourceTree = "<group>"; };
 		A157839B2350A31F00CCAEDD /* ResizedImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizedImageManager.swift; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 		A1CE3A3523550EF700EC3E2D /* RedRectangle_40x40.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RedRectangle_40x40.jpg; sourceTree = "<group>"; };
 		A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_10x10.jpg; sourceTree = "<group>"; };
 		A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_2x2.jpg; sourceTree = "<group>"; };
+		A1F23F32235E45720030FAC0 /* ImagePoolManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePoolManagerTests.swift; sourceTree = "<group>"; };
 		A1F2924C2356590900B0C099 /* AverageZoneColorFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinderTests.swift; sourceTree = "<group>"; };
 		A1F2924E23565CAA00B0C099 /* GreenRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GreenRectangle_50x50.jpg; sourceTree = "<group>"; };
 		A1F2925123565CF200B0C099 /* BlueRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BlueRectangle_50x50.jpg; sourceTree = "<group>"; };
@@ -262,8 +266,10 @@
 				A1CDE0792350731D0024548F /* Resources */,
 				A1CDE06723506DD50024548F /* AverageColorTests.swift */,
 				A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */,
+				A1F23F32235E45720030FAC0 /* ImagePoolManagerTests.swift */,
 				A1B0E2972351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift */,
 				A1F2924C2356590900B0C099 /* AverageZoneColorFinderTests.swift */,
+				A1421D89235E3297004C0286 /* PoolTileMapperTests.swift */,
 				A1CDE06923506DD50024548F /* Info.plist */,
 			);
 			path = MosaicTests;
@@ -559,8 +565,10 @@
 			files = (
 				A1B0E2942351C5230011040B /* ImageTileSequenceTests.swift in Sources */,
 				A1F2924D2356590900B0C099 /* AverageZoneColorFinderTests.swift in Sources */,
+				A1F23F33235E45720030FAC0 /* ImagePoolManagerTests.swift in Sources */,
 				A1CDE06823506DD50024548F /* AverageColorTests.swift in Sources */,
 				A1B0E2982351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift in Sources */,
+				A1421D8A235E3297004C0286 /* PoolTileMapperTests.swift in Sources */,
 				A1421D86235E2FC8004C0286 /* AverageColorZone_kernel.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
