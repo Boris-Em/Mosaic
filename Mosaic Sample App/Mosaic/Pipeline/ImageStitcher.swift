@@ -10,7 +10,7 @@ import UIKit
 
 class ImageStitcher {
     
-    static func stitch(images: [ImagePositionMap], to size: CGSize) -> UIImage {
+    static func stitch(images: [ImagePositionValuePair], to size: CGSize) -> UIImage {
         defer {
             UIGraphicsEndImageContext()
         }

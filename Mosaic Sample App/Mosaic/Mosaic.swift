@@ -13,8 +13,7 @@ public final class Mosaic {
     /// The numbner of tiles in the mosaic per length (width & height).
     static let numberOfTiles: CGFloat = 50
     
-    private let poolManager: ImagePoolManager
-    private let resizedImageManager = ResizedImageManager()
+    private let imagePositionMapper: PoolTileMapper
     
     public init(imagePool: [UIImage]) throws {
         guard imagePool.count > 3 else {
@@ -22,7 +21,8 @@ public final class Mosaic {
             throw error
         }
         
-        poolManager = ImagePoolManager(images: imagePool)
+        let poolManager = ImagePoolManager(images: imagePool)
+        self.imagePositionMapper = PoolTileMapper(poolManager: poolManager)
     }
     
     public func generateMosaic(for image: UIImage) -> UIImage? {
@@ -34,20 +34,7 @@ public final class Mosaic {
         let averageZoneColorFinder = AverageZoneColorFinder(image: image, imageSequence: imageSequence)
         let averageColors = averageZoneColorFinder.find()
         
-        var tileImagePositions = [ImagePositionMap]()
-        
-        for (index, frame) in imageSequence.enumerated() {
-            let red = averageColors[index * 4]
-            let green = averageColors[index * 4 + 1]
-            let blue = averageColors[index * 4 + 2]
-            let alpha = averageColors[index * 4 + 3]
-            let averageColor = UIColor(r: CGFloat(red / 255), g: CGFloat(green / 255), b: CGFloat(blue / 255), a: CGFloat(alpha))
-            
-            let closestTileImage = poolManager.closestImage(from: averageColor)
-            let closestTileResizedImage = resizedImageManager.resizedImage(for: closestTileImage, size: tileSize)
-            let imagePositionMap = ImagePositionMap(image: closestTileResizedImage, position: frame.origin)
-            tileImagePositions.append(imagePositionMap)
-        }
+        let tileImagePositions = imagePositionMapper.imagePositions(for: imageSequence, of: averageColors)
 
         let mosaicImage = ImageStitcher.stitch(images: tileImagePositions, to: imageSize)
 
@@ -56,7 +43,7 @@ public final class Mosaic {
     
 }
 
-struct ImagePositionMap {
+struct ImagePositionValuePair {
     
     let image: UIImage
     let position: CGPoint

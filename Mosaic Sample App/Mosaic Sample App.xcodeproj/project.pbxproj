@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1421D79235E2B56004C0286 /* Mosaic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A118B5CC235E233A00770A48 /* Mosaic.framework */; };
+		A1421D7A235E2B56004C0286 /* Mosaic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A118B5CC235E233A00770A48 /* Mosaic.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A1421D7C235E2EB9004C0286 /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */; };
+		A1421D85235E2FC7004C0286 /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */; };
+		A1421D86235E2FC8004C0286 /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */; };
 		A15783982350A10100CCAEDD /* ImageStitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15783972350A10100CCAEDD /* ImageStitcher.swift */; };
 		A157839A2350A30200CCAEDD /* ImagePoolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15783992350A30200CCAEDD /* ImagePoolManager.swift */; };
 		A157839C2350A31F00CCAEDD /* ResizedImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157839B2350A31F00CCAEDD /* ResizedImageManager.swift */; };
@@ -16,7 +21,6 @@
 		A15783A3235136E500CCAEDD /* Test_image_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A15783A1235136E500CCAEDD /* Test_image_1.jpg */; };
 		A1B0E2922351C1BB0011040B /* AverageZoneColorFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2912351C1BB0011040B /* AverageZoneColorFinder.swift */; };
 		A1B0E2942351C5230011040B /* ImageTileSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */; };
-		A1B0E2962351C9670011040B /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2952351C9670011040B /* AverageColorZone_kernel.metal */; };
 		A1B0E2982351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2972351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift */; };
 		A1CDE03223506DC00024548F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE03123506DC00024548F /* AppDelegate.swift */; };
 		A1CDE03423506DC00024548F /* AverageZoneColorFinderPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE03323506DC00024548F /* AverageZoneColorFinderPerformanceTests.swift */; };
@@ -61,6 +65,7 @@
 		A1F2925C235662F400B0C099 /* GrayRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2925A235662F400B0C099 /* GrayRectangle_50x50.jpg */; };
 		A1F2925E23573D7200B0C099 /* LightGreenRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2925D23573D7200B0C099 /* LightGreenRectangle_50x50.jpg */; };
 		A1F2925F23573D7200B0C099 /* LightGreenRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2925D23573D7200B0C099 /* LightGreenRectangle_50x50.jpg */; };
+		A1F292772357544400B0C099 /* PoolTileMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F292762357544400B0C099 /* PoolTileMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +106,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A1421D7A235E2B56004C0286 /* Mosaic.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,6 +114,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A118B5CB235E233A00770A48 /* Mosaic Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mosaic Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A118B5CC235E233A00770A48 /* Mosaic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mosaic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A118B5CD235E233A00770A48 /* Mosaic Sample AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mosaic Sample AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A118B5CE235E233A00770A48 /* MosaicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MosaicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = AverageColorZone_kernel.metal; sourceTree = "<group>"; };
 		A15783972350A10100CCAEDD /* ImageStitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStitcher.swift; sourceTree = "<group>"; };
 		A15783992350A30200CCAEDD /* ImagePoolManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePoolManager.swift; sourceTree = "<group>"; };
 		A157839B2350A31F00CCAEDD /* ResizedImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizedImageManager.swift; sourceTree = "<group>"; };
@@ -116,9 +127,7 @@
 		A15783A1235136E500CCAEDD /* Test_image_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test_image_1.jpg; sourceTree = "<group>"; };
 		A1B0E2912351C1BB0011040B /* AverageZoneColorFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinder.swift; sourceTree = "<group>"; };
 		A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTileSequenceTests.swift; sourceTree = "<group>"; };
-		A1B0E2952351C9670011040B /* AverageColorZone_kernel.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AverageColorZone_kernel.metal; sourceTree = "<group>"; };
 		A1B0E2972351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinderPerformanceTests.swift; sourceTree = "<group>"; };
-		A1CDE02E23506DC00024548F /* Mosaic Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Mosaic Sample App.app"; path = "/Users/boris/Documents/iOS/Mosaic/Mosaic Sample App/build/Debug-iphoneos/Mosaic Sample App.app"; sourceTree = "<absolute>"; };
 		A1CDE03123506DC00024548F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1CDE03323506DC00024548F /* AverageZoneColorFinderPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinderPerformanceTests.swift; sourceTree = "<group>"; };
 		A1CDE03523506DC00024548F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -126,13 +135,10 @@
 		A1CDE03A23506DC10024548F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1CDE03D23506DC10024548F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1CDE03F23506DC10024548F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1CDE04423506DC20024548F /* Mosaic Sample AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Mosaic Sample AppTests.xctest"; path = "/Users/boris/Documents/iOS/Mosaic/Mosaic Sample App/build/Debug-iphoneos/Mosaic Sample AppTests.xctest"; sourceTree = "<absolute>"; };
 		A1CDE04823506DC20024548F /* Mosaic_Sample_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mosaic_Sample_AppTests.swift; sourceTree = "<group>"; };
 		A1CDE04A23506DC20024548F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1CDE05823506DD50024548F /* Mosaic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Mosaic.framework; path = "/Users/boris/Documents/iOS/Mosaic/Mosaic Sample App/build/Debug-iphoneos/Mosaic.framework"; sourceTree = "<absolute>"; };
 		A1CDE05A23506DD50024548F /* Mosaic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mosaic.h; sourceTree = "<group>"; };
 		A1CDE05B23506DD50024548F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1CDE06023506DD50024548F /* MosaicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MosaicTests.xctest; path = "/Users/boris/Documents/iOS/Mosaic/Mosaic Sample App/build/Debug-iphoneos/MosaicTests.xctest"; sourceTree = "<absolute>"; };
 		A1CDE06723506DD50024548F /* AverageColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageColorTests.swift; sourceTree = "<group>"; };
 		A1CDE06923506DD50024548F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1CDE07623506F5F0024548F /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
@@ -154,6 +160,7 @@
 		A1F29257235662A800B0C099 /* WhiteRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WhiteRectangle_50x50.jpg; sourceTree = "<group>"; };
 		A1F2925A235662F400B0C099 /* GrayRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GrayRectangle_50x50.jpg; sourceTree = "<group>"; };
 		A1F2925D23573D7200B0C099 /* LightGreenRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LightGreenRectangle_50x50.jpg; sourceTree = "<group>"; };
+		A1F292762357544400B0C099 /* PoolTileMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolTileMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1421D79235E2B56004C0286 /* Mosaic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +196,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1421D77235E2B0C004C0286 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A1CDE02523506DC00024548F = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +210,11 @@
 				A1CDE04723506DC20024548F /* Mosaic Sample AppTests */,
 				A1CDE05923506DD50024548F /* Mosaic */,
 				A1CDE06623506DD50024548F /* MosaicTests */,
+				A118B5CB235E233A00770A48 /* Mosaic Sample App.app */,
+				A118B5CC235E233A00770A48 /* Mosaic.framework */,
+				A118B5CD235E233A00770A48 /* Mosaic Sample AppTests.xctest */,
+				A118B5CE235E233A00770A48 /* MosaicTests.xctest */,
+				A1421D77235E2B0C004C0286 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -278,6 +298,7 @@
 				A1F292712357534300B0C099 /* Color Extraction */,
 				A157839D2350A36B00CCAEDD /* ImageTileSequence.swift */,
 				A15783972350A10100CCAEDD /* ImageStitcher.swift */,
+				A1F292762357544400B0C099 /* PoolTileMapper.swift */,
 			);
 			path = Pipeline;
 			sourceTree = "<group>";
@@ -286,7 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				A1B0E2912351C1BB0011040B /* AverageZoneColorFinder.swift */,
-				A1B0E2952351C9670011040B /* AverageColorZone_kernel.metal */,
+				A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */,
 				A157839F2350AC7700CCAEDD /* AverageColorFinder.swift */,
 			);
 			path = "Color Extraction";
@@ -322,7 +343,7 @@
 			);
 			name = "Mosaic Sample App";
 			productName = "Mosaic Sample App";
-			productReference = A1CDE02E23506DC00024548F /* Mosaic Sample App.app */;
+			productReference = A118B5CB235E233A00770A48 /* Mosaic Sample App.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A1CDE04323506DC20024548F /* Mosaic Sample AppTests */ = {
@@ -340,7 +361,7 @@
 			);
 			name = "Mosaic Sample AppTests";
 			productName = "Mosaic Sample AppTests";
-			productReference = A1CDE04423506DC20024548F /* Mosaic Sample AppTests.xctest */;
+			productReference = A118B5CD235E233A00770A48 /* Mosaic Sample AppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		A1CDE05723506DD50024548F /* Mosaic */ = {
@@ -358,7 +379,7 @@
 			);
 			name = Mosaic;
 			productName = Mosaic;
-			productReference = A1CDE05823506DD50024548F /* Mosaic.framework */;
+			productReference = A118B5CC235E233A00770A48 /* Mosaic.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A1CDE05F23506DD50024548F /* MosaicTests */ = {
@@ -377,7 +398,7 @@
 			);
 			name = MosaicTests;
 			productName = MosaicTests;
-			productReference = A1CDE06023506DD50024548F /* MosaicTests.xctest */;
+			productReference = A118B5CE235E233A00770A48 /* MosaicTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -499,6 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1421D85235E2FC7004C0286 /* AverageColorZone_kernel.metal in Sources */,
 				A1CDE03623506DC00024548F /* ViewController.swift in Sources */,
 				A1CDE03223506DC00024548F /* AppDelegate.swift in Sources */,
 				A1CDE03423506DC00024548F /* AverageZoneColorFinderPerformanceTests.swift in Sources */,
@@ -519,11 +541,12 @@
 			files = (
 				A157839A2350A30200CCAEDD /* ImagePoolManager.swift in Sources */,
 				A1CDE08023507D4A0024548F /* UIColorExtensions.swift in Sources */,
+				A1421D7C235E2EB9004C0286 /* AverageColorZone_kernel.metal in Sources */,
 				A157839E2350A36B00CCAEDD /* ImageTileSequence.swift in Sources */,
 				A1CDE07723506F5F0024548F /* UIImageExtensions.swift in Sources */,
+				A1F292772357544400B0C099 /* PoolTileMapper.swift in Sources */,
 				A1CDE07E235076470024548F /* Mosaic.swift in Sources */,
 				A15783A02350AC7700CCAEDD /* AverageColorFinder.swift in Sources */,
-				A1B0E2962351C9670011040B /* AverageColorZone_kernel.metal in Sources */,
 				A157839C2350A31F00CCAEDD /* ResizedImageManager.swift in Sources */,
 				A1B0E2922351C1BB0011040B /* AverageZoneColorFinder.swift in Sources */,
 				A15783982350A10100CCAEDD /* ImageStitcher.swift in Sources */,
@@ -538,6 +561,7 @@
 				A1F2924D2356590900B0C099 /* AverageZoneColorFinderTests.swift in Sources */,
 				A1CDE06823506DD50024548F /* AverageColorTests.swift in Sources */,
 				A1B0E2982351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift in Sources */,
+				A1421D86235E2FC8004C0286 /* AverageColorZone_kernel.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,7 +727,6 @@
 		A1CDE04E23506DC20024548F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67V847367C;
@@ -722,7 +745,6 @@
 		A1CDE04F23506DC20024548F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67V847367C;
@@ -785,6 +807,7 @@
 		A1CDE07023506DD50024548F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -814,6 +837,7 @@
 		A1CDE07123506DD50024548F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

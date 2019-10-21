@@ -19,7 +19,7 @@ class AverageZoneColorFinder {
     private let device = MTLCreateSystemDefaultDevice()!
     
     private lazy var pipelineState: MTLComputePipelineState = {
-        let defaultLibrary:MTLLibrary! = device.makeDefaultLibrary()
+        let defaultLibrary: MTLLibrary! = device.makeDefaultLibrary()
         let function = defaultLibrary.makeFunction(name: "averageColorZone_kernel")!
         let pipelineState = try! device.makeComputePipelineState(function: function)
         return pipelineState
