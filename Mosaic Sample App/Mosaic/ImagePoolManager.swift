@@ -20,13 +20,13 @@ class ImagePoolManager {
     private var pool: [ImageColorMap]
     
     init(images: [UIImage]) {
-        guard images.count > ImagePoolManager.minImageCount else {
-            fatalError("The `ImagePoolManager` should be initialized with at least 3 images.")
+        guard images.count >= ImagePoolManager.minImageCount else {
+            fatalError("The `ImagePoolManager` should be initialized with at least \(ImagePoolManager.minImageCount) images.")
         }
         
         self.pool = ImagePoolManager.generateImagePool(for: images)
         
-        guard pool.count > ImagePoolManager.minImageCount else {
+        guard pool.count >= ImagePoolManager.minImageCount else {
             fatalError("Could not generate enough images for the pool.")
         }
     }
