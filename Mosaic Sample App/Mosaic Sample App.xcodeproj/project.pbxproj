@@ -24,7 +24,7 @@
 		A1B0E2942351C5230011040B /* ImageTileSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */; };
 		A1B0E2982351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2972351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift */; };
 		A1CDE03223506DC00024548F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE03123506DC00024548F /* AppDelegate.swift */; };
-		A1CDE03423506DC00024548F /* AverageZoneColorFinderPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE03323506DC00024548F /* AverageZoneColorFinderPerformanceTests.swift */; };
+		A1CDE03423506DC00024548F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE03323506DC00024548F /* SceneDelegate.swift */; };
 		A1CDE03623506DC00024548F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE03523506DC00024548F /* ViewController.swift */; };
 		A1CDE03923506DC00024548F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1CDE03723506DC00024548F /* Main.storyboard */; };
 		A1CDE03B23506DC10024548F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CDE03A23506DC10024548F /* Assets.xcassets */; };
@@ -132,7 +132,7 @@
 		A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTileSequenceTests.swift; sourceTree = "<group>"; };
 		A1B0E2972351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinderPerformanceTests.swift; sourceTree = "<group>"; };
 		A1CDE03123506DC00024548F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A1CDE03323506DC00024548F /* AverageZoneColorFinderPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinderPerformanceTests.swift; sourceTree = "<group>"; };
+		A1CDE03323506DC00024548F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A1CDE03523506DC00024548F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A1CDE03823506DC00024548F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A1CDE03A23506DC10024548F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				A1CDE03123506DC00024548F /* AppDelegate.swift */,
-				A1CDE03323506DC00024548F /* AverageZoneColorFinderPerformanceTests.swift */,
+				A1CDE03323506DC00024548F /* SceneDelegate.swift */,
 				A1CDE03523506DC00024548F /* ViewController.swift */,
 				A1CDE03723506DC00024548F /* Main.storyboard */,
 				A1CDE03A23506DC10024548F /* Assets.xcassets */,
@@ -529,7 +529,7 @@
 				A1421D85235E2FC7004C0286 /* AverageColorZone_kernel.metal in Sources */,
 				A1CDE03623506DC00024548F /* ViewController.swift in Sources */,
 				A1CDE03223506DC00024548F /* AppDelegate.swift in Sources */,
-				A1CDE03423506DC00024548F /* AverageZoneColorFinderPerformanceTests.swift in Sources */,
+				A1CDE03423506DC00024548F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
