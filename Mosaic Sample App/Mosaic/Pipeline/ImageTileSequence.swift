@@ -31,7 +31,7 @@ struct ImageTileIterator: IteratorProtocol {
     
     typealias Element = CGRect
     
-    private(set) var current = CGPoint.zero
+    private(set) var current: CGPoint?
     let tileSize: CGSize
     let imageSize: CGSize
     
@@ -41,19 +41,22 @@ struct ImageTileIterator: IteratorProtocol {
     }
     
     mutating func next() -> CGRect? {
+        guard let existingCurrent = current else {
+            current = CGPoint.zero
+            return CGRect(x: 0, y: 0, width: tileSize.width, height: tileSize.height)
+        }
+        
         // TODO: WE have a rounding error because. This is solved with the "-1"s. We can do better.
-        if current.x + tileSize.width >= imageSize.width - 1 {
-            if current.y + tileSize.height >= imageSize.height - 1 {
+        if existingCurrent.x + tileSize.width >= imageSize.width - 1 {
+            if existingCurrent.y + tileSize.height >= imageSize.height - 1 {
                 return nil
             }
             
-            let realCurrent = current
-            current = CGPoint(x: 0, y: current.y + tileSize.height)
-            return CGRect(x: 0, y: realCurrent.y + tileSize.height, width: tileSize.width, height: tileSize.height)
+            current = CGPoint(x: 0, y: existingCurrent.y + tileSize.height)
+            return CGRect(x: 0, y: existingCurrent.y + tileSize.height, width: tileSize.width, height: tileSize.height)
         } else {
-            let realCurrent = current
-            current = CGPoint(x: current.x + tileSize.width, y: current.y)
-            return CGRect(x: realCurrent.x + tileSize.width, y: realCurrent.y, width: tileSize.width, height: tileSize.height)
+            current = CGPoint(x: existingCurrent.x + tileSize.width, y: existingCurrent.y)
+            return CGRect(x: existingCurrent.x + tileSize.width, y: existingCurrent.y, width: tileSize.width, height: tileSize.height)
         }
     }
 
