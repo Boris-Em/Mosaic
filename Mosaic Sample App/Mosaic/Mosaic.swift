@@ -41,6 +41,11 @@ public final class Mosaic {
         return mosaicImage
     }
     
+    public func preHeat() {
+        // TODO: Trigger the metal device.
+        // TODO: Generate the image pool on the `ImagePoolManager`.
+    }
+    
 }
 
 struct ImagePositionValuePair {
