@@ -15,23 +15,20 @@ kernel void averageColorZone_kernel(texture2d<half, access::read> inTexture [[ t
                          uint2 threadgroup_position_in_grid   [[ threadgroup_position_in_grid ]],
                          uint2 thread_position_in_threadgroup [[ thread_position_in_threadgroup ]],
                          uint2 threads_per_threadgroup        [[ threads_per_threadgroup ]]) {
-    
-    
-    int tile_width = inTexture.get_width() / number_of_tiles;
-    int tile_height = inTexture.get_width() / number_of_tiles;
-
-    int tile_x = tile_width * threadgroup_position_in_grid.x;
-    int tile_y = tile_height * threadgroup_position_in_grid.y;
-    
-    int index = (threadgroup_position_in_grid.y * number_of_tiles + threadgroup_position_in_grid.x) * 4;
-    
+        
     half rTotal = 0;
     half gTotal = 0;
     half bTotal = 0;
     half count = 0;
     
-    for(int i = tile_y; i<tile_y+tile_height; i++) {
-        for(int j = tile_x; j<tile_x+tile_width; j++) {
+    int tile_width = inTexture.get_width() / number_of_tiles;
+    int tile_height = inTexture.get_height() / number_of_tiles;
+    
+    int tile_x = tile_width * threadgroup_position_in_grid.x;
+    int tile_y = tile_height * threadgroup_position_in_grid.y;
+    
+    for(int i = tile_y; i < tile_y + tile_height; i++) {
+        for(int j = tile_x; j < tile_x + tile_width; j++) {
             
             uint2 position = uint2(i, j);
             half4 color = inTexture.read(position);
@@ -46,6 +43,8 @@ kernel void averageColorZone_kernel(texture2d<half, access::read> inTexture [[ t
     half rAverage = (rTotal / count) * 255;
     half gAverage = (gTotal / count) * 255;
     half bAverage = (bTotal / count) * 255;
+    
+    int index = (threadgroup_position_in_grid.y * number_of_tiles + threadgroup_position_in_grid.x) * 4;
     
     outVector[index] = rAverage;
     outVector[index + 1] = gAverage;
