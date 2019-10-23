@@ -29,7 +29,7 @@ class AverageZoneColorFinder {
     
     func findAverageZoneColor(on image: CGImage, with imageSequence: ImageTileSequence) -> [UInt16] {
         let textureLoader = MTKTextureLoader(device: self.device)
-        let texture = try! textureLoader.newTexture(cgImage: image, options: [MTKTextureLoader.Option.SRGB: 0])
+        let texture = try! textureLoader.newTexture(cgImage: image, options: [MTKTextureLoader.Option.SRGB: 0, MTKTextureLoader.Option.origin: MTKTextureLoader.Origin.topLeft])
         return findAverageZoneColor(on: texture, with: imageSequence)
     }
     
