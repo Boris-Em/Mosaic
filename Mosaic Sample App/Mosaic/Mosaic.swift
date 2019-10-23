@@ -11,7 +11,7 @@ import UIKit
 public final class Mosaic {
     
     /// The numbner of tiles in the mosaic per length (width & height).
-    private static let numberOfTiles: Int = 2
+    private static let numberOfTiles: Int = 30
     
     private let imagePositionMapper: PoolTileMapper
     private let averageZoneColorFinder = AverageZoneColorFinder()
