@@ -44,6 +44,8 @@ public final class Mosaic {
         return mosaic(with: imageSize, imageSequence, averageColors)
     }
     
+    /// Optionally prepares the `Mosaic` instance so that it can start doing its work as fast as possible.
+    /// Call this function when you know that a mosaic could be generated, but the process hasn't started yet.
     public func preHeat() {
         imagePositionMapper.preHeat()
         averageZoneColorFinder.preHeat()
