@@ -54,6 +54,7 @@
 		A1CE3A3C2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */; };
 		A1CE3A3D2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */; };
 		A1F23F33235E45720030FAC0 /* ImagePoolManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F23F32235E45720030FAC0 /* ImagePoolManagerTests.swift */; };
+		A1F23F35235E52190030FAC0 /* CaptureSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F23F34235E52190030FAC0 /* CaptureSessionManager.swift */; };
 		A1F2924D2356590900B0C099 /* AverageZoneColorFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2924C2356590900B0C099 /* AverageZoneColorFinderTests.swift */; };
 		A1F2924F23565CAA00B0C099 /* GreenRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2924E23565CAA00B0C099 /* GreenRectangle_50x50.jpg */; };
 		A1F2925023565CAE00B0C099 /* GreenRectangle_50x50.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F2924E23565CAA00B0C099 /* GreenRectangle_50x50.jpg */; };
@@ -157,6 +158,7 @@
 		A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_10x10.jpg; sourceTree = "<group>"; };
 		A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_2x2.jpg; sourceTree = "<group>"; };
 		A1F23F32235E45720030FAC0 /* ImagePoolManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePoolManagerTests.swift; sourceTree = "<group>"; };
+		A1F23F34235E52190030FAC0 /* CaptureSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureSessionManager.swift; sourceTree = "<group>"; };
 		A1F2924C2356590900B0C099 /* AverageZoneColorFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinderTests.swift; sourceTree = "<group>"; };
 		A1F2924E23565CAA00B0C099 /* GreenRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GreenRectangle_50x50.jpg; sourceTree = "<group>"; };
 		A1F2925123565CF200B0C099 /* BlueRectangle_50x50.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BlueRectangle_50x50.jpg; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				A1CDE03123506DC00024548F /* AppDelegate.swift */,
 				A1CDE03323506DC00024548F /* SceneDelegate.swift */,
 				A1CDE03523506DC00024548F /* ViewController.swift */,
+				A1F23F34235E52190030FAC0 /* CaptureSessionManager.swift */,
 				A1CDE03723506DC00024548F /* Main.storyboard */,
 				A1CDE03A23506DC10024548F /* Assets.xcassets */,
 				A1CDE03C23506DC10024548F /* LaunchScreen.storyboard */,
@@ -528,6 +531,7 @@
 			files = (
 				A1421D85235E2FC7004C0286 /* AverageColorZone_kernel.metal in Sources */,
 				A1CDE03623506DC00024548F /* ViewController.swift in Sources */,
+				A1F23F35235E52190030FAC0 /* CaptureSessionManager.swift in Sources */,
 				A1CDE03223506DC00024548F /* AppDelegate.swift in Sources */,
 				A1CDE03423506DC00024548F /* SceneDelegate.swift in Sources */,
 			);

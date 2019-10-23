@@ -11,7 +11,7 @@ import UIKit
 public final class Mosaic {
     
     /// The numbner of tiles in the mosaic per length (width & height).
-    static let numberOfTiles: CGFloat = 50
+    static let numberOfTiles: CGFloat = 30
     
     private let imagePositionMapper: PoolTileMapper
     
@@ -25,8 +25,23 @@ public final class Mosaic {
         self.imagePositionMapper = PoolTileMapper(poolManager: poolManager)
     }
     
-    public func generateMosaic(for image: UIImage) -> UIImage? {
-        let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
+    public func generateMosaic(for texture: MTLTexture) -> UIImage? {
+        let imageSize = CGSize(width: texture.width, height: texture.height)
+        let tileSize = CGSize(width: imageSize.width / Mosaic.numberOfTiles, height: imageSize.height / Mosaic.numberOfTiles)
+        
+        let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
+        
+        let averageZoneColorFinder = AverageZoneColorFinder(texture: texture, imageSequence: imageSequence)
+        let averageColors = averageZoneColorFinder.find()
+        
+        let tileImagePositions = imagePositionMapper.imagePositions(for: imageSequence, of: averageColors)
+        let mosaicImage = ImageStitcher.stitch(images: tileImagePositions, to: imageSize)
+
+        return mosaicImage
+    }
+    
+    public func generateMosaic(for image: CGImage) -> UIImage? {
+        let imageSize = CGSize(width: image.width, height: image.height)
         let tileSize = CGSize(width: imageSize.width / Mosaic.numberOfTiles, height: imageSize.height / Mosaic.numberOfTiles)
         
         let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
@@ -43,7 +58,6 @@ public final class Mosaic {
     
     public func preHeat() {
         // TODO: Trigger the metal device.
-        // TODO: Generate the image pool on the `ImagePoolManager`.
     }
     
 }

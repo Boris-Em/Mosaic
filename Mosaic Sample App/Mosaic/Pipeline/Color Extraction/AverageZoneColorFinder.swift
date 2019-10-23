@@ -12,37 +12,39 @@ import MetalKit
 /// This class provides a fast way of finding the average color of multiple zones of an image.
 class AverageZoneColorFinder {
     
-    private let image: UIImage
-    private let cgImage: CGImage
     private let imageSequence: ImageTileSequence
+    private let texture: MTLTexture
     
-    private let device = MTLCreateSystemDefaultDevice()!
+    private static let device = MTLCreateSystemDefaultDevice()!
     
     private lazy var pipelineState: MTLComputePipelineState = {
-        let defaultLibrary: MTLLibrary! = device.makeDefaultLibrary()
+        let defaultLibrary: MTLLibrary! = AverageZoneColorFinder.device.makeDefaultLibrary()
         let function = defaultLibrary.makeFunction(name: "averageColorZone_kernel")!
-        let pipelineState = try! device.makeComputePipelineState(function: function)
+        let pipelineState = try! AverageZoneColorFinder.device.makeComputePipelineState(function: function)
         return pipelineState
     }()
     
-    init(image: UIImage, imageSequence: ImageTileSequence) {
-        self.image = image
+    convenience init(image: CGImage, imageSequence: ImageTileSequence) {
+        let textureLoader = MTKTextureLoader(device: AverageZoneColorFinder.device)
+        let texture = try! textureLoader.newTexture(cgImage: image, options: [MTKTextureLoader.Option.SRGB: 0])
+        self.init(texture: texture, imageSequence: imageSequence)
+    }
+    
+    init(texture: MTLTexture, imageSequence: ImageTileSequence) {
         self.imageSequence = imageSequence
-        self.cgImage = image.cgImage!
+        self.texture = texture
     }
     
     func find() -> [UInt16] {
-        let commandQueue = device.makeCommandQueue()!
+        let commandQueue = AverageZoneColorFinder.device.makeCommandQueue()!
         let commandBuffer = commandQueue.makeCommandBuffer()!
         let encoder = commandBuffer.makeComputeCommandEncoder()!
         encoder.setComputePipelineState(pipelineState)
         
-        let textureLoader = MTKTextureLoader(device: device)
-        let texture = try! textureLoader.newTexture(cgImage: cgImage, options: [MTKTextureLoader.Option.SRGB: 0])
         encoder.setTexture(texture, index: 0)
         
         var output = [UInt16](repeating: 0, count: imageSequence.count * 4)
-        let outputBuffer = device.makeBuffer(bytes: &output, length: MemoryLayout<UInt16>.stride * imageSequence.count * 4, options: [])
+        let outputBuffer = AverageZoneColorFinder.device.makeBuffer(bytes: &output, length: MemoryLayout<UInt16>.stride * imageSequence.count * 4, options: [])
         encoder.setBuffer(outputBuffer, offset: 0, index: 1)
         
         var cNumberOfTiles: UInt8 = UInt8(imageSequence.numberOfTiles)
