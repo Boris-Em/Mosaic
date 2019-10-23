@@ -26,6 +26,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mosaic.preHeat()
+        
         captureSessionManager.delegate = self
         
         view.addSubview(imageView)

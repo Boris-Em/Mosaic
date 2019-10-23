@@ -14,6 +14,7 @@ public final class Mosaic {
     private static let numberOfTiles: Int = 30
     
     private let imagePositionMapper: PoolTileMapper
+    private let averageZoneColorFinder = AverageZoneColorFinder()
     
     // MARK: Public Functions
     
@@ -30,28 +31,27 @@ public final class Mosaic {
     public func generateMosaic(for texture: MTLTexture) -> UIImage? {
         let imageSize = CGSize(width: texture.width, height: texture.height)
         let imageSequence = ImageTileSequence(numberOfTiles: Mosaic.numberOfTiles, imageSize: imageSize)
-        let averageZoneColorFinder = AverageZoneColorFinder(texture: texture, imageSequence: imageSequence)
+        let averageColors = averageZoneColorFinder.findAverageZoneColor(on: texture, with: imageSequence)
         
-        return mosaic(for: imageSize, with: imageSequence, averageZoneColorFinder: averageZoneColorFinder)
+        return mosaic(with: imageSize, imageSequence, averageColors)
     }
     
     public func generateMosaic(for image: CGImage) -> UIImage? {
         let imageSize = CGSize(width: image.width, height: image.height)
         let imageSequence = ImageTileSequence(numberOfTiles: Mosaic.numberOfTiles, imageSize: imageSize)
-        let averageZoneColorFinder = AverageZoneColorFinder(image: image, imageSequence: imageSequence)
+        let averageColors = averageZoneColorFinder.findAverageZoneColor(on: image, with: imageSequence)
         
-        return mosaic(for: imageSize, with: imageSequence, averageZoneColorFinder: averageZoneColorFinder)
+        return mosaic(with: imageSize, imageSequence, averageColors)
     }
     
     public func preHeat() {
-        // TODO: Trigger the metal device.
+        imagePositionMapper.preHeat()
+        averageZoneColorFinder.preHeat()
     }
     
     // MARK: - Helpers
     
-    private func mosaic(for imageSize: CGSize, with imageSequence: ImageTileSequence, averageZoneColorFinder: AverageZoneColorFinder) -> UIImage? {
-        let averageColors = averageZoneColorFinder.find()
-        
+    private func mosaic(with imageSize: CGSize, _ imageSequence: ImageTileSequence, _ averageColors: [UInt16]) -> UIImage? {
         let tileImagePositions = imagePositionMapper.imagePositions(for: imageSequence, of: averageColors)
         let mosaicImage = ImageStitcher.stitch(images: tileImagePositions, to: imageSize)
 

@@ -17,21 +17,27 @@ class ImagePoolManager {
         let averageColor: UIColor
     }
     
-    private var pool: [ImageColorMap]
+    private var pool: [ImageColorMap]?
+    private let images: [UIImage]
     
     init(images: [UIImage]) {
         guard images.count >= ImagePoolManager.minImageCount else {
             fatalError("The `ImagePoolManager` should be initialized with at least \(ImagePoolManager.minImageCount) images.")
         }
         
+        self.images = images
+    }
+    
+    func preHeat() {
         self.pool = ImagePoolManager.generateImagePool(for: images)
-        
-        guard pool.count >= ImagePoolManager.minImageCount else {
-            fatalError("Could not generate enough images for the pool.")
-        }
     }
     
     func closestImage(from color: UIColor) -> UIImage {
+        guard let pool = pool, !pool.isEmpty else {
+            preHeat()
+            return closestImage(from: color)
+        }
+        
         var bestImageColorMap = pool.first!
         var bestScore = bestImageColorMap.averageColor.CIEDE2000(compare: color)
         
@@ -55,8 +61,7 @@ class ImagePoolManager {
     private static func imagePool(for image: UIImage) -> ImageColorMap? {
         let averageImageFinder = AverageColorFinder(image: image, canResizeImage: true)
         guard let averageColor = averageImageFinder.computeAverageColor() else {
-            assertionFailure("Could not get average color.")
-            return nil
+            fatalError("Could not get average color.")
         }
         
         return ImageColorMap(image: image, averageColor: averageColor)

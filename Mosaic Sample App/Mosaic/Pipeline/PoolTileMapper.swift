@@ -19,6 +19,10 @@ final class PoolTileMapper {
         self.poolManager = poolManager
     }
     
+    func preHeat() {
+        poolManager.preHeat()
+    }
+    
     func imagePositions(for sequence: ImageTileSequence, of averageColors: [UInt16]) -> [ImagePositionValuePair] {
         guard sequence.count == averageColors.count / 4 else {
             fatalError("The number of average colors and tiles don't match. \n There are \(sequence.count) tiles in the sequence, but \(averageColors.count / 4) average colors.")
