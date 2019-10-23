@@ -22,7 +22,7 @@ class PoolTileMapperTests: XCTestCase {
     func test() {
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
         let tileSize = CGSize(width: 50.0, height: 50.0)
-        let imageTileSequence = ImageTileSequence(tileSize: tileSize, imageSize: CGSize(width: 100.0, height: 100.0))
+        let imageTileSequence = ImageTileSequence(numberOfTiles: 2, imageSize: CGSize(width: 100.0, height: 100.0))
         
         let positions = poolTileMapper.imagePositions(for: imageTileSequence, of: [
             255,0, 0 , 1, // RED

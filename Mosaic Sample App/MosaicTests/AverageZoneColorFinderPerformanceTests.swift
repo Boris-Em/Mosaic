@@ -11,18 +11,17 @@ import XCTest
 
 class AverageZoneColorFinderPerformanceTests: XCTestCase {
     
-    private static let numberOfTiles: CGFloat = 20
+    private static let numberOfTiles = 20
 
     func testSpeedMetal() {
         measure {
-            let image = UIImage(named: "RedRectangle_40x40.jpg")!
+            let image = UIImage(named: "RedRectangle_40x40.jpg")!.cgImage!
             
-            let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
-            let tileSize = CGSize(width: imageSize.width / AverageZoneColorFinderPerformanceTests.numberOfTiles, height: imageSize.height / AverageZoneColorFinderPerformanceTests.numberOfTiles)
-            let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
+            let imageSize = CGSize(width: image.width, height: image.height)
+            let imageSequence = ImageTileSequence(numberOfTiles: AverageZoneColorFinderPerformanceTests.numberOfTiles, imageSize: imageSize)
             
-            let averageZoneColorFinder = AverageZoneColorFinder(image: image, imageSequence: imageSequence)
-            let _ = averageZoneColorFinder.find()
+            let averageZoneColorFinder = AverageZoneColorFinder()
+            let _ = averageZoneColorFinder.findAverageZoneColor(on: image, with: imageSequence)
         }
     }
     
@@ -31,8 +30,7 @@ class AverageZoneColorFinderPerformanceTests: XCTestCase {
             let image = UIImage(named: "RedRectangle_40x40.jpg")!
             
             let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
-            let tileSize = CGSize(width: imageSize.width / AverageZoneColorFinderPerformanceTests.numberOfTiles, height: imageSize.height / AverageZoneColorFinderPerformanceTests.numberOfTiles)
-            let imageSequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
+            let imageSequence = ImageTileSequence(numberOfTiles: AverageZoneColorFinderPerformanceTests.numberOfTiles, imageSize: imageSize)
 
             var frames = [CGRect.zero]
             

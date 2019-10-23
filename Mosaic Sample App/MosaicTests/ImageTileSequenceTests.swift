@@ -12,20 +12,19 @@ import XCTest
 class ImageTileSequenceTests: XCTestCase {
 
     func testCount() {
-        let tileSize = CGSize(width: 50, height: 50)
         let imageSize = CGSize(width: 100, height: 100)
-        let sequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
+        let sequence = ImageTileSequence(numberOfTiles: 2, imageSize: imageSize)
         XCTAssertEqual(sequence.count, sequence.computeCount())
         
         for (index, rect) in sequence.enumerated() {
             if index == 0 {
-                XCTAssertEqual(rect, CGRect(x: 0, y: 0, width: tileSize.width, height: tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: 0, y: 0, width: sequence.tileSize.width, height: sequence.tileSize.height))
             } else if index == 1 {
-                XCTAssertEqual(rect, CGRect(x: tileSize.width, y: 0, width: tileSize.width, height: tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: sequence.tileSize.width, y: 0, width: sequence.tileSize.width, height: sequence.tileSize.height))
             } else if index == 2 {
-                XCTAssertEqual(rect, CGRect(x: 0, y: tileSize.height, width: tileSize.width, height: tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: 0, y: sequence.tileSize.height, width: sequence.tileSize.width, height: sequence.tileSize.height))
             } else if index == 3 {
-                XCTAssertEqual(rect, CGRect(x: tileSize.width, y: tileSize.height, width: tileSize.width, height: tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: sequence.tileSize.width, y: sequence.tileSize.height, width: sequence.tileSize.width, height: sequence.tileSize.height))
             } else {
                 XCTFail("There should only be 4 elements in the sequence.")
             }
@@ -33,9 +32,8 @@ class ImageTileSequenceTests: XCTestCase {
     }
     
     func testCountComplex() {
-        let tileSize = CGSize(width: 60.48, height: 80.64)
         let imageSize = CGSize(width: 3024, height: 4032)
-        let sequence = ImageTileSequence(tileSize: tileSize, imageSize: imageSize)
+        let sequence = ImageTileSequence(numberOfTiles: 50, imageSize: imageSize)
         XCTAssertEqual(sequence.count, sequence.computeCount())
     }
             
