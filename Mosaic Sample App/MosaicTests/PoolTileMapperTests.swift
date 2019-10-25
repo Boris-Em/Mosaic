@@ -19,7 +19,7 @@ class PoolTileMapperTests: XCTestCase {
     
     let poolManager = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage])
 
-    func test() {
+    func testSimpleOrder1() {
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
         let tileSize = CGSize(width: 50.0, height: 50.0)
         let imageTileSequence = ImageTileSequence(numberOfTiles: 2, imageSize: CGSize(width: 100.0, height: 100.0))
@@ -47,5 +47,35 @@ class PoolTileMapperTests: XCTestCase {
         XCTAssertEqual(lightGreenPosition.image, PoolTileMapperTests.lightGreenImage)
         XCTAssertEqual(lightGreenPosition.position, CGPoint(x: tileSize.width, y: tileSize.height))
     }
+    
+    func testSimpleOrder2() {
+        let poolTileMapper = PoolTileMapper(poolManager: poolManager)
+        let tileSize = CGSize(width: 50.0, height: 50.0)
+        let imageTileSequence = ImageTileSequence(numberOfTiles: 2, imageSize: CGSize(width: 100.0, height: 100.0))
+        
+        let positions = poolTileMapper.imagePositions(for: imageTileSequence, of: [
+            0, 255, 1, 1, // GREEN
+            0, 0, 255, 1, // BLUE
+            255,0, 0 , 1, // RED
+            0, 0, 0, 1 // BLACK
+        ])
+        
+        let redPosition = positions[0]
+        XCTAssertEqual(redPosition.image, PoolTileMapperTests.greenImage)
+        XCTAssertEqual(redPosition.position, CGPoint.zero)
+        
+        let greenPosition = positions[1]
+        XCTAssertEqual(greenPosition.image, PoolTileMapperTests.blueImage)
+        XCTAssertEqual(greenPosition.position, CGPoint(x: tileSize.width, y: 0))
+        
+        let bluePosition = positions[2]
+        XCTAssertEqual(bluePosition.image, PoolTileMapperTests.redImage)
+        XCTAssertEqual(bluePosition.position, CGPoint(x: 0, y: tileSize.height))
+
+        let lightGreenPosition = positions[3]
+        XCTAssertEqual(lightGreenPosition.image, PoolTileMapperTests.blackImage)
+        XCTAssertEqual(lightGreenPosition.position, CGPoint(x: tileSize.width, y: tileSize.height))
+    }
+
 
 }
