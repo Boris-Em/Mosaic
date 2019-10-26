@@ -11,7 +11,7 @@ import UIKit
 public final class Mosaic {
     
     /// The numbner of tiles in the mosaic per length (width & height).
-    private static let numberOfTiles: Int = 30
+    private static let numberOfTiles: Int = 20
     
     private let imagePositionMapper: PoolTileMapper
     private let averageZoneColorFinder = AverageZoneColorFinder()
@@ -30,22 +30,22 @@ public final class Mosaic {
     
     public func generateMosaic(for texture: MTLTexture) -> UIImage? {
         let imageSize = CGSize(width: texture.width, height: texture.height)
-        let imageSequence = ImageTileSequence(numberOfTiles: Mosaic.numberOfTiles, imageSize: imageSize)
-        let averageColors = averageZoneColorFinder.findAverageZoneColor(on: texture, with: imageSequence)
+        let tileRects = TileRects(numberOfTiles: Mosaic.numberOfTiles, imageSize: imageSize)
+        let averageColors = averageZoneColorFinder.findAverageZoneColor(on: texture, with: tileRects)
         
-        return mosaic(with: imageSize, imageSequence, averageColors)
+        return mosaic(with: imageSize, tileRects, averageColors)
     }
     
     public func generateMosaic(for image: CGImage) -> UIImage? {
         let imageSize = CGSize(width: image.width, height: image.height)
-        let imageSequence = ImageTileSequence(numberOfTiles: Mosaic.numberOfTiles, imageSize: imageSize)
-        let averageColors = averageZoneColorFinder.findAverageZoneColor(on: image, with: imageSequence)
+        let tileRects = TileRects(numberOfTiles: Mosaic.numberOfTiles, imageSize: imageSize)
+        let averageColors = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
         
-        return mosaic(with: imageSize, imageSequence, averageColors)
+        return mosaic(with: imageSize, tileRects, averageColors)
     }
     
-    private func mosaic(with imageSize: CGSize, _ imageSequence: ImageTileSequence, _ averageColors: [UInt16]) -> UIImage? {
-        let tileImagePositions = imagePositionMapper.imagePositions(for: imageSequence, of: averageColors)
+    private func mosaic(with imageSize: CGSize, _ tileRects: TileRects, _ averageColors: [UInt16]) -> UIImage? {
+        let tileImagePositions = imagePositionMapper.imagePositions(for: tileRects, of: averageColors)
         let mosaicImage = ImageStitcher.stitch(images: tileImagePositions, to: imageSize)
 
         return mosaicImage
@@ -56,6 +56,7 @@ public final class Mosaic {
     public func preHeat() {
         imagePositionMapper.preHeat()
         averageZoneColorFinder.preHeat()
+        // TODO: Try generating TileRects
     }
             
 }

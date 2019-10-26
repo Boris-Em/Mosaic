@@ -15,7 +15,7 @@ class ImageStitcher {
             UIGraphicsEndImageContext()
         }
         
-        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        UIGraphicsBeginImageContextWithOptions(size, true, 0.0)
         images.forEach { (imagePosition) in
             imagePosition.image.draw(at: imagePosition.position)
         }

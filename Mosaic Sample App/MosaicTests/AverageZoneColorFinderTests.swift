@@ -17,10 +17,10 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 10
         
         let imageSize = CGSize(width: image.width, height: image.height)
-        let imageSequence = ImageTileSequence(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: imageSequence)
+        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
         
         assertAll(red: 255, green: 0, blue: 0, colors: colors)
     }
@@ -31,10 +31,10 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 10
         
         let imageSize = CGSize(width: image.width, height: image.height)
-        let imageSequence = ImageTileSequence(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: imageSequence)
+        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
         
         assertAll(red: 0, green: 255, blue: 0, colors: colors)
     }
@@ -45,10 +45,10 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 10
         
         let imageSize = CGSize(width: image.width, height: image.height)
-        let imageSequence = ImageTileSequence(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: imageSequence)
+        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
         
         assertAll(red: 55, green: 165, blue: 63, colors: colors)
     }
@@ -59,10 +59,10 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 50
         
         let imageSize = CGSize(width: image.width, height: image.height)
-        let imageSequence = ImageTileSequence(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: imageSequence)
+        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
         
         assertAll(red: 0, green: 0, blue: 255, colors: colors)
     }
@@ -73,10 +73,10 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 50
         
         let imageSize = CGSize(width: image.width, height: image.height)
-        let imageSequence = ImageTileSequence(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: imageSequence)
+        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
         
         assertAll(red: 0, green: 0, blue: 0, colors: colors)
     }
@@ -87,10 +87,10 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 50
         
         let imageSize = CGSize(width: image.width, height: image.height)
-        let imageSequence = ImageTileSequence(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: imageSequence)
+        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
         
         assertAll(red: 255, green: 255, blue: 255, colors: colors)
     }
@@ -101,10 +101,10 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 50
         
         let imageSize = CGSize(width: image.width, height: image.height)
-        let imageSequence = ImageTileSequence(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: imageSequence)
+        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
         
         assertAll(red: 150, green: 150, blue: 150, colors: colors)
     }
@@ -115,10 +115,10 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 2
 
         let imageSize = CGSize(width: image.width, height: image.height)
-        let imageSequence = ImageTileSequence(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: imageSequence)
+        let colors = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
         
         // Red
         let topLeftRed = colors[0]

@@ -10,43 +10,47 @@ import XCTest
 @testable import Mosaic
 
 class ImageTileSequenceTests: XCTestCase {
-
+    
     func testCount() {
         let imageSize = CGSize(width: 100, height: 100)
-        let sequence = ImageTileSequence(numberOfTiles: 2, imageSize: imageSize)
-        XCTAssertEqual(sequence.count, sequence.computeCount())
+        let numberOfTiles = 2
         
-        for (index, rect) in sequence.enumerated() {
+        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+                
+        for (index, rect) in tileRects.rects.enumerated() {
             if index == 0 {
-                XCTAssertEqual(rect, CGRect(x: 0, y: 0, width: sequence.tileSize.width, height: sequence.tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: 0, y: 0, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
             } else if index == 1 {
-                XCTAssertEqual(rect, CGRect(x: sequence.tileSize.width, y: 0, width: sequence.tileSize.width, height: sequence.tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: tileRects.tileSize.width, y: 0, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
             } else if index == 2 {
-                XCTAssertEqual(rect, CGRect(x: 0, y: sequence.tileSize.height, width: sequence.tileSize.width, height: sequence.tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: 0, y: tileRects.tileSize.height, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
             } else if index == 3 {
-                XCTAssertEqual(rect, CGRect(x: sequence.tileSize.width, y: sequence.tileSize.height, width: sequence.tileSize.width, height: sequence.tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: tileRects.tileSize.width, y: tileRects.tileSize.height, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
             } else {
                 XCTFail("There should only be 4 elements in the sequence.")
             }
         }
     }
     
-    func testCountComplex() {
-        let imageSize = CGSize(width: 3024, height: 4032)
-        let sequence = ImageTileSequence(numberOfTiles: 50, imageSize: imageSize)
-        XCTAssertEqual(sequence.count, sequence.computeCount())
+    func testCountClose() {
+        let imageSize = CGSize(width: 1.5, height: 1.5)
+        let numberOfTiles = 2
+        
+        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+                
+        for (index, rect) in tileRects.rects.enumerated() {
+            if index == 0 {
+                XCTAssertEqual(rect, CGRect(x: 0, y: 0, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
+            } else if index == 1 {
+                XCTAssertEqual(rect, CGRect(x: tileRects.tileSize.width, y: 0, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
+            } else if index == 2 {
+                XCTAssertEqual(rect, CGRect(x: 0, y: tileRects.tileSize.height, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
+            } else if index == 3 {
+                XCTAssertEqual(rect, CGRect(x: tileRects.tileSize.width, y: tileRects.tileSize.height, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
+            } else {
+                XCTFail("There should only be 4 elements in the sequence.")
+            }
+        }
     }
             
-}
-
-extension Sequence {
-    
-    func computeCount() -> Int {
-        let count = reduce(0) { (result, _) -> Int in
-            result + 1
-        }
-        
-        return count
-    }
-    
 }

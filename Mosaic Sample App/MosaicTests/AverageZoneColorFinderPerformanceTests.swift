@@ -18,10 +18,10 @@ class AverageZoneColorFinderPerformanceTests: XCTestCase {
             let image = UIImage(named: "RedRectangle_40x40.jpg")!.cgImage!
             
             let imageSize = CGSize(width: image.width, height: image.height)
-            let imageSequence = ImageTileSequence(numberOfTiles: AverageZoneColorFinderPerformanceTests.numberOfTiles, imageSize: imageSize)
+            let tileRects = TileRects(numberOfTiles: AverageZoneColorFinderPerformanceTests.numberOfTiles, imageSize: imageSize)
             
             let averageZoneColorFinder = AverageZoneColorFinder()
-            let _ = averageZoneColorFinder.findAverageZoneColor(on: image, with: imageSequence)
+            let _ = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
         }
     }
     
@@ -30,11 +30,11 @@ class AverageZoneColorFinderPerformanceTests: XCTestCase {
             let image = UIImage(named: "RedRectangle_40x40.jpg")!
             
             let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
-            let imageSequence = ImageTileSequence(numberOfTiles: AverageZoneColorFinderPerformanceTests.numberOfTiles, imageSize: imageSize)
+            let tileRects = TileRects(numberOfTiles: AverageZoneColorFinderPerformanceTests.numberOfTiles, imageSize: imageSize)
 
             var frames = [CGRect.zero]
             
-            imageSequence.forEach { (frame) in
+            tileRects.rects.forEach { (frame) in
                 frames.append(frame)
             }
             
@@ -42,7 +42,7 @@ class AverageZoneColorFinderPerformanceTests: XCTestCase {
             
             let averageColorFinder = AverageColorFinder(image: image)
 
-            DispatchQueue.concurrentPerform(iterations: imageSequence.count) { (iteration) in
+            DispatchQueue.concurrentPerform(iterations: tileRects.count) { (iteration) in
                 let frame = frames[iteration]
                 let averageColor = averageColorFinder.computeAverageColor(for: frame)!
                 averageColors[iteration] = averageColor

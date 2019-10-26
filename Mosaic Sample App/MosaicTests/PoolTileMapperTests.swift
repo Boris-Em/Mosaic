@@ -22,9 +22,9 @@ class PoolTileMapperTests: XCTestCase {
     func testSimpleOrder1() {
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
         let tileSize = CGSize(width: 50.0, height: 50.0)
-        let imageTileSequence = ImageTileSequence(numberOfTiles: 2, imageSize: CGSize(width: 100.0, height: 100.0))
+        let tileRects = TileRects(numberOfTiles: 2, imageSize: CGSize(width: 100.0, height: 100.0))
         
-        let positions = poolTileMapper.imagePositions(for: imageTileSequence, of: [
+        let positions = poolTileMapper.imagePositions(for: tileRects, of: [
             255,0, 0 , 1, // RED
             0, 255, 1, 1, // GREEN
             0, 0, 255, 1, // BLUE
@@ -51,9 +51,9 @@ class PoolTileMapperTests: XCTestCase {
     func testSimpleOrder2() {
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
         let tileSize = CGSize(width: 50.0, height: 50.0)
-        let imageTileSequence = ImageTileSequence(numberOfTiles: 2, imageSize: CGSize(width: 100.0, height: 100.0))
+        let tileRects = TileRects(numberOfTiles: 2, imageSize: CGSize(width: 100.0, height: 100.0))
         
-        let positions = poolTileMapper.imagePositions(for: imageTileSequence, of: [
+        let positions = poolTileMapper.imagePositions(for: tileRects, of: [
             0, 255, 1, 1, // GREEN
             0, 0, 255, 1, // BLUE
             255,0, 0 , 1, // RED
@@ -76,6 +76,5 @@ class PoolTileMapperTests: XCTestCase {
         XCTAssertEqual(lightGreenPosition.image, PoolTileMapperTests.blackImage)
         XCTAssertEqual(lightGreenPosition.position, CGPoint(x: tileSize.width, y: tileSize.height))
     }
-
 
 }

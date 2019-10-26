@@ -26,6 +26,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        return
+        
         mosaic.preHeat()
         
         captureSessionManager.delegate = self
