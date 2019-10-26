@@ -131,22 +131,10 @@ class AverageZoneColorFinderTests: XCTestCase {
         XCTAssertLessThanOrEqual(topLeftGreen, 5)
         XCTAssertLessThanOrEqual(topLeftBlue, 5)
         
-        // Blue
-        let bottomLeftRed = colors[4]
-        let bottomLeftGreen = colors[5]
-        let bottomLeftBlue = colors[6]
-        
-        XCTAssertLessThanOrEqual(bottomLeftRed, 5)
-        
-        XCTAssertLessThanOrEqual(bottomLeftGreen, 5)
-        
-        XCTAssertGreaterThanOrEqual(bottomLeftBlue, 250)
-        XCTAssertLessThanOrEqual(bottomLeftBlue, 255)
-        
         // Green
-        let topRightRed = colors[8]
-        let topRightGreen = colors[9]
-        let topRightBlue = colors[10]
+        let topRightRed = colors[4]
+        let topRightGreen = colors[5]
+        let topRightBlue = colors[6]
         
         XCTAssertLessThanOrEqual(topRightRed, 5)
         
@@ -154,6 +142,18 @@ class AverageZoneColorFinderTests: XCTestCase {
         XCTAssertLessThanOrEqual(topRightGreen, 255)
         
         XCTAssertLessThanOrEqual(topRightBlue, 5)
+        
+        // Blue
+        let bottomLeftRed = colors[8]
+        let bottomLeftGreen = colors[9]
+        let bottomLeftBlue = colors[10]
+        
+        XCTAssertLessThanOrEqual(bottomLeftRed, 5)
+        
+        XCTAssertLessThanOrEqual(bottomLeftGreen, 5)
+        
+        XCTAssertGreaterThanOrEqual(bottomLeftBlue, 250)
+        XCTAssertLessThanOrEqual(bottomLeftBlue, 255)
         
         // Purple
         let bottomRightRed = colors[12]
