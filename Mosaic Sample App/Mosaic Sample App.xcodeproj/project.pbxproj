@@ -20,6 +20,8 @@
 		A15783A02350AC7700CCAEDD /* AverageColorFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157839F2350AC7700CCAEDD /* AverageColorFinder.swift */; };
 		A15783A2235136E500CCAEDD /* Test_image_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A15783A1235136E500CCAEDD /* Test_image_1.jpg */; };
 		A15783A3235136E500CCAEDD /* Test_image_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A15783A1235136E500CCAEDD /* Test_image_1.jpg */; };
+		A19A222B236596ED00A00324 /* PoolTileMapper_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A19A222A236596ED00A00324 /* PoolTileMapper_kernel.metal */; };
+		A19A222C2365A24A00A00324 /* PoolTileMapper_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A19A222A236596ED00A00324 /* PoolTileMapper_kernel.metal */; };
 		A1B0E2922351C1BB0011040B /* AverageZoneColorFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2912351C1BB0011040B /* AverageZoneColorFinder.swift */; };
 		A1B0E2942351C5230011040B /* ImageTileSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */; };
 		A1B0E2982351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2972351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift */; };
@@ -129,6 +131,7 @@
 		A157839D2350A36B00CCAEDD /* TileRects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileRects.swift; sourceTree = "<group>"; };
 		A157839F2350AC7700CCAEDD /* AverageColorFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageColorFinder.swift; sourceTree = "<group>"; };
 		A15783A1235136E500CCAEDD /* Test_image_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test_image_1.jpg; sourceTree = "<group>"; };
+		A19A222A236596ED00A00324 /* PoolTileMapper_kernel.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PoolTileMapper_kernel.metal; sourceTree = "<group>"; };
 		A1B0E2912351C1BB0011040B /* AverageZoneColorFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinder.swift; sourceTree = "<group>"; };
 		A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTileSequenceTests.swift; sourceTree = "<group>"; };
 		A1B0E2972351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinderPerformanceTests.swift; sourceTree = "<group>"; };
@@ -308,6 +311,7 @@
 				A157839D2350A36B00CCAEDD /* TileRects.swift */,
 				A15783972350A10100CCAEDD /* ImageStitcher.swift */,
 				A1F292762357544400B0C099 /* PoolTileMapper.swift */,
+				A19A222A236596ED00A00324 /* PoolTileMapper_kernel.metal */,
 			);
 			path = Pipeline;
 			sourceTree = "<group>";
@@ -529,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A19A222C2365A24A00A00324 /* PoolTileMapper_kernel.metal in Sources */,
 				A1421D85235E2FC7004C0286 /* AverageColorZone_kernel.metal in Sources */,
 				A1CDE03623506DC00024548F /* ViewController.swift in Sources */,
 				A1F23F35235E52190030FAC0 /* CaptureSessionManager.swift in Sources */,
@@ -554,6 +559,7 @@
 				A1421D7C235E2EB9004C0286 /* AverageColorZone_kernel.metal in Sources */,
 				A157839E2350A36B00CCAEDD /* TileRects.swift in Sources */,
 				A1CDE07723506F5F0024548F /* UIImageExtensions.swift in Sources */,
+				A19A222B236596ED00A00324 /* PoolTileMapper_kernel.metal in Sources */,
 				A1F292772357544400B0C099 /* PoolTileMapper.swift in Sources */,
 				A1CDE07E235076470024548F /* Mosaic.swift in Sources */,
 				A15783A02350AC7700CCAEDD /* AverageColorFinder.swift in Sources */,

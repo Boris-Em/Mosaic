@@ -56,7 +56,7 @@ public final class Mosaic {
         return mosaic(with: imageSize, tileRects, averageColors)
     }
     
-    private func mosaic(with imageSize: CGSize, _ tileRects: TileRects, _ averageColors: [UInt16]) -> UIImage? {
+    private func mosaic(with imageSize: CGSize, _ tileRects: TileRects, _ averageColors: MTLBuffer) -> UIImage? {
         let tileImagePositions = imagePositionMapper.imagePositions(for: tileRects, of: averageColors)
         let mosaicImage = ImageStitcher.stitch(images: tileImagePositions, to: imageSize)
 

@@ -9,6 +9,7 @@
 #include <metal_stdlib>
 using namespace metal;
 
+/// Finds the average color for a grid of rectangles on the given texture.
 kernel void averageColorZone_kernel(texture2d<half, access::read> inTexture [[ texture(0) ]],
                          device uint16_t *outVector [[ buffer(1) ]],
                          constant uint8_t &number_of_tiles [[ buffer(2) ]],

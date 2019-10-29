@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 375, height: 667))
         imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .black
         return imageView
     }()
     
@@ -25,8 +26,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        return
         
         mosaic.preHeat()
         

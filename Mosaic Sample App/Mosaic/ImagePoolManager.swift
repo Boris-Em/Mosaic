@@ -8,17 +8,17 @@
 
 import UIKit
 
-class ImagePoolManager {
+/// A simple object responsible for managing a pool of images and their average colors.
+/// Those images are the ones used to create the mosaic.
+final class ImagePoolManager {
     
     static let minImageCount = 5
         
-    private struct ImageColorMap {
-        let image: UIImage
-        let averageColor: UIColor
-    }
+    let images: [UIImage]
     
-    private var pool: [ImageColorMap]?
-    private let images: [UIImage]
+    /// The average color for each image.
+    /// Each color is reprensented by 4 elements: RGBA.
+    private(set) var colors = [UInt16]()
     
     init(images: [UIImage]) {
         guard images.count >= ImagePoolManager.minImageCount else {
@@ -29,42 +29,36 @@ class ImagePoolManager {
     }
     
     func preHeat() {
-        self.pool = ImagePoolManager.generateImagePool(for: images)
-    }
-    
-    func closestImage(from color: UIColor) -> UIImage {
-        guard let pool = pool, !pool.isEmpty else {
-            preHeat()
-            return closestImage(from: color)
+        guard colors.isEmpty == true else {
+            return
         }
         
-        var bestImageColorMap = pool.first!
-        var bestScore = bestImageColorMap.averageColor.CIEDE2000(compare: color)
-        
-        pool.forEach { (imageColorMap) in
-            let score = imageColorMap.averageColor.CIEDE2000(compare: color)
-            if score < bestScore {
-                bestImageColorMap = imageColorMap
-                bestScore = score
-            }
-        }
-        
-        return bestImageColorMap.image
+        self.colors = ImagePoolManager.generateImagePool(for: images)
     }
     
-    private static func generateImagePool(for images: [UIImage]) -> [ImageColorMap] {
-        return images.compactMap { (image) -> ImageColorMap? in
-            imagePool(for: image)
+    /// Returns the colors for each image in an array where each element is RGBA.
+    private static func generateImagePool(for images: [UIImage]) -> [UInt16] {
+        let colors = images.flatMap { (image) -> [UInt16] in
+            imageColorMap(for: image)
         }
+        
+        return colors
     }
     
-    private static func imagePool(for image: UIImage) -> ImageColorMap? {
+    private static func imageColorMap(for image: UIImage) -> [UInt16] {
         let averageImageFinder = AverageColorFinder(image: image, canResizeImage: true)
         guard let averageColor = averageImageFinder.computeAverageColor() else {
             fatalError("Could not get average color.")
         }
         
-        return ImageColorMap(image: image, averageColor: averageColor)
+        let colors = [
+            UInt16(averageColor.red * 255),
+            UInt16(averageColor.green * 255),
+            UInt16(averageColor.blue * 255),
+            UInt16(averageColor.alpha)
+        ]
+        
+        return colors
     }
     
 }

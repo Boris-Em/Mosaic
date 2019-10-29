@@ -27,13 +27,13 @@ class AverageZoneColorFinder {
         _ = pipelineState
     }
     
-    func findAverageZoneColor(on image: CGImage, with imageSequence: TileRects) -> [UInt16] {
+    func findAverageZoneColor(on image: CGImage, with imageSequence: TileRects) -> MTLBuffer {
         let textureLoader = MTKTextureLoader(device: self.device)
         let texture = try! textureLoader.newTexture(cgImage: image, options: [MTKTextureLoader.Option.SRGB: 0, MTKTextureLoader.Option.origin: MTKTextureLoader.Origin.topLeft])
         return findAverageZoneColor(on: texture, with: imageSequence)
     }
     
-    func findAverageZoneColor(on texture: MTLTexture, with imageSequence: TileRects) -> [UInt16] {
+    func findAverageZoneColor(on texture: MTLTexture, with imageSequence: TileRects) -> MTLBuffer {
         let commandQueue = self.device.makeCommandQueue()!
         let commandBuffer = commandQueue.makeCommandBuffer()!
         let encoder = commandBuffer.makeComputeCommandEncoder()!
@@ -59,11 +59,7 @@ class AverageZoneColorFinder {
         commandBuffer.commit()
         commandBuffer.waitUntilCompleted()
         
-        var result = [UInt16](repeating: 0, count: imageSequence.count * 4)
-        let data = NSData(bytesNoCopy: (outputBuffer?.contents())!, length: MemoryLayout<UInt16>.stride * imageSequence.count * 4, freeWhenDone: false)
-        data.getBytes(&result, length: MemoryLayout<UInt16>.stride * imageSequence.count * 4)
-        
-        return result
+        return outputBuffer!
     }
     
 }

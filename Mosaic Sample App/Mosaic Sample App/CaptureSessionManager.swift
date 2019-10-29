@@ -98,7 +98,7 @@ final class CaptureSessionManager: NSObject, AVCaptureVideoDataOutputSampleBuffe
         captureSession.addInput(deviceInput)
         captureSession.addOutput(videoOutput)
         
-        let targetFrameRate = 6.0
+        let targetFrameRate = 15.0
         let targetHeightResolution = Int32(400)..<Int32(800)
         
         let potentialFormats = inputDevice.formats.filter { (format) -> Bool in
