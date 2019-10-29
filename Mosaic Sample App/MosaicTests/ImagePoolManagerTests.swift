@@ -18,42 +18,26 @@ class ImagePoolManagerTests: XCTestCase {
     static let blackImage = UIImage(named: "BlackRectangle_50x50.jpg")!
     static let whiteImage = UIImage(named: "WhiteRectangle_50x50.jpg")!
     
-    private let sut = ImagePoolManager(images: [ImagePoolManagerTests.redImage, ImagePoolManagerTests.greenImage, ImagePoolManagerTests.blueImage, ImagePoolManagerTests.lightGreenImage, ImagePoolManagerTests.blackImage, ImagePoolManagerTests.whiteImage])
-    
-    func testRed() {
-        let red = UIColor.red
-        let image = sut.closestImage(from: red)
-        XCTAssertEqual(image, ImagePoolManagerTests.redImage)
+    func testOneImage() {
+        let sut = ImagePoolManager(images: [ImagePoolManagerTests.redImage, ImagePoolManagerTests.greenImage, ImagePoolManagerTests.blueImage, ImagePoolManagerTests.lightGreenImage, ImagePoolManagerTests.blackImage, ImagePoolManagerTests.whiteImage])
+        sut.preHeat()
+        
+        XCTAssertEqual(sut.colors, [
+            254, 0, 0, 1,
+            0, 255, 1, 1,
+            0, 0, 254, 1,
+            55, 165, 74, 1,
+            0, 0, 0, 1,
+            255, 255, 255, 1
+        ])
     }
     
-    func testGreen() {
-        let green = UIColor.green
-        let image = sut.closestImage(from: green)
-        XCTAssertEqual(image, ImagePoolManagerTests.greenImage)
+    func testImageCount() {
+        let images = [ImagePoolManagerTests.redImage, ImagePoolManagerTests.greenImage, ImagePoolManagerTests.blueImage, ImagePoolManagerTests.lightGreenImage, ImagePoolManagerTests.blackImage, ImagePoolManagerTests.whiteImage]
+        let sut = ImagePoolManager(images: images)
+        sut.preHeat()
+        
+        XCTAssertEqual(sut.images.count, images.count)
     }
     
-    func testBlue() {
-        let blue = UIColor.blue
-        let image = sut.closestImage(from: blue)
-        XCTAssertEqual(image, ImagePoolManagerTests.blueImage)
-    }
-    
-    func testLightGreen() {
-        let lightGreen = UIColor(r: 55.0 / 255.0, g: 165.0 / 255.0, b: 74.0 / 255.0)
-        let image = sut.closestImage(from: lightGreen)
-        XCTAssertEqual(image, ImagePoolManagerTests.lightGreenImage)
-    }
-    
-    func testBlack() {
-        let black = UIColor.black
-        let image = sut.closestImage(from: black)
-        XCTAssertEqual(image, ImagePoolManagerTests.blackImage)
-    }
-    
-    func testWhite() {
-        let white = UIColor.white
-        let image = sut.closestImage(from: white)
-        XCTAssertEqual(image, ImagePoolManagerTests.whiteImage)
-    }
-
 }

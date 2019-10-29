@@ -17,19 +17,17 @@ class PoolTileMapperTests: XCTestCase {
     static let lightGreenImage = UIImage(named: "LightGreenRectangle_50x50.jpg")!
     static let blackImage = UIImage(named: "BlackRectangle_50x50.jpg")!
     
-    let poolManager = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage])
-
-    func testSimpleOrder1() {
+    let poolManager = ImagePoolManager(images: [greenImage, blueImage, lightGreenImage, redImage, blackImage])
+    
+    func test() {
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
         let tileSize = CGSize(width: 50.0, height: 50.0)
         let tileRects = TileRects(numberOfTiles: 2, imageSize: CGSize(width: 100.0, height: 100.0))
         
-        let positions = poolTileMapper.imagePositions(for: tileRects, of: [
-            255,0, 0 , 1, // RED
-            0, 255, 1, 1, // GREEN
-            0, 0, 255, 1, // BLUE
-            55, 165, 74, 1 // LIGHT GREEN
-        ])
+        let averageZoneColorFinder = AverageZoneColorFinder()
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: UIImage(named: "MultiRectangle_10x10.jpg")!.cgImage!, with: tileRects)
+        
+        let positions = poolTileMapper.imagePositions(for: tileRects, of: buffer)
         
         let redPosition = positions[0]
         XCTAssertEqual(redPosition.image, PoolTileMapperTests.redImage)
@@ -42,38 +40,9 @@ class PoolTileMapperTests: XCTestCase {
         let bluePosition = positions[2]
         XCTAssertEqual(bluePosition.image, PoolTileMapperTests.blueImage)
         XCTAssertEqual(bluePosition.position, CGPoint(x: 0, y: tileSize.height))
-
+        
         let lightGreenPosition = positions[3]
-        XCTAssertEqual(lightGreenPosition.image, PoolTileMapperTests.lightGreenImage)
-        XCTAssertEqual(lightGreenPosition.position, CGPoint(x: tileSize.width, y: tileSize.height))
-    }
-    
-    func testSimpleOrder2() {
-        let poolTileMapper = PoolTileMapper(poolManager: poolManager)
-        let tileSize = CGSize(width: 50.0, height: 50.0)
-        let tileRects = TileRects(numberOfTiles: 2, imageSize: CGSize(width: 100.0, height: 100.0))
-        
-        let positions = poolTileMapper.imagePositions(for: tileRects, of: [
-            0, 255, 1, 1, // GREEN
-            0, 0, 255, 1, // BLUE
-            255,0, 0 , 1, // RED
-            0, 0, 0, 1 // BLACK
-        ])
-        
-        let redPosition = positions[0]
-        XCTAssertEqual(redPosition.image, PoolTileMapperTests.greenImage)
-        XCTAssertEqual(redPosition.position, CGPoint.zero)
-        
-        let greenPosition = positions[1]
-        XCTAssertEqual(greenPosition.image, PoolTileMapperTests.blueImage)
-        XCTAssertEqual(greenPosition.position, CGPoint(x: tileSize.width, y: 0))
-        
-        let bluePosition = positions[2]
-        XCTAssertEqual(bluePosition.image, PoolTileMapperTests.redImage)
-        XCTAssertEqual(bluePosition.position, CGPoint(x: 0, y: tileSize.height))
-
-        let lightGreenPosition = positions[3]
-        XCTAssertEqual(lightGreenPosition.image, PoolTileMapperTests.blackImage)
+        XCTAssertEqual(lightGreenPosition.image, PoolTileMapperTests.blueImage)
         XCTAssertEqual(lightGreenPosition.position, CGPoint(x: tileSize.width, y: tileSize.height))
     }
 
