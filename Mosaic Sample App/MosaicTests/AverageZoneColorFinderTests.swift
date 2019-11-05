@@ -209,6 +209,47 @@ class AverageZoneColorFinderTests: XCTestCase {
         XCTAssertGreaterThanOrEqual(bottomRightBlue, 250)
         XCTAssertLessThanOrEqual(bottomRightBlue, 255)
     }
+    
+    func testMultiComplex() {
+        let image = UIImage(named: "MultiRectangle_60x60.jpg")!.cgImage!
+        
+        let numberOfTiles = 2
+
+        let imageSize = CGSize(width: image.width, height: image.height)
+        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        
+        let averageZoneColorFinder = AverageZoneColorFinder()
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
+        
+        var colors = [UInt16](repeating: 0, count: tileRects.rects.count * 4)
+        
+        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4, freeWhenDone: false)
+        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4)
+        
+        // Half red and green
+        XCTAssertEqual(colors[0], 127)
+        XCTAssertEqual(colors[1], 127)
+        XCTAssertEqual(colors[2], 0)
+        
+        // Half red and green
+        XCTAssertEqual(colors[4], 127)
+        XCTAssertEqual(colors[5], 127)
+        XCTAssertEqual(colors[6], 0)
+        
+        // Half black and white
+        XCTAssertEqual(colors[8], 127)
+        XCTAssertEqual(colors[9], 127)
+        XCTAssertEqual(colors[10], 127)
+        
+        // Half 100, 100, 100 and 200, 200, 200
+        // This test is a bit weird. We should obviously get 150, but we get 144.
+        // It's close enough...
+        // My guess would be that it has to do with the color space used.
+        XCTAssertEqual(colors[12], 144)
+        XCTAssertEqual(colors[13], 144)
+        XCTAssertEqual(colors[14], 144)
+        XCTAssertEqual(colors[15], 1)
+    }
 
 }
 

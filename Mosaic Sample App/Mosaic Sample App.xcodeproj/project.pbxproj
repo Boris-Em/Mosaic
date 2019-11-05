@@ -22,6 +22,10 @@
 		A15783A3235136E500CCAEDD /* Test_image_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A15783A1235136E500CCAEDD /* Test_image_1.jpg */; };
 		A19A222B236596ED00A00324 /* PoolTileMapper_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A19A222A236596ED00A00324 /* PoolTileMapper_kernel.metal */; };
 		A19A222C2365A24A00A00324 /* PoolTileMapper_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A19A222A236596ED00A00324 /* PoolTileMapper_kernel.metal */; };
+		A19FE581236A2F4B000E4BDD /* MultiRectangle_60x60.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A19FE580236A2F4A000E4BDD /* MultiRectangle_60x60.jpg */; };
+		A19FE582236A2F4B000E4BDD /* MultiRectangle_60x60.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A19FE580236A2F4A000E4BDD /* MultiRectangle_60x60.jpg */; };
+		A19FE584236A392A000E4BDD /* MultiRectangle_4x4.png in Resources */ = {isa = PBXBuildFile; fileRef = A19FE583236A392A000E4BDD /* MultiRectangle_4x4.png */; };
+		A19FE585236A392A000E4BDD /* MultiRectangle_4x4.png in Resources */ = {isa = PBXBuildFile; fileRef = A19FE583236A392A000E4BDD /* MultiRectangle_4x4.png */; };
 		A1B0E2922351C1BB0011040B /* AverageZoneColorFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2912351C1BB0011040B /* AverageZoneColorFinder.swift */; };
 		A1B0E2942351C5230011040B /* ImageTileSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */; };
 		A1B0E2982351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2972351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift */; };
@@ -132,6 +136,8 @@
 		A157839F2350AC7700CCAEDD /* AverageColorFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageColorFinder.swift; sourceTree = "<group>"; };
 		A15783A1235136E500CCAEDD /* Test_image_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test_image_1.jpg; sourceTree = "<group>"; };
 		A19A222A236596ED00A00324 /* PoolTileMapper_kernel.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PoolTileMapper_kernel.metal; sourceTree = "<group>"; };
+		A19FE580236A2F4A000E4BDD /* MultiRectangle_60x60.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_60x60.jpg; sourceTree = "<group>"; };
+		A19FE583236A392A000E4BDD /* MultiRectangle_4x4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MultiRectangle_4x4.png; sourceTree = "<group>"; };
 		A1B0E2912351C1BB0011040B /* AverageZoneColorFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinder.swift; sourceTree = "<group>"; };
 		A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTileSequenceTests.swift; sourceTree = "<group>"; };
 		A1B0E2972351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinderPerformanceTests.swift; sourceTree = "<group>"; };
@@ -287,6 +293,8 @@
 				A15783A1235136E500CCAEDD /* Test_image_1.jpg */,
 				A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */,
 				A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */,
+				A19FE580236A2F4A000E4BDD /* MultiRectangle_60x60.jpg */,
+				A19FE583236A392A000E4BDD /* MultiRectangle_4x4.png */,
 				A1CE3A2923550CEE00EC3E2D /* RedRectangle_500x500.jpg */,
 				A1CE3A2C23550E3600EC3E2D /* RedRectangle_50x50.jpg */,
 				A1CE3A3523550EF700EC3E2D /* RedRectangle_40x40.jpg */,
@@ -477,6 +485,7 @@
 				A15783A2235136E500CCAEDD /* Test_image_1.jpg in Resources */,
 				A1CE3A2723550C2300EC3E2D /* RedRectangle_10x10.jpg in Resources */,
 				A1CDE03E23506DC10024548F /* LaunchScreen.storyboard in Resources */,
+				A19FE581236A2F4B000E4BDD /* MultiRectangle_60x60.jpg in Resources */,
 				A1CE3A39235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */,
 				A1CDE03B23506DC10024548F /* Assets.xcassets in Resources */,
 				A1F292552356626A00B0C099 /* BlackRectangle_50x50.jpg in Resources */,
@@ -485,6 +494,7 @@
 				A1CE3A3C2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */,
 				A1CE3A2D23550E3600EC3E2D /* RedRectangle_50x50.jpg in Resources */,
 				A1CDE03923506DC00024548F /* Main.storyboard in Resources */,
+				A19FE584236A392A000E4BDD /* MultiRectangle_4x4.png in Resources */,
 				A1F2925223565CF200B0C099 /* BlueRectangle_50x50.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,10 +522,12 @@
 				A1F29259235662A800B0C099 /* WhiteRectangle_50x50.jpg in Resources */,
 				A1CE3A3423550ED400EC3E2D /* RedRectangle_30x30.jpg in Resources */,
 				A1CE3A2523550BF400EC3E2D /* RedRectangle_2x2.jpg in Resources */,
+				A19FE582236A2F4B000E4BDD /* MultiRectangle_60x60.jpg in Resources */,
 				A1CE3A3723550EF700EC3E2D /* RedRectangle_40x40.jpg in Resources */,
 				A1CE3A3A235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */,
 				A1CE3A3D2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */,
 				A1F292562356626A00B0C099 /* BlackRectangle_50x50.jpg in Resources */,
+				A19FE585236A392A000E4BDD /* MultiRectangle_4x4.png in Resources */,
 				A1CE3A2823550C2300EC3E2D /* RedRectangle_10x10.jpg in Resources */,
 				A1F2925323565CF200B0C099 /* BlueRectangle_50x50.jpg in Resources */,
 				A1F2925F23573D7200B0C099 /* LightGreenRectangle_50x50.jpg in Resources */,

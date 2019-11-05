@@ -41,9 +41,9 @@ kernel void averageColorZone_kernel(texture2d<half, access::read> inTexture [[ t
         }
     }
     
-    half rAverage = (rTotal / count) * 255;
-    half gAverage = (gTotal / count) * 255;
-    half bAverage = (bTotal / count) * 255;
+    half rAverage = rTotal / count * 255;
+    half gAverage = gTotal / count * 255;
+    half bAverage = bTotal / count * 255;
     
     int index = (threadgroup_position_in_grid.y * number_of_tiles + threadgroup_position_in_grid.x) * 4;
     
