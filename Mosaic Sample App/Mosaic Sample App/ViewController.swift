@@ -26,22 +26,25 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         mosaic.preHeat()
         
-        captureSessionManager.delegate = self
+//        captureSessionManager.delegate = self
         
         view.addSubview(imageView)
         
-        captureSessionManager.start()
+//        captureSessionManager.start()
+        
+        let image = mosaic.generateMosaic(for: #imageLiteral(resourceName: "Test_image_1.jpg").cgImage!)
+        imageView.image = image
     }
 
 }
 
 extension ViewController: CaptureSessionManagerDelegate {
     func didCapture(_ texture: MTLTexture) {
-        let image = mosaic.generateMosaic(for: texture)
-        imageView.image = image
+//        let image = mosaic.generateMosaic(for: texture)
+//        imageView.image = image
     }
     
 }

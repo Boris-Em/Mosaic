@@ -250,10 +250,57 @@ class AverageZoneColorFinderTests: XCTestCase {
         XCTAssertEqual(colors[14], 144)
         XCTAssertEqual(colors[15], 1)
     }
+    
+    /// This test is made to ensure that the average color is working properly.
+    /// It's mostly used for debug puposes.
+    /// It should be verified "by hand" by comparing the original image to the one generated with zone colors.
+    func testRealCase() {
+        let image = UIImage(named: "Test_image_1.jpg")!.cgImage!
+        
+        let numberOfTiles = 100
+
+        let imageSize = CGSize(width: image.width, height: image.height)
+        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        
+        let averageZoneColorFinder = AverageZoneColorFinder()
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
+        
+        var colors = [UInt16](repeating: 0, count: tileRects.rects.count * 4)
+        
+        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4, freeWhenDone: false)
+        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4)
+
+        _ = self.image(from: colors, tileRects: tileRects)
+    }
 
 }
 
 extension AverageZoneColorFinderTests {
+    
+    /// Gets rects and average colors, and draw those colors on the given rects.
+    func image(from colors: [UInt16], tileRects: TileRects) -> UIImage {
+        var uiColors = [UIColor]()
+        
+        for index in 0..<colors.count / 4  {
+            let actualIndex = index * 4
+            let color = UIColor(red: CGFloat(colors[actualIndex]) / 255, green: CGFloat(colors[actualIndex + 1]) / 255, blue: CGFloat(colors[actualIndex + 2]) / 255, alpha: 1.0)
+            uiColors.append(color)
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(tileRects.imageSize, false, 0.0)
+        
+        for (index, rect) in tileRects.rects.enumerated() {
+            let color = uiColors[index]
+            color.setFill()
+            UIRectFill(rect)
+        }
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+
+        return image!
+    }
     
     /// Ensures that all of the pixels in the colors array are of the passed in color.
     func assertAll(red: UInt16, green: UInt16, blue: UInt16, colors: [UInt16]) {
