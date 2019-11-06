@@ -19,27 +19,29 @@ kernel void closestColor_kernel(const device uint16_t *average_colors [[buffer(0
                                 uint2 thread_position_in_threadgroup [[ thread_position_in_threadgroup ]],
                                 uint2 threads_per_threadgroup        [[ threads_per_threadgroup ]]) {
     
-    int index = (threadgroup_position_in_grid.y * number_of_tiles + threadgroup_position_in_grid.x) * 4;
+    int index = (threadgroup_position_in_grid.y * number_of_tiles + threadgroup_position_in_grid.x);
+    int averageColorIndex = index * 4;
 
-    int referenceR = average_colors[index];
-    int referenceG = average_colors[index + 1];
-    int referenceB = average_colors[index + 2];
+    int referenceR = average_colors[averageColorIndex];
+    int referenceG = average_colors[averageColorIndex + 1];
+    int referenceB = average_colors[averageColorIndex + 2];
     
     int bestColorIndex = 0;
-    float bestDelta = -1;
+    float bestDelta = MAXFLOAT;
     
     for(int i = 0; i < numnber_of_image_pool; i++) {
-        int index = i * 4;
-        int poolR = pool_colors[index];
-        int poolG = pool_colors[index + 1];
-        int poolB = pool_colors[index + 2];
+        int poolIndex = i * 4;
+        int poolR = pool_colors[poolIndex];
+        int poolG = pool_colors[poolIndex + 1];
+        int poolB = pool_colors[poolIndex + 2];
         
-        float delta = sqrt((float)((poolR - referenceR) ^ 2 + (poolG - referenceG) ^ 2 + (poolB - referenceB) ^ 2));
-        if (delta > bestDelta) {
+        float delta = sqrt((pow((float)(poolR - referenceR), 2) + pow((float)(poolG - referenceG), 2) + pow((float)(poolB - referenceB), 2)));
+        
+        if (delta < bestDelta) {
             bestDelta = delta;
-            bestColorIndex = index / 4;
+            bestColorIndex = i;
         }
     }
-    
-    outVector[index / 4] = bestColorIndex;
+
+    outVector[index] = bestColorIndex;
 };

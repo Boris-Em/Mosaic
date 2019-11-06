@@ -257,7 +257,7 @@ class AverageZoneColorFinderTests: XCTestCase {
     func testRealCase() {
         let image = UIImage(named: "Test_image_1.jpg")!.cgImage!
         
-        let numberOfTiles = 100
+        let numberOfTiles = 50
 
         let imageSize = CGSize(width: image.width, height: image.height)
         let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)

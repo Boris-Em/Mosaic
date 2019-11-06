@@ -38,10 +38,6 @@ final class PoolTileMapper {
     func imagePositions(for tileRects: TileRects, of averageColors: MTLBuffer) -> [ImagePositionValuePair] {
         preHeat()
         
-        var result2 = [UInt16](repeating: 0, count: tileRects.count * 4)
-        let data2 = NSData(bytesNoCopy: (averageColors.contents()), length: MemoryLayout<UInt16>.stride * tileRects.count * 4, freeWhenDone: false)
-        data2.getBytes(&result2, length: MemoryLayout<UInt16>.stride * tileRects.count * 4)
-        
         let commandQueue = self.device.makeCommandQueue()!
         let commandBuffer = commandQueue.makeCommandBuffer()!
         let encoder = commandBuffer.makeComputeCommandEncoder()!
