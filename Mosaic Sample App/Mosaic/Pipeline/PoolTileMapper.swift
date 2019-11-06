@@ -57,11 +57,9 @@ final class PoolTileMapper {
         var output = [UInt16](repeating: 0, count: tileRects.count)
         let outputBuffer = self.device.makeBuffer(bytes: &output, length: MemoryLayout<UInt16>.stride * tileRects.count, options: [])
         encoder.setBuffer(outputBuffer, offset: 0, index: 4)
-
-        let numberOfTiles = tileRects.count
         
         let threadsPerThreadgroup = MTLSizeMake(1, 1, 1)
-        let threadgroupsPerGrid = MTLSize(width: numberOfTiles, height: numberOfTiles, depth: 1)
+        let threadgroupsPerGrid = MTLSize(width: tileRects.numberOfTiles, height: tileRects.numberOfTiles, depth: 1)
         
         encoder.dispatchThreadgroups(threadgroupsPerGrid, threadsPerThreadgroup: threadsPerThreadgroup)
         encoder.endEncoding()

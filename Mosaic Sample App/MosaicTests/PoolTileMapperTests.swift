@@ -62,8 +62,6 @@ class PoolTileMapperTests: XCTestCase {
         let averageZoneColorFinder = AverageZoneColorFinder()
         let buffer = averageZoneColorFinder.findAverageZoneColor(on: UIImage(named: "MultiStripes_Aleternative_100x100.png")!.cgImage!, with: tileRects)
         
-        
-        
         let positions = poolTileMapper.imagePositions(for: tileRects, of: buffer)
         
         positions.forEach { (position) in
