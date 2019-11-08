@@ -15,9 +15,9 @@ class ImageStitcher {
             UIGraphicsEndImageContext()
         }
         
-        UIGraphicsBeginImageContextWithOptions(size, true, 0.0)
+        UIGraphicsBeginImageContextWithOptions(size, true, 1.0)
         images.forEach { (imagePosition) in
-            imagePosition.image.draw(at: imagePosition.position)
+            imagePosition.image.draw(at: imagePosition.position, blendMode: .normal, alpha: 1.0)
         }
         
         let sticthedImage = UIGraphicsGetImageFromCurrentImageContext()!
