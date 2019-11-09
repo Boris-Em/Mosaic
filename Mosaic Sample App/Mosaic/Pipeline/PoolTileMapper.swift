@@ -30,13 +30,13 @@ final class PoolTileMapper {
         self.poolManager = poolManager
     }
     
-    func preHeat() {
+    func preHeat(withTileSize tileSize: CGSize?) {
         _ = pipelineState
-        poolManager.preHeat()
+        poolManager.preHeat(withTileSize: tileSize)
     }
     
-    func imagePositions(for tileRects: TileRects, of averageColors: MTLBuffer) -> [ImagePositionValuePair] {
-        preHeat()
+    func imagePositions(for tileRects: TileRects, of averageColors: MTLBuffer) -> ImageStitcher.TexturePoolPositions {
+        preHeat(withTileSize: tileRects.tileSize)
         
         let commandQueue = self.device.makeCommandQueue()!
         let commandBuffer = commandQueue.makeCommandBuffer()!
@@ -67,21 +67,9 @@ final class PoolTileMapper {
         commandBuffer.commit()
         commandBuffer.waitUntilCompleted()
         
-        var result = [UInt16](repeating: 0, count: tileRects.count)
-        let data = NSData(bytesNoCopy: (outputBuffer?.contents())!, length: MemoryLayout<UInt16>.stride * tileRects.count, freeWhenDone: false)
-        data.getBytes(&result, length: MemoryLayout<UInt16>.stride * tileRects.count)
+        let poolPosition = ImageStitcher.TexturePoolPositions(indeces: outputBuffer!, positions: tileRects.rects, texturePool: poolManager.textures)
         
-        var pairs = [ImagePositionValuePair]()
-        
-        for (index, rect) in tileRects.rects.enumerated() {
-            let imageIndex = Int(result[index])
-            let image = poolManager.images[imageIndex]
-            let resizedImage = resizedImageManager.resizedImage(for: image, size: tileRects.tileSize)
-            let pair = ImagePositionValuePair(image: resizedImage, position: rect.origin)
-            pairs.append(pair)
-        }
-        
-        return pairs
+        return poolPosition
     }
     
 }

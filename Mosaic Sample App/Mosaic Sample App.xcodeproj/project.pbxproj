@@ -75,6 +75,8 @@
 		A1CE3A3A235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */; };
 		A1CE3A3C2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */; };
 		A1CE3A3D2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */; };
+		A1DA3B9D2375EFED0008B37D /* ImageStitcher.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1DA3B9C2375EFED0008B37D /* ImageStitcher.metal */; };
+		A1DA3B9E2376B83B0008B37D /* ImageStitcher.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1DA3B9C2375EFED0008B37D /* ImageStitcher.metal */; };
 		A1F23F33235E45720030FAC0 /* ImagePoolManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F23F32235E45720030FAC0 /* ImagePoolManagerTests.swift */; };
 		A1F23F35235E52190030FAC0 /* CaptureSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F23F34235E52190030FAC0 /* CaptureSessionManager.swift */; };
 		A1F2924D2356590900B0C099 /* AverageZoneColorFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2924C2356590900B0C099 /* AverageZoneColorFinderTests.swift */; };
@@ -190,6 +192,7 @@
 		A1CE3A3523550EF700EC3E2D /* RedRectangle_40x40.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RedRectangle_40x40.jpg; sourceTree = "<group>"; };
 		A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_10x10.jpg; sourceTree = "<group>"; };
 		A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_2x2.jpg; sourceTree = "<group>"; };
+		A1DA3B9C2375EFED0008B37D /* ImageStitcher.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ImageStitcher.metal; sourceTree = "<group>"; };
 		A1F23F32235E45720030FAC0 /* ImagePoolManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePoolManagerTests.swift; sourceTree = "<group>"; };
 		A1F23F34235E52190030FAC0 /* CaptureSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureSessionManager.swift; sourceTree = "<group>"; };
 		A1F2924C2356590900B0C099 /* AverageZoneColorFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinderTests.swift; sourceTree = "<group>"; };
@@ -350,6 +353,7 @@
 				A1F292712357534300B0C099 /* Color Extraction */,
 				A157839D2350A36B00CCAEDD /* TileRects.swift */,
 				A15783972350A10100CCAEDD /* ImageStitcher.swift */,
+				A1DA3B9C2375EFED0008B37D /* ImageStitcher.metal */,
 				A1F292762357544400B0C099 /* PoolTileMapper.swift */,
 				A19A222A236596ED00A00324 /* PoolTileMapper_kernel.metal */,
 			);
@@ -593,6 +597,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1DA3B9E2376B83B0008B37D /* ImageStitcher.metal in Sources */,
 				A19A222C2365A24A00A00324 /* PoolTileMapper_kernel.metal in Sources */,
 				A1421D85235E2FC7004C0286 /* AverageColorZone_kernel.metal in Sources */,
 				A1CDE03623506DC00024548F /* ViewController.swift in Sources */,
@@ -620,6 +625,7 @@
 				A157839E2350A36B00CCAEDD /* TileRects.swift in Sources */,
 				A1CDE07723506F5F0024548F /* UIImageExtensions.swift in Sources */,
 				A19A222B236596ED00A00324 /* PoolTileMapper_kernel.metal in Sources */,
+				A1DA3B9D2375EFED0008B37D /* ImageStitcher.metal in Sources */,
 				A1F292772357544400B0C099 /* PoolTileMapper.swift in Sources */,
 				A1CDE07E235076470024548F /* Mosaic.swift in Sources */,
 				A15783A02350AC7700CCAEDD /* AverageColorFinder.swift in Sources */,

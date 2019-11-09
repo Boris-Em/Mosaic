@@ -14,10 +14,12 @@ extension UIImage {
     
     /// Resizes the image to the passed in size.
     func resize(to size: CGSize) -> UIImage? {
-        let renderer = UIGraphicsImageRenderer(size: size)
+        UIGraphicsBeginImageContextWithOptions(size, true, 0.0);
+        self.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: size.width, height: size.height)))
         
-        return renderer.image { (context) in
-            self.draw(in: CGRect(origin: .zero, size: size))
-        }
+        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
 }

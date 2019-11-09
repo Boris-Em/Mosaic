@@ -11,7 +11,7 @@ import UIKit
 public final class Mosaic {
     
     /// The numbner of tiles in the mosaic per length (width & height).
-    private static let numberOfTiles: Int = 20
+    private static let numberOfTiles: Int = 30
     
     private var tileRects: TileRects?
     
@@ -32,14 +32,13 @@ public final class Mosaic {
     
     public func generateMosaic(for texture: MTLTexture) -> UIImage? {
         let imageSize = CGSize(width: texture.width, height: texture.height)
-        
+        NSLog("START")
         guard let tileRects = tileRects else {
             generateTileRects(with: imageSize)
             return generateMosaic(for: texture)
         }
-        
+        NSLog("START AVERAGE ZONE COLORS FINDER")
         let averageColors = averageZoneColorFinder.findAverageZoneColor(on: texture, with: tileRects)
-        
         return mosaic(with: imageSize, tileRects, averageColors)
     }
     
@@ -57,9 +56,11 @@ public final class Mosaic {
     }
     
     private func mosaic(with imageSize: CGSize, _ tileRects: TileRects, _ averageColors: MTLBuffer) -> UIImage? {
-        let tileImagePositions = imagePositionMapper.imagePositions(for: tileRects, of: averageColors)
-        let mosaicImage = ImageStitcher.stitch(images: tileImagePositions, to: imageSize)
-
+        NSLog("START MAPPER")
+        let texturePositions = imagePositionMapper.imagePositions(for: tileRects, of: averageColors)
+        NSLog("START STITCHING")
+        let mosaicImage = ImageStitcher().stitch(texturePositions: texturePositions, to: imageSize, numberOfTiles: tileRects.numberOfTiles)
+        NSLog("END")
         return mosaicImage
     }
     
@@ -69,11 +70,12 @@ public final class Mosaic {
     /// - Parameters:
     ///   - imageSize: The size of the image that will be transformed into a Mosaic.
     public func preHeat(withImageSize imageSize: CGSize? = nil) {
-        imagePositionMapper.preHeat()
-        averageZoneColorFinder.preHeat()
         if let imageSize = imageSize {
             generateTileRects(with: imageSize)
         }
+        
+        imagePositionMapper.preHeat(withTileSize: self.tileRects?.tileSize)
+        averageZoneColorFinder.preHeat()
     }
     
     // MARK: - Convenience
@@ -81,12 +83,5 @@ public final class Mosaic {
     private func generateTileRects(with imageSize: CGSize) {
         self.tileRects = TileRects(numberOfTiles: Mosaic.numberOfTiles, imageSize: imageSize)
     }
-    
-}
-
-struct ImagePositionValuePair {
-    
-    let image: UIImage
-    let position: CGPoint
     
 }
