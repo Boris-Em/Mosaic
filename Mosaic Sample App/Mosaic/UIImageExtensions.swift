@@ -14,7 +14,7 @@ extension UIImage {
     
     /// Resizes the image to the passed in size.
     func resize(to size: CGSize) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(size, true, 0.0);
+        UIGraphicsBeginImageContextWithOptions(size, true, 1.0);
         self.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: size.width, height: size.height)))
         
         let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!

@@ -46,16 +46,8 @@ class ImageStitcher {
         
         encoder.setBuffer(texturePositions.indeces, offset: 0, index: texturePositions.texturePool.count)
         
-        let xPositions: [UInt16] = texturePositions.positions.map { (rect) -> UInt16 in
-            return UInt16(rect.origin.x)
-        }
-        
-        let yPositions: [UInt16] = texturePositions.positions.map { (rect) -> UInt16 in
-            return UInt16(rect.origin.y)
-        }
-        
-        encoder.setBytes(xPositions, length: MemoryLayout<UInt16>.size * xPositions.count, index: texturePositions.texturePool.count + 1)
-        encoder.setBytes(yPositions, length: MemoryLayout<UInt16>.size * yPositions.count, index: texturePositions.texturePool.count + 2)
+        var cNumberOfTiles: UInt8 = UInt8(numberOfTiles)
+        encoder.setBytes(&cNumberOfTiles, length: MemoryLayout<UInt8>.size, index: texturePositions.texturePool.count + 1)
         
         let outTextureDescriptor = MTLTextureDescriptor()
         outTextureDescriptor.pixelFormat = .rgba8Unorm
@@ -65,7 +57,7 @@ class ImageStitcher {
         
         let outTexture = device.makeTexture(descriptor: outTextureDescriptor)!
         
-        encoder.setTexture(outTexture, index: texturePositions.texturePool.count + 3)
+        encoder.setTexture(outTexture, index: texturePositions.texturePool.count + 2)
         
         let threadsPerThreadgroup = MTLSizeMake(1, 1, 1)
         let threadgroupsPerGrid = MTLSize(width: numberOfTiles, height: numberOfTiles, depth: 1)
@@ -76,7 +68,7 @@ class ImageStitcher {
         commandBuffer.commit()
         commandBuffer.waitUntilCompleted()
         
-        let outCIImage = CIImage(mtlTexture: outTexture, options: nil)!
+        let outCIImage = CIImage(mtlTexture: outTexture, options: [:])!.oriented(CGImagePropertyOrientation.downMirrored)
         let outUIIMage = UIImage(ciImage: outCIImage)
         
         return outUIIMage

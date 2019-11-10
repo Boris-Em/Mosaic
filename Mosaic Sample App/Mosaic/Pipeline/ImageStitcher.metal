@@ -11,23 +11,26 @@ using namespace metal;
 
 kernel void imageStitch_kernel(const array<texture2d<half>, 9> inTextures [[ texture(0) ]],
                                     const device uint16_t *indeces [[ buffer(9) ]],
-                                    const device uint16_t *xPositions [[ buffer(10) ]],
-                                    const device uint16_t *yPositions [[ buffer(11) ]],
-                                    texture2d<half, access::write> outTexture [[ texture(12) ]],
+                                    constant uint8_t &number_of_tiles [[ buffer(10) ]],
+                                    texture2d<half, access::write> outTexture [[ texture(11) ]],
                                     uint2 threadgroup_position_in_grid   [[ threadgroup_position_in_grid ]],
                                     uint2 thread_position_in_threadgroup [[ thread_position_in_threadgroup ]],
                                     uint2 threads_per_threadgroup        [[ threads_per_threadgroup ]]) {
     
-    int tileIndex = (threadgroup_position_in_grid.y * 30 + threadgroup_position_in_grid.x);
+    int tileIndex = (threadgroup_position_in_grid.y * number_of_tiles + threadgroup_position_in_grid.x);
     
     int poolIndex = indeces[tileIndex];
     
-    uint2 positionInTexture = uint2(xPositions[tileIndex], yPositions[tileIndex]);
+    const texture2d<half> textureToDraw = inTextures[poolIndex];
+    uint width = textureToDraw.get_width();
+    uint height = textureToDraw.get_height();
     
-    for (uint x = 0; x < 30; x++) {
-        for (uint y = 0; y < 30; y++) {
+    uint2 positionInTexture = uint2(threadgroup_position_in_grid.x * width, threadgroup_position_in_grid.y * height);
+    
+    for (uint x = 0; x < width; x++) {
+        for (uint y = 0; y < height; y++) {
             uint2 readPosition = uint2(x, y);
-            half4 colors = inTextures[poolIndex].read(readPosition);
+            half4 colors = textureToDraw.read(readPosition);
 
             uint2 writePosition = uint2(positionInTexture.x + x, positionInTexture.y + y);
             
