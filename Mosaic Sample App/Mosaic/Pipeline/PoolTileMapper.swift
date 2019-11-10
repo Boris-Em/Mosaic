@@ -35,7 +35,7 @@ final class PoolTileMapper {
         poolManager.preHeat(withTileSize: tileSize)
     }
     
-    func imagePositions(for tileRects: TileRects, of averageColors: MTLBuffer) -> ImageStitcher.TexturePoolPositions {
+    func imagePositions(for tileRects: TileRects, of averageColors: MTLBuffer) -> ImageStitcher.TexturePoolGuide {
         preHeat(withTileSize: tileRects.tileSize)
         
         let commandQueue = self.device.makeCommandQueue()!
@@ -67,7 +67,7 @@ final class PoolTileMapper {
         commandBuffer.commit()
         commandBuffer.waitUntilCompleted()
         
-        let poolPosition = ImageStitcher.TexturePoolPositions(indeces: outputBuffer!, positions: tileRects.rects, texturePool: poolManager.textures)
+        let poolPosition = ImageStitcher.TexturePoolGuide(indeces: outputBuffer!, texturePool: poolManager.textures)
         
         return poolPosition
     }

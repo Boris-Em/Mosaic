@@ -11,17 +11,14 @@ import MetalKit
 
 class ImageStitcher {
     
-    /// A structure that keeps track of where each image from the pool needs to be drawn.
-    struct TexturePoolPositions {
+    /// A structure that keeps track of which image (texture) needs to be drawn.
+    struct TexturePoolGuide {
         
         /// An array of indeces.
-        /// The indeces refer to the texture pool to use.
+        /// The indeces refer to the texture to use in the pool.
         let indeces: MTLBuffer
         
-        /// The positions where to draw each texture.
-        let positions: [CGRect]
-        
-        /// The textures to draw.
+        /// The textures to pick from and draw.
         let texturePool: [MTLTexture]
     }
     
@@ -36,7 +33,7 @@ class ImageStitcher {
         return pipelineState
     }()
     
-    func stitch(texturePositions: TexturePoolPositions, to size: CGSize, numberOfTiles: Int) -> UIImage {
+    func stitch(texturePositions: TexturePoolGuide, to size: CGSize, numberOfTiles: Int) -> UIImage {
         let commandQueue = self.device.makeCommandQueue()!
         let commandBuffer = commandQueue.makeCommandBuffer()!
         let encoder = commandBuffer.makeComputeCommandEncoder()!
