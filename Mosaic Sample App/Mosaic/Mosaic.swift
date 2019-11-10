@@ -32,12 +32,12 @@ public final class Mosaic {
     
     public func generateMosaic(for texture: MTLTexture) -> UIImage? {
         let imageSize = CGSize(width: texture.width, height: texture.height)
-        NSLog("START")
+
         guard let tileRects = tileRects else {
             generateTileRects(with: imageSize)
             return generateMosaic(for: texture)
         }
-        NSLog("START AVERAGE ZONE COLORS FINDER")
+
         let averageColors = averageZoneColorFinder.findAverageZoneColor(on: texture, with: tileRects)
         return mosaic(with: imageSize, tileRects, averageColors)
     }
@@ -56,11 +56,10 @@ public final class Mosaic {
     }
     
     private func mosaic(with imageSize: CGSize, _ tileRects: TileRects, _ averageColors: MTLBuffer) -> UIImage? {
-        NSLog("START MAPPER")
+
         let texturePositions = imagePositionMapper.imagePositions(for: tileRects, of: averageColors)
-        NSLog("START STITCHING")
         let mosaicImage = ImageStitcher().stitch(texturePositions: texturePositions, to: imageSize, numberOfTiles: tileRects.numberOfTiles)
-        NSLog("END")
+
         return mosaicImage
     }
     
