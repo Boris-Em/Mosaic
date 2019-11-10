@@ -33,7 +33,7 @@ class ImageStitcher {
         return pipelineState
     }()
     
-    func stitch(texturePositions: TexturePoolGuide, to size: CGSize, numberOfTiles: Int) -> UIImage {
+    func stitch(texturePositions: TexturePoolGuide, to size: CGSize, numberOfTiles: Int) -> MTLTexture {
         let commandQueue = self.device.makeCommandQueue()!
         let commandBuffer = commandQueue.makeCommandBuffer()!
         let encoder = commandBuffer.makeComputeCommandEncoder()!
@@ -47,7 +47,7 @@ class ImageStitcher {
         encoder.setBytes(&cNumberOfTiles, length: MemoryLayout<UInt8>.size, index: texturePositions.texturePool.count + 1)
         
         let outTextureDescriptor = MTLTextureDescriptor()
-        outTextureDescriptor.pixelFormat = .rgba8Unorm
+        outTextureDescriptor.pixelFormat = .bgra8Unorm_srgb
         outTextureDescriptor.width = Int(size.width)
         outTextureDescriptor.height = Int(size.height)
         outTextureDescriptor.usage = [MTLTextureUsage.shaderWrite, MTLTextureUsage.shaderRead]
@@ -64,11 +64,8 @@ class ImageStitcher {
                 
         commandBuffer.commit()
         commandBuffer.waitUntilCompleted()
-        
-        let outCIImage = CIImage(mtlTexture: outTexture, options: [:])!.oriented(CGImagePropertyOrientation.downMirrored)
-        let outUIIMage = UIImage(ciImage: outCIImage)
-        
-        return outUIIMage
+                
+        return outTexture
     }
 
 }

@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         
         captureSessionManager.start()
         
-//        let image = mosaic.generateMosaic(for: #imageLiteral(resourceName: "Test_image_1.jpg").cgImage!)
+//        let image: UIImage = mosaic.generateMosaic(for: #imageLiteral(resourceName: "Test_image_1.jpg").cgImage!)!
 //        imageView.image = image
     }
 
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
 
 extension ViewController: CaptureSessionManagerDelegate {
     func didCapture(_ texture: MTLTexture) {
-        let image = mosaic.generateMosaic(for: texture)
+        let image: UIImage = mosaic.generateMosaic(for: texture)!
         imageView.image = image
     }
     
