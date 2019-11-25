@@ -10,18 +10,18 @@ import UIKit
 
 public final class Mosaic {
     
-    /// The numbner of tiles in the mosaic per length (width & height).
-    private static let numberOfTiles: Int = 50
-    
     private var tileRects: TileRects?
     
     private let imagePositionMapper: PoolTileMapper
     private let averageZoneColorFinder = AverageZoneColorFinder()
     
-    // MARK: Public Functions
+    // MARK: - Public
+    
+    /// The numbner of tiles in the mosaic per length (width & height).
+    let numberOfTiles: Int = 100
     
     public init(imagePool: [UIImage]) throws {
-        guard imagePool.count > 3 else {
+        guard imagePool.count > 3 && imagePool.count < 28 else {
             let error = NSError()
             throw error
         }
@@ -111,7 +111,7 @@ public final class Mosaic {
     }
     
     private func generateTileRects(with imageSize: CGSize) {
-        self.tileRects = TileRects(numberOfTiles: Mosaic.numberOfTiles, imageSize: imageSize)
+        self.tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
     }
     
 }
