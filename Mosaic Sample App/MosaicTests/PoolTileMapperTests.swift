@@ -25,24 +25,24 @@ class PoolTileMapperTests: XCTestCase {
         
         let averageZoneColorFinder = AverageZoneColorFinder()
         let buffer = averageZoneColorFinder.findAverageZoneColor(on: UIImage(named: "MultiRectangle_10x10.jpg")!.cgImage!, with: tileRects)
+
+        let indecesBuffer = poolTileMapper.match(tileRects, to: buffer).indeces
         
-        let positions = poolTileMapper.imagePositions(for: tileRects, of: buffer)
+        var indeces = [UInt16](repeating: 0, count: tileRects.rects.count)
+        let data = NSData(bytesNoCopy: (indecesBuffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count, freeWhenDone: false)
+        data.getBytes(&indeces, length: MemoryLayout<UInt16>.stride * tileRects.rects.count)
         
-        let redPosition = positions[0]
-        XCTAssertEqual(redPosition.image, redImage)
-        XCTAssertEqual(redPosition.position, CGPoint.zero)
+        let expectedRedIndex = Int(indeces[0])
+        XCTAssertEqual(poolManager.images[expectedRedIndex], redImage)
         
-        let greenPosition = positions[1]
-        XCTAssertEqual(greenPosition.image, greenImage)
-        XCTAssertEqual(greenPosition.position, CGPoint(x: tileRects.tileSize.width, y: 0))
-        
-        let bluePosition = positions[2]
-        XCTAssertEqual(bluePosition.image, blueImage)
-        XCTAssertEqual(bluePosition.position, CGPoint(x: 0, y: tileRects.tileSize.height))
-        
-        let lightGreenPosition = positions[3]
-        XCTAssertEqual(lightGreenPosition.image, blueImage)
-        XCTAssertEqual(lightGreenPosition.position, CGPoint(x: tileRects.tileSize.width, y: tileRects.tileSize.height))
+        let expectedGreenIndex = Int(indeces[1])
+        XCTAssertEqual(poolManager.images[expectedGreenIndex], greenImage)
+
+        let expectedBlueIndex = Int(indeces[2])
+        XCTAssertEqual(poolManager.images[expectedBlueIndex], blueImage)
+
+        let expectedLightBlueIndex = Int(indeces[3])
+        XCTAssertEqual(poolManager.images[expectedLightBlueIndex], blueImage)
     }
     
     func testMulti100Complex() {
@@ -53,30 +53,39 @@ class PoolTileMapperTests: XCTestCase {
         let blueImage = UIImage(named: "BlueRectangle_10x10.png")!
         let lightGreenImage = UIImage(named: "DarkGreenRectangle_10x10.png")!
         let blackImage = UIImage(named: "BlackRectangle_10x10.png")!
-        
+
         let poolManager = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage])
 
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
         let tileRects = TileRects(numberOfTiles: 10, imageSize: CGSize(width: 100.0, height: 100.0))
-        
+
         let averageZoneColorFinder = AverageZoneColorFinder()
         let buffer = averageZoneColorFinder.findAverageZoneColor(on: UIImage(named: "MultiStripes_Aleternative_100x100.png")!.cgImage!, with: tileRects)
+
+        let indecesBuffer = poolTileMapper.match(tileRects, to: buffer).indeces
         
-        let positions = poolTileMapper.imagePositions(for: tileRects, of: buffer)
+        var indeces = [UInt16](repeating: 0, count: tileRects.rects.count)
+        let data = NSData(bytesNoCopy: (indecesBuffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count, freeWhenDone: false)
+        data.getBytes(&indeces, length: MemoryLayout<UInt16>.stride * tileRects.rects.count)
         
-        positions.forEach { (position) in
-            let modulo = Int(position.position.x) % 3
-            
-            if modulo == 0 {
-                XCTAssertEqual(position.image, greenImage)
-            } else if modulo == 1 {
-                XCTAssertEqual(position.image, blueImage)
-            } else {
-                XCTAssertEqual(position.image, redImage)
+        for x in 0 ..< tileRects.numberOfTiles {
+            for y in 0 ..< tileRects.numberOfTiles {
+                let index = x + y * tileRects.numberOfTiles
+                let image = poolManager.images[Int(indeces[index])]
+                
+                if x % 3 == 0 {
+                    XCTAssertEqual(image, greenImage)
+                } else if x % 3 == 1 {
+                    XCTAssertEqual(image, blueImage)
+                } else if x % 3 == 2 {
+                    XCTAssertEqual(image, redImage)
+                } else {
+                    fatalError()
+                }
             }
         }
     }
-    
+
     func testMulti1000Complex() {
         self.continueAfterFailure = false
 
@@ -85,28 +94,37 @@ class PoolTileMapperTests: XCTestCase {
         let blueImage = UIImage(named: "BlueRectangle_10x10.png")!
         let lightGreenImage = UIImage(named: "DarkGreenRectangle_10x10.png")!
         let blackImage = UIImage(named: "BlackRectangle_10x10.png")!
-        
+
         let poolManager = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage])
 
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
         let tileRects = TileRects(numberOfTiles: 100, imageSize: CGSize(width: 1000.0, height: 1000.0))
-        
+
         let averageZoneColorFinder = AverageZoneColorFinder()
         let buffer = averageZoneColorFinder.findAverageZoneColor(on: UIImage(named: "MultiStripes_1000x1000.png")!.cgImage!, with: tileRects)
+
+
+
+        let indecesBuffer = poolTileMapper.match(tileRects, to: buffer).indeces
         
+        var indeces = [UInt16](repeating: 0, count: tileRects.rects.count)
+        let data = NSData(bytesNoCopy: (indecesBuffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count, freeWhenDone: false)
+        data.getBytes(&indeces, length: MemoryLayout<UInt16>.stride * tileRects.rects.count)
         
-        
-        let positions = poolTileMapper.imagePositions(for: tileRects, of: buffer)
-        
-        positions.forEach { (position) in
-            let modulo = Int(position.position.x) % 3
-            
-            if modulo == 0 {
-                XCTAssertEqual(position.image, redImage)
-            } else if modulo == 1 {
-                XCTAssertEqual(position.image, greenImage)
-            } else {
-                XCTAssertEqual(position.image, blueImage)
+        for x in 0 ..< tileRects.numberOfTiles {
+            for y in 0 ..< tileRects.numberOfTiles {
+                let index = x + y * tileRects.numberOfTiles
+                let image = poolManager.images[Int(indeces[index])]
+                
+                if x % 3 == 0 {
+                    XCTAssertEqual(image, redImage)
+                } else if x % 3 == 1 {
+                    XCTAssertEqual(image, greenImage)
+                } else if x % 3 == 2 {
+                    XCTAssertEqual(image, blueImage)
+                } else {
+                    fatalError()
+                }
             }
         }
     }

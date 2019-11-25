@@ -35,7 +35,12 @@ final class PoolTileMapper {
         poolManager.preHeat(withTileSize: tileSize)
     }
     
-    func imagePositions(for tileRects: TileRects, of averageColors: MTLBuffer) -> ImageStitcher.TexturePoolGuide {
+    /// Maps images from the pool to each tile.
+    ///
+    /// - Parameters:
+    ///   - tileRects: The rectangles describing each tile.
+    ///   - averageColors: The average color of each tile
+    func match(_ tileRects: TileRects, to averageColors: MTLBuffer) -> ImageStitcher.TexturePoolGuide {
         preHeat(withTileSize: tileRects.tileSize)
         
         let commandQueue = self.device.makeCommandQueue()!
