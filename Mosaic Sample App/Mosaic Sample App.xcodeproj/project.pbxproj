@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A12FE4BC238C8503002A9F5F /* ColorConversion.metal in Sources */ = {isa = PBXBuildFile; fileRef = A12FE4BB238C8503002A9F5F /* ColorConversion.metal */; };
+		A12FE4BE238C8577002A9F5F /* ColorConversion.metal in Sources */ = {isa = PBXBuildFile; fileRef = A12FE4BB238C8503002A9F5F /* ColorConversion.metal */; };
+		A12FE4F9238EF89C002A9F5F /* ColorConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = A12FE4BD238C853C002A9F5F /* ColorConversion.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		A1421D79235E2B56004C0286 /* Mosaic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A118B5CC235E233A00770A48 /* Mosaic.framework */; };
 		A1421D7A235E2B56004C0286 /* Mosaic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A118B5CC235E233A00770A48 /* Mosaic.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A1421D7C235E2EB9004C0286 /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */; };
@@ -145,6 +148,8 @@
 		A118B5CC235E233A00770A48 /* Mosaic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mosaic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A118B5CD235E233A00770A48 /* Mosaic Sample AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mosaic Sample AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A118B5CE235E233A00770A48 /* MosaicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MosaicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A12FE4BB238C8503002A9F5F /* ColorConversion.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorConversion.metal; sourceTree = "<group>"; };
+		A12FE4BD238C853C002A9F5F /* ColorConversion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorConversion.h; sourceTree = "<group>"; };
 		A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = AverageColorZone_kernel.metal; sourceTree = "<group>"; };
 		A1421D89235E3297004C0286 /* PoolTileMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolTileMapperTests.swift; sourceTree = "<group>"; };
 		A15783972350A10100CCAEDD /* ImageStitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStitcher.swift; sourceTree = "<group>"; };
@@ -238,6 +243,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A12FE4C0238C8787002A9F5F /* Color Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A12FE4BB238C8503002A9F5F /* ColorConversion.metal */,
+				A12FE4BD238C853C002A9F5F /* ColorConversion.h */,
+			);
+			path = "Color Helpers";
+			sourceTree = "<group>";
+		};
 		A1421D77235E2B0C004C0286 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +364,7 @@
 		A1F292702357531A00B0C099 /* Pipeline */ = {
 			isa = PBXGroup;
 			children = (
+				A12FE4C0238C8787002A9F5F /* Color Helpers */,
 				A1F292712357534300B0C099 /* Color Extraction */,
 				A157839D2350A36B00CCAEDD /* TileRects.swift */,
 				A15783972350A10100CCAEDD /* ImageStitcher.swift */,
@@ -378,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1CDE06A23506DD50024548F /* Mosaic.h in Headers */,
+				A12FE4F9238EF89C002A9F5F /* ColorConversion.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +616,7 @@
 				A1DA3B9E2376B83B0008B37D /* ImageStitcher.metal in Sources */,
 				A19A222C2365A24A00A00324 /* PoolTileMapper_kernel.metal in Sources */,
 				A1421D85235E2FC7004C0286 /* AverageColorZone_kernel.metal in Sources */,
+				A12FE4BE238C8577002A9F5F /* ColorConversion.metal in Sources */,
 				A1CDE03623506DC00024548F /* ViewController.swift in Sources */,
 				A1F23F35235E52190030FAC0 /* CaptureSessionManager.swift in Sources */,
 				A1CDE03223506DC00024548F /* AppDelegate.swift in Sources */,
@@ -622,6 +639,7 @@
 				A157839A2350A30200CCAEDD /* ImagePoolManager.swift in Sources */,
 				A1CDE08023507D4A0024548F /* UIColorExtensions.swift in Sources */,
 				A1421D7C235E2EB9004C0286 /* AverageColorZone_kernel.metal in Sources */,
+				A12FE4BC238C8503002A9F5F /* ColorConversion.metal in Sources */,
 				A157839E2350A36B00CCAEDD /* TileRects.swift in Sources */,
 				A1CDE07723506F5F0024548F /* UIImageExtensions.swift in Sources */,
 				A19A222B236596ED00A00324 /* PoolTileMapper_kernel.metal in Sources */,

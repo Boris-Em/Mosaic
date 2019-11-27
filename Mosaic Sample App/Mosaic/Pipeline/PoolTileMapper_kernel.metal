@@ -8,6 +8,7 @@
 
 #include <metal_stdlib>
 using namespace metal;
+#include "Color Helpers/ColorConversion.h"
 
 /// Finds the closest color from a set of colors.
 kernel void closestColor_kernel(const device uint16_t *average_colors [[buffer(0)]],
@@ -29,7 +30,7 @@ kernel void closestColor_kernel(const device uint16_t *average_colors [[buffer(0
     int bestColorIndex = 0;
     float bestDelta = MAXFLOAT;
     
-    for(int i = 0; i < numnber_of_image_pool; i++) {
+    for (int i = 0; i < numnber_of_image_pool; i++) {
         int poolIndex = i * 4;
         int poolR = pool_colors[poolIndex];
         int poolG = pool_colors[poolIndex + 1];
