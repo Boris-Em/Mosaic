@@ -10,5 +10,6 @@
 #define ColorConversion_HEADERS
 
 half3 toXYZ(int r, int g, int b);
+half3 toLAB(int r, int g, int b);
 
 #endif /* ColorConversion_h */
