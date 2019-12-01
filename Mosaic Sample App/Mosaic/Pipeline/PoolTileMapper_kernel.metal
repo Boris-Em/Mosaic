@@ -27,6 +27,8 @@ kernel void closestColor_kernel(const device uint16_t *average_colors [[buffer(0
     int referenceG = average_colors[averageColorIndex + 1];
     int referenceB = average_colors[averageColorIndex + 2];
     
+    half3 referenceLab = toLAB(referenceR, referenceG, referenceB);
+    
     int bestColorIndex = 0;
     float bestDelta = MAXFLOAT;
     
@@ -36,7 +38,9 @@ kernel void closestColor_kernel(const device uint16_t *average_colors [[buffer(0
         int poolG = pool_colors[poolIndex + 1];
         int poolB = pool_colors[poolIndex + 2];
         
-        float delta = sqrt((pow((float)(poolR - referenceR), 2) + pow((float)(poolG - referenceG), 2) + pow((float)(poolB - referenceB), 2)));
+        half3 poolLab = toLAB(poolR, poolG, poolB);
+        
+        float delta = sqrt((pow((float)(poolLab.x - referenceLab.x), 2) + pow((float)(poolLab.y - referenceLab.y), 2) + pow((float)(poolLab.z - referenceLab.z), 2)));
         
         if (delta < bestDelta) {
             bestDelta = delta;
