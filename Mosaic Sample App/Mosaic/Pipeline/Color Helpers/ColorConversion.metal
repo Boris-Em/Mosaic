@@ -68,9 +68,9 @@ half3 toLAB(int r, int g, int b) {
         Z = (7.787 * Z) + (16.0 / 116.0);
     }
     
-    half L = (116 * Y) - 16;
-    half A = 500 * (X - Y);
-    half B = 200 * (Y - Z);
+    half L = (116.0 * Y) - 16.0;
+    half A = 500.0 * (X - Y);
+    half B = 200.0 * (Y - Z);
     
     return half3(L, A, B);
 };
