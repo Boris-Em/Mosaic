@@ -140,6 +140,12 @@
 		A1EFFDC0239AF2B600917A18 /* Rectangle_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFD8A239AF2B600917A18 /* Rectangle_1.jpg */; };
 		A1EFFDC2239AF7AD00917A18 /* BeigeRectangle_1x1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFDC1239AF7AD00917A18 /* BeigeRectangle_1x1.jpg */; };
 		A1EFFDC3239AF7AD00917A18 /* BeigeRectangle_1x1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFDC1239AF7AD00917A18 /* BeigeRectangle_1x1.jpg */; };
+		A1EFFDC8239B16EF00917A18 /* BrownRectangle_1x1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFDC7239B16EF00917A18 /* BrownRectangle_1x1.jpg */; };
+		A1EFFDC9239B16EF00917A18 /* BrownRectangle_1x1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFDC7239B16EF00917A18 /* BrownRectangle_1x1.jpg */; };
+		A1EFFDCB239B1C9B00917A18 /* BrownRectangle_100x100.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFDCA239B1C9A00917A18 /* BrownRectangle_100x100.jpg */; };
+		A1EFFDCC239B1C9B00917A18 /* BrownRectangle_100x100.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFDCA239B1C9A00917A18 /* BrownRectangle_100x100.jpg */; };
+		A1EFFDCE239B1E1600917A18 /* Test_image_4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFDCD239B1E1600917A18 /* Test_image_4.jpeg */; };
+		A1EFFDCF239B1E1600917A18 /* Test_image_4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFDCD239B1E1600917A18 /* Test_image_4.jpeg */; };
 		A1F23F33235E45720030FAC0 /* ImagePoolManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F23F32235E45720030FAC0 /* ImagePoolManagerTests.swift */; };
 		A1F23F35235E52190030FAC0 /* CaptureSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F23F34235E52190030FAC0 /* CaptureSessionManager.swift */; };
 		A1F2924D2356590900B0C099 /* AverageZoneColorFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2924C2356590900B0C099 /* AverageZoneColorFinderTests.swift */; };
@@ -288,6 +294,9 @@
 		A1EFFD89239AF2B600917A18 /* Rectangle_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rectangle_3.jpg; sourceTree = "<group>"; };
 		A1EFFD8A239AF2B600917A18 /* Rectangle_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rectangle_1.jpg; sourceTree = "<group>"; };
 		A1EFFDC1239AF7AD00917A18 /* BeigeRectangle_1x1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BeigeRectangle_1x1.jpg; sourceTree = "<group>"; };
+		A1EFFDC7239B16EF00917A18 /* BrownRectangle_1x1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BrownRectangle_1x1.jpg; sourceTree = "<group>"; };
+		A1EFFDCA239B1C9A00917A18 /* BrownRectangle_100x100.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BrownRectangle_100x100.jpg; sourceTree = "<group>"; };
+		A1EFFDCD239B1E1600917A18 /* Test_image_4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test_image_4.jpeg; sourceTree = "<group>"; };
 		A1F23F32235E45720030FAC0 /* ImagePoolManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePoolManagerTests.swift; sourceTree = "<group>"; };
 		A1F23F34235E52190030FAC0 /* CaptureSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureSessionManager.swift; sourceTree = "<group>"; };
 		A1F2924C2356590900B0C099 /* AverageZoneColorFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinderTests.swift; sourceTree = "<group>"; };
@@ -425,6 +434,7 @@
 				A15783A1235136E500CCAEDD /* Test_image_1.jpg */,
 				A1EFFD66239AC1A500917A18 /* Test_image_2.jpeg */,
 				A1EFFD67239AC1A500917A18 /* Test_image_3.jpeg */,
+				A1EFFDCD239B1E1600917A18 /* Test_image_4.jpeg */,
 				A19FE6642373092C000E4BDD /* MultiStripes_1000x1000.png */,
 				A19FE66823730F75000E4BDD /* MultiStripes_100x100.png */,
 				A19FE66D23732CB0000E4BDD /* MultiStripes_Aleternative_100x100.png */,
@@ -450,7 +460,9 @@
 				A1F2925A235662F400B0C099 /* GrayRectangle_50x50.jpg */,
 				A1F2925D23573D7200B0C099 /* LightGreenRectangle_50x50.jpg */,
 				A19FE671237347AF000E4BDD /* DarkGreenRectangle_10x10.png */,
+				A1EFFDC7239B16EF00917A18 /* BrownRectangle_1x1.jpg */,
 				A1EFFDC1239AF7AD00917A18 /* BeigeRectangle_1x1.jpg */,
+				A1EFFDCA239B1C9A00917A18 /* BrownRectangle_100x100.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -675,6 +687,7 @@
 				A1F2925B235662F400B0C099 /* GrayRectangle_50x50.jpg in Resources */,
 				A1EFFDC2239AF7AD00917A18 /* BeigeRectangle_1x1.jpg in Resources */,
 				A1CE3A2A23550CEE00EC3E2D /* RedRectangle_500x500.jpg in Resources */,
+				A1EFFDCE239B1E1600917A18 /* Test_image_4.jpeg in Resources */,
 				A15783A2235136E500CCAEDD /* Test_image_1.jpg in Resources */,
 				A1EFFD99239AF2B600917A18 /* Rectangle_22.jpg in Resources */,
 				A1EFFD6B239AC1AE00917A18 /* Test_image_3.jpeg in Resources */,
@@ -698,6 +711,7 @@
 				A1CDE03B23506DC10024548F /* Assets.xcassets in Resources */,
 				A1F292552356626A00B0C099 /* BlackRectangle_50x50.jpg in Resources */,
 				A1EFFD6A239AC1AB00917A18 /* Test_image_2.jpeg in Resources */,
+				A1EFFDCB239B1C9B00917A18 /* BrownRectangle_100x100.jpg in Resources */,
 				A1F2925E23573D7200B0C099 /* LightGreenRectangle_50x50.jpg in Resources */,
 				A19FE66923730F75000E4BDD /* MultiStripes_500x500.png in Resources */,
 				A1F2925023565CAE00B0C099 /* GreenRectangle_50x50.jpg in Resources */,
@@ -710,6 +724,7 @@
 				A1EFFDA3239AF2B600917A18 /* Rectangle_20.jpg in Resources */,
 				A1EFFDB5239AF2B600917A18 /* Rectangle_6.jpg in Resources */,
 				A1CE3A2D23550E3600EC3E2D /* RedRectangle_50x50.jpg in Resources */,
+				A1EFFDC8239B16EF00917A18 /* BrownRectangle_1x1.jpg in Resources */,
 				A1CDE03923506DC00024548F /* Main.storyboard in Resources */,
 				A19FE584236A392A000E4BDD /* MultiRectangle_4x4.png in Resources */,
 				A1EFFDAF239AF2B600917A18 /* Rectangle_10.jpg in Resources */,
@@ -738,10 +753,12 @@
 				A1EFFDB4239AF2B600917A18 /* Rectangle_23.jpg in Resources */,
 				A1CE3A2E23550E3600EC3E2D /* RedRectangle_50x50.jpg in Resources */,
 				A19FE66A23730F75000E4BDD /* MultiStripes_500x500.png in Resources */,
+				A1EFFDCF239B1E1600917A18 /* Test_image_4.jpeg in Resources */,
 				A1EFFDA6239AF2B600917A18 /* Rectangle_17.jpg in Resources */,
 				A1EFFD90239AF2B600917A18 /* Rectangle_0.jpg in Resources */,
 				A1EFFDB0239AF2B600917A18 /* Rectangle_10.jpg in Resources */,
 				A1EFFD8E239AF2B600917A18 /* Rectangle_9.jpg in Resources */,
+				A1EFFDCC239B1C9B00917A18 /* BrownRectangle_100x100.jpg in Resources */,
 				A19FE67B237347B0000E4BDD /* GreenRectangle_10x10.png in Resources */,
 				A1EFFDA0239AF2B600917A18 /* Rectangle_11.jpg in Resources */,
 				A1CE3A2B23550CEE00EC3E2D /* RedRectangle_500x500.jpg in Resources */,
@@ -763,6 +780,7 @@
 				A1CE3A3723550EF700EC3E2D /* RedRectangle_40x40.jpg in Resources */,
 				A1CE3A3A235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */,
 				A1CE3A3D2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */,
+				A1EFFDC9239B16EF00917A18 /* BrownRectangle_1x1.jpg in Resources */,
 				A19FE679237347B0000E4BDD /* BlackRectangle_10x10.png in Resources */,
 				A1EFFD98239AF2B600917A18 /* Rectangle_12.jpg in Resources */,
 				A1F292562356626A00B0C099 /* BlackRectangle_50x50.jpg in Resources */,

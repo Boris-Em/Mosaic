@@ -283,11 +283,11 @@ extension AverageZoneColorFinderTests {
         
         for index in 0..<colors.count / 4  {
             let actualIndex = index * 4
-            let color = UIColor(red: CGFloat(colors[actualIndex]) / 255, green: CGFloat(colors[actualIndex + 1]) / 255, blue: CGFloat(colors[actualIndex + 2]) / 255, alpha: 1.0)
+            let color = UIColor(red: CGFloat(colors[actualIndex]) / 255.0, green: CGFloat(colors[actualIndex + 1]) / 255.0, blue: CGFloat(colors[actualIndex + 2]) / 255.0, alpha: 1.0)
             uiColors.append(color)
         }
         
-        UIGraphicsBeginImageContextWithOptions(tileRects.imageSize, false, 0.0)
+        UIGraphicsBeginImageContextWithOptions(tileRects.imageSize, true, 0.0)
         
         for (index, rect) in tileRects.rects.enumerated() {
             let color = uiColors[index]
