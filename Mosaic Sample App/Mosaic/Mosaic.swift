@@ -18,7 +18,7 @@ public final class Mosaic {
     // MARK: - Public
     
     /// The numbner of tiles in the mosaic per length (width & height).
-    let numberOfTiles: Int = 70
+    let numberOfTiles: Int = 200
     
     public init(imagePool: [UIImage]) throws {
         guard imagePool.count > 3 && imagePool.count < 28 else {
