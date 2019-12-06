@@ -128,5 +128,27 @@ class PoolTileMapperTests: XCTestCase {
             }
         }
     }
+        
+}
 
+extension PoolTileMapperTests {
+    
+    static func stitch(images: [UIImage], imageIndeces: [UInt16], tileRect: TileRects) -> UIImage {
+        defer {
+            UIGraphicsEndImageContext()
+        }
+
+        UIGraphicsBeginImageContextWithOptions(tileRect.imageSize, true, 1.0)
+        
+        tileRect.rects.enumerated().forEach { (index, rect) in
+            let imageIndex = imageIndeces[index]
+            let image = images[Int(imageIndex)]
+            image.draw(at: rect.origin, blendMode: .normal, alpha: 1.0)
+        }
+        
+        let sticthedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
+        return sticthedImage
+    }
+    
 }
