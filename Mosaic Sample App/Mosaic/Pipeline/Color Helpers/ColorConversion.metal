@@ -46,9 +46,9 @@ half3 toXYZ(int r, int g, int b) {
 half3 toLAB(int r, int g, int b) {
     half3 XYZ = toXYZ(r, g, b);
     
-    half X = XYZ.x / 100.0;
+    half X = XYZ.x / 95.047;
     half Y = XYZ.y / 100.0;
-    half Z = XYZ.z / 100.0;
+    half Z = XYZ.z / 108.883;
     
     if (X > 0.008856) {
         X = pow(X, half(1.0 / 3.0));
