@@ -74,3 +74,33 @@ half3 toLAB(int r, int g, int b) {
     
     return half3(L, A, B);
 };
+
+float deltaEWithCIE94(half3 lhsLab, half3 rhsLab) {
+    const float kL = 1.0;
+    const float kC = 1.0;
+    const float kH = 1.0;
+    const float k1 = 0.045;
+    const float k2 = 0.015;
+    const float sL = 1.0;
+    
+    const float c1 = sqrt(pow(lhsLab.y, 2) + pow(lhsLab.z, 2));
+    const float sC = 1 + k1 * c1;
+    const float sH = 1 + k2 * c1;
+            
+    const float deltaL = lhsLab.x - rhsLab.x;
+    const float deltaA = lhsLab.y - rhsLab.y;
+    const float deltaB = lhsLab.z - rhsLab.z;
+    
+    const float c2 = sqrt(pow(rhsLab.y, 2) + pow(rhsLab.z, 2));
+    const float deltaCab = c1 - c2;
+    
+    const float deltaHab = sqrt(pow(deltaA, 2) + pow(deltaB, 2) - pow(deltaCab, 2));
+    
+    const float p1 = pow(deltaL / (kL * sL), 2);
+    const float p2 = pow(deltaCab / (kC * sC), 2);
+    const float p3 = pow(deltaHab / (kH * sH), 2);
+    
+    const float deltaE = sqrt(p1 + p2 + p3);
+
+    return deltaE;
+}

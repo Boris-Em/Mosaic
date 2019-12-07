@@ -30,22 +30,8 @@ kernel void closestColor_kernel(const device uint16_t *average_colors [[buffer(0
     half3 referenceLab = toLAB(referenceR, referenceG, referenceB);
     
     int bestColorIndex = 0;
-    float bestDelta = MAXFLOAT;
-    
-    // CIE94
-    
-    float kL = 1.0;
-    float kC = 1.0;
-    float kH = 1.0;
-    float k1 = 0.045;
-    float k2 = 0.015;
-    float sL = 1.0;
-    
-    float c1 = sqrt(pow(referenceLab.y, 2) + pow(referenceLab.z, 2));
-    
-    float sC = 1 + k1 * c1;
-    float sH = 1 + k2 * c1;
-    
+    float bestDeltaE = MAXFLOAT;
+
     for (int i = 0; i < numnber_of_image_pool; i++) {
         int poolIndex = i * 4;
         int poolR = pool_colors[poolIndex];
@@ -54,23 +40,10 @@ kernel void closestColor_kernel(const device uint16_t *average_colors [[buffer(0
         
         half3 poolLab = toLAB(poolR, poolG, poolB);
                 
-        float deltaL = referenceLab.x - poolLab.x;
-        float deltaA = referenceLab.y - poolLab.y;
-        float deltaB = referenceLab.z - poolLab.z;
+        const float deltaE = deltaEWithCIE94(referenceLab, poolLab);
         
-        float c2 = sqrt(pow(poolLab.y, 2) + pow(poolLab.z, 2));
-        float deltaCab = c1 - c2;
-        
-        float deltaHab = sqrt(pow(deltaA, 2) + pow(deltaB, 2) - pow(deltaCab, 2));
-        
-        float p1 = pow(deltaL / (kL * sL), 2);
-        float p2 = pow(deltaCab / (kC * sC), 2);
-        float p3 = pow(deltaHab / (kH * sH), 2);
-        
-        float delta = sqrt(p1 + p2 + p3);
-                
-        if (delta < bestDelta) {
-            bestDelta = delta;
+        if (deltaE < bestDeltaE) {
+            bestDeltaE = deltaE;
             bestColorIndex = i;
         }
     }
