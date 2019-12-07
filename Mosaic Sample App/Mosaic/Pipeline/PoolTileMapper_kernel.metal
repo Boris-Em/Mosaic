@@ -40,7 +40,7 @@ kernel void closestColor_kernel(const device uint16_t *average_colors [[buffer(0
         
         half3 poolLab = toLAB(poolR, poolG, poolB);
                 
-        const float deltaE = deltaEWithCIE94(referenceLab, poolLab);
+        const float deltaE = deltaEWithCIE76(referenceLab, poolLab);
         
         if (deltaE < bestDeltaE) {
             bestDeltaE = deltaE;

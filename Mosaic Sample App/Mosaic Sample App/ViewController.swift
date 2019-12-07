@@ -25,6 +25,8 @@ class ViewController: UIViewController {
             images.append(UIImage(named: "Rectangle_\(i).jpg")!)
         }
         
+        images = images + [#imageLiteral(resourceName: "IMG_2006.jpeg"), #imageLiteral(resourceName: "IMG_2055.jpeg"), #imageLiteral(resourceName: "IMG_3991.jpeg"), #imageLiteral(resourceName: "IMG_4414.jpeg"), #imageLiteral(resourceName: "IMG_8293.jpeg"), #imageLiteral(resourceName: "IMG_9945.jpeg"), #imageLiteral(resourceName: "IMG_9346.jpg"), #imageLiteral(resourceName: "IMG_8348.jpg"), #imageLiteral(resourceName: "IMG_9825.jpg")]
+        
         return try! Mosaic(imagePool: images)
     }()
 
