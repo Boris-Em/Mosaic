@@ -167,10 +167,10 @@ class PoolTileMapperTests: XCTestCase {
         let poolManager = ImagePoolManager(images: images)
 
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
-        let tileRects = TileRects(numberOfTiles: 100, imageSize: CGSize(width: 3024, height: 4032))
+        let tileRects = TileRects(numberOfTiles: 150, imageSize: CGSize(width: 150, height: 200))
 
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let buffer = averageZoneColorFinder.findAverageZoneColor(on: UIImage(named: "Test_image_4.jpeg")!.cgImage!, with: tileRects)
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: UIImage(named: "Test_image_5.jpg")!.cgImage!, with: tileRects)
         
         var colors = [UInt16](repeating: 0, count: tileRects.rects.count * 4)
         
