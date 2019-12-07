@@ -75,6 +75,16 @@ half3 toLAB(int r, int g, int b) {
     return half3(L, A, B);
 };
 
+float deltaEWithRGB(half3 lhsRgb, half3 rhsRgb) {
+    const float deltaE = sqrt((pow((rhsRgb.x - lhsRgb.x), 2) + pow((rhsRgb.y - lhsRgb.y), 2) + pow((rhsRgb.z - lhsRgb.z), 2)));
+    return deltaE;
+}
+
+float deltaEWithCIE76(half3 lhsLab, half3 rhsLab) {
+    const float deltaE = sqrt((pow((rhsLab.x - lhsLab.x), 2) + pow((rhsLab.y - lhsLab.y), 2) + pow((rhsLab.z - lhsLab.z), 2)));
+    return deltaE;
+}
+
 float deltaEWithCIE94(half3 lhsLab, half3 rhsLab) {
     const float kL = 1.0;
     const float kC = 1.0;
