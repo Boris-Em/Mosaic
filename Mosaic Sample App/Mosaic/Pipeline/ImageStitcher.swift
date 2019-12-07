@@ -39,14 +39,12 @@ class ImageStitcher {
         let encoder = commandBuffer.makeComputeCommandEncoder()!
         encoder.setComputePipelineState(pipelineState)
         
-        encoder.setTextures(texturePositions.texturePool, range: 0 ..< texturePositions.texturePool.count)
-        
-        let firstIndexAfterImagePool = 29
-        
-        encoder.setBuffer(texturePositions.indeces, offset: 0, index: firstIndexAfterImagePool)
+        encoder.setTextures(texturePositions.texturePool, range: 3 ..< texturePositions.texturePool.count + 3)
+                
+        encoder.setBuffer(texturePositions.indeces, offset: 0, index: 0)
         
         var cNumberOfTiles: UInt8 = UInt8(numberOfTiles)
-        encoder.setBytes(&cNumberOfTiles, length: MemoryLayout<UInt8>.size, index: firstIndexAfterImagePool + 1)
+        encoder.setBytes(&cNumberOfTiles, length: MemoryLayout<UInt8>.size, index: 1)
         
         let outTextureDescriptor = MTLTextureDescriptor()
         outTextureDescriptor.pixelFormat = .bgra8Unorm_srgb
@@ -56,7 +54,7 @@ class ImageStitcher {
         
         let outTexture = device.makeTexture(descriptor: outTextureDescriptor)!
         
-        encoder.setTexture(outTexture, index: firstIndexAfterImagePool + 2)
+        encoder.setTexture(outTexture, index: 2)
         
         let threadsPerThreadgroup = MTLSizeMake(1, 1, 1)
         let threadgroupsPerGrid = MTLSize(width: numberOfTiles, height: numberOfTiles, depth: 1)

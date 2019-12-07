@@ -9,10 +9,10 @@
 #include <metal_stdlib>
 using namespace metal;
 
-kernel void imageStitch_kernel(const array<texture2d<half>, 28> inTextures [[ texture(0) ]],
-                                    const device uint16_t *indeces [[ buffer(29) ]],
-                                    constant uint8_t &number_of_tiles [[ buffer(30) ]],
-                                    texture2d<half, access::write> outTexture [[ texture(31) ]],
+kernel void imageStitch_kernel(const array<texture2d<half>, 50> inTextures [[ texture(3) ]],
+                                    const device uint16_t *indeces [[ buffer(0) ]],
+                                    constant uint8_t &number_of_tiles [[ buffer(1) ]],
+                                    texture2d<half, access::write> outTexture [[ texture(2) ]],
                                     uint2 threadgroup_position_in_grid   [[ threadgroup_position_in_grid ]],
                                     uint2 thread_position_in_threadgroup [[ thread_position_in_threadgroup ]],
                                     uint2 threads_per_threadgroup        [[ threads_per_threadgroup ]]) {

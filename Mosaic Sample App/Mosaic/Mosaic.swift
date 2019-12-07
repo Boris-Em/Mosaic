@@ -21,7 +21,7 @@ public final class Mosaic {
     let numberOfTiles: Int = 150
     
     public init(imagePool: [UIImage]) throws {
-        guard imagePool.count > 3 && imagePool.count < 28 else {
+        guard imagePool.count > 3 && imagePool.count < 50 else {
             let error = NSError()
             throw error
         }
