@@ -45,6 +45,14 @@
 		A19FE679237347B0000E4BDD /* BlackRectangle_10x10.png in Resources */ = {isa = PBXBuildFile; fileRef = A19FE672237347AF000E4BDD /* BlackRectangle_10x10.png */; };
 		A19FE67A237347B0000E4BDD /* GreenRectangle_10x10.png in Resources */ = {isa = PBXBuildFile; fileRef = A19FE673237347AF000E4BDD /* GreenRectangle_10x10.png */; };
 		A19FE67B237347B0000E4BDD /* GreenRectangle_10x10.png in Resources */ = {isa = PBXBuildFile; fileRef = A19FE673237347AF000E4BDD /* GreenRectangle_10x10.png */; };
+		A1A1D393239EC79E00C52D13 /* DarkGreenRectangle_100x100.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1A1D392239EC79E00C52D13 /* DarkGreenRectangle_100x100.jpg */; };
+		A1A1D394239EC79E00C52D13 /* DarkGreenRectangle_100x100.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1A1D392239EC79E00C52D13 /* DarkGreenRectangle_100x100.jpg */; };
+		A1A1D396239EC9E500C52D13 /* Test_image_6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1A1D395239EC9E500C52D13 /* Test_image_6.jpg */; };
+		A1A1D397239EC9E500C52D13 /* Test_image_6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1A1D395239EC9E500C52D13 /* Test_image_6.jpg */; };
+		A1A1D399239ECD3900C52D13 /* GreenShades.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A1D398239ECD3900C52D13 /* GreenShades.png */; };
+		A1A1D39A239ECD3900C52D13 /* GreenShades.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A1D398239ECD3900C52D13 /* GreenShades.png */; };
+		A1A1D39C239ECE9E00C52D13 /* GreenRectangle_100x100.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1A1D39B239ECE9E00C52D13 /* GreenRectangle_100x100.jpg */; };
+		A1A1D39D239ECE9E00C52D13 /* GreenRectangle_100x100.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1A1D39B239ECE9E00C52D13 /* GreenRectangle_100x100.jpg */; };
 		A1B0E2922351C1BB0011040B /* AverageZoneColorFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2912351C1BB0011040B /* AverageZoneColorFinder.swift */; };
 		A1B0E2942351C5230011040B /* ImageTileSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */; };
 		A1B0E2982351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0E2972351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift */; };
@@ -237,6 +245,10 @@
 		A19FE671237347AF000E4BDD /* DarkGreenRectangle_10x10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DarkGreenRectangle_10x10.png; sourceTree = "<group>"; };
 		A19FE672237347AF000E4BDD /* BlackRectangle_10x10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackRectangle_10x10.png; sourceTree = "<group>"; };
 		A19FE673237347AF000E4BDD /* GreenRectangle_10x10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenRectangle_10x10.png; sourceTree = "<group>"; };
+		A1A1D392239EC79E00C52D13 /* DarkGreenRectangle_100x100.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DarkGreenRectangle_100x100.jpg; sourceTree = "<group>"; };
+		A1A1D395239EC9E500C52D13 /* Test_image_6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test_image_6.jpg; sourceTree = "<group>"; };
+		A1A1D398239ECD3900C52D13 /* GreenShades.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenShades.png; sourceTree = "<group>"; };
+		A1A1D39B239ECE9E00C52D13 /* GreenRectangle_100x100.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GreenRectangle_100x100.jpg; sourceTree = "<group>"; };
 		A1B0E2912351C1BB0011040B /* AverageZoneColorFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinder.swift; sourceTree = "<group>"; };
 		A1B0E2932351C5230011040B /* ImageTileSequenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTileSequenceTests.swift; sourceTree = "<group>"; };
 		A1B0E2972351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageZoneColorFinderPerformanceTests.swift; sourceTree = "<group>"; };
@@ -439,6 +451,7 @@
 				A1EFFD67239AC1A500917A18 /* Test_image_3.jpeg */,
 				A1EFFDCD239B1E1600917A18 /* Test_image_4.jpeg */,
 				A1EFFDD0239B23F900917A18 /* Test_image_5.jpg */,
+				A1A1D395239EC9E500C52D13 /* Test_image_6.jpg */,
 				A19FE6642373092C000E4BDD /* MultiStripes_1000x1000.png */,
 				A19FE66823730F75000E4BDD /* MultiStripes_100x100.png */,
 				A19FE66D23732CB0000E4BDD /* MultiStripes_Aleternative_100x100.png */,
@@ -456,6 +469,9 @@
 				A1CE3A2323550BF400EC3E2D /* RedRectangle_2x2.jpg */,
 				A1F2924E23565CAA00B0C099 /* GreenRectangle_50x50.jpg */,
 				A19FE673237347AF000E4BDD /* GreenRectangle_10x10.png */,
+				A1A1D392239EC79E00C52D13 /* DarkGreenRectangle_100x100.jpg */,
+				A1A1D39B239ECE9E00C52D13 /* GreenRectangle_100x100.jpg */,
+				A1A1D398239ECD3900C52D13 /* GreenShades.png */,
 				A1F2925123565CF200B0C099 /* BlueRectangle_50x50.jpg */,
 				A19FE670237347AF000E4BDD /* BlueRectangle_10x10.png */,
 				A1F292542356626A00B0C099 /* BlackRectangle_50x50.jpg */,
@@ -685,6 +701,8 @@
 				A1CE3A3323550ED400EC3E2D /* RedRectangle_30x30.jpg in Resources */,
 				A1EFFDAD239AF2B600917A18 /* Rectangle_16.jpg in Resources */,
 				A1EFFDBF239AF2B600917A18 /* Rectangle_1.jpg in Resources */,
+				A1A1D393239EC79E00C52D13 /* DarkGreenRectangle_100x100.jpg in Resources */,
+				A1A1D39C239ECE9E00C52D13 /* GreenRectangle_100x100.jpg in Resources */,
 				A1CE3A2423550BF400EC3E2D /* RedRectangle_2x2.jpg in Resources */,
 				A19FE674237347B0000E4BDD /* BlueRectangle_10x10.png in Resources */,
 				A1EFFDB9239AF2B600917A18 /* Rectangle_19.jpg in Resources */,
@@ -705,6 +723,7 @@
 				A1EFFDB3239AF2B600917A18 /* Rectangle_23.jpg in Resources */,
 				A1EFFD9F239AF2B600917A18 /* Rectangle_11.jpg in Resources */,
 				A1EFFDB1239AF2B600917A18 /* Rectangle_13.jpg in Resources */,
+				A1A1D399239ECD3900C52D13 /* GreenShades.png in Resources */,
 				A19FE581236A2F4B000E4BDD /* MultiRectangle_60x60.jpg in Resources */,
 				A1EFFD9B239AF2B600917A18 /* Rectangle_5.jpg in Resources */,
 				A1EFFD9D239AF2B600917A18 /* Rectangle_4.jpg in Resources */,
@@ -720,6 +739,7 @@
 				A1F2925E23573D7200B0C099 /* LightGreenRectangle_50x50.jpg in Resources */,
 				A19FE66923730F75000E4BDD /* MultiStripes_500x500.png in Resources */,
 				A1F2925023565CAE00B0C099 /* GreenRectangle_50x50.jpg in Resources */,
+				A1A1D396239EC9E500C52D13 /* Test_image_6.jpg in Resources */,
 				A1EFFDA1239AF2B600917A18 /* Rectangle_2.jpg in Resources */,
 				A1CE3A3C2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */,
 				A19FE676237347B0000E4BDD /* DarkGreenRectangle_10x10.png in Resources */,
@@ -759,7 +779,11 @@
 				A1CE3A2E23550E3600EC3E2D /* RedRectangle_50x50.jpg in Resources */,
 				A19FE66A23730F75000E4BDD /* MultiStripes_500x500.png in Resources */,
 				A1EFFDCF239B1E1600917A18 /* Test_image_4.jpeg in Resources */,
+				A1A1D394239EC79E00C52D13 /* DarkGreenRectangle_100x100.jpg in Resources */,
+				A1A1D39A239ECD3900C52D13 /* GreenShades.png in Resources */,
 				A1EFFDA6239AF2B600917A18 /* Rectangle_17.jpg in Resources */,
+				A1A1D397239EC9E500C52D13 /* Test_image_6.jpg in Resources */,
+				A1A1D39D239ECE9E00C52D13 /* GreenRectangle_100x100.jpg in Resources */,
 				A1EFFD90239AF2B600917A18 /* Rectangle_0.jpg in Resources */,
 				A1EFFDB0239AF2B600917A18 /* Rectangle_10.jpg in Resources */,
 				A1EFFD8E239AF2B600917A18 /* Rectangle_9.jpg in Resources */,

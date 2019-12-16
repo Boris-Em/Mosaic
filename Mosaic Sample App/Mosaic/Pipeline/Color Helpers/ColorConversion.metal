@@ -20,13 +20,13 @@ half3 toXYZ(int r, int g, int b) {
         var_R = var_R / 12.92;
     }
     
-    if ( var_G > 0.04045 ) {
+    if (var_G > 0.04045 ) {
         var_G = pow((var_G + 0.055) / 1.055, 2.4);
     } else {
         var_G = var_G / 12.92;
     }
     
-    if ( var_B > 0.04045 ) {
+    if (var_B > 0.04045 ) {
         var_B = pow((var_B + 0.055) / 1.055, 2.4);
     } else {
         var_B = var_B / 12.92;

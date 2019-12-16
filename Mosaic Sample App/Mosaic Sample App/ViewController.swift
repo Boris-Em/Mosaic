@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     private let captureSessionManager = CaptureSessionManager()
     private lazy var mosaic: Mosaic = {
         var images = [UIImage]()
-        for i in 0..<27 {
+        for i in 0..<30 {
             images.append(UIImage(named: "Rectangle_\(i).jpg")!)
         }
         

@@ -37,6 +37,38 @@ class PoolTileMapperTests: XCTestCase {
             XCTAssertEqual(poolManager.images[expectedBlackIndex], blackImage)
         }
     }
+    
+    func testDarkGreen() {
+        self.continueAfterFailure = false
+
+        var images = [UIImage]()
+        for i in 0..<27 {
+            images.append(UIImage(named: "Rectangle_\(i).jpg")!)
+        }
+        
+        let poolManager = ImagePoolManager(images: images)
+
+        let poolTileMapper = PoolTileMapper(poolManager: poolManager)
+        let tileRects = TileRects(numberOfTiles: 1, imageSize: CGSize(width: 121, height: 157))
+
+        let averageZoneColorFinder = AverageZoneColorFinder()
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: UIImage(named: "GreenRectangle_100x100.jpg")!.cgImage!, with: tileRects)
+        
+        var colors = [UInt16](repeating: 0, count: tileRects.rects.count * 4)
+        
+        let colorsData = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4, freeWhenDone: false)
+        colorsData.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4)
+
+        let averageColorImage = AverageZoneColorFinderTests().image(from: colors, tileRects: tileRects)
+        
+        let indecesBuffer = poolTileMapper.match(tileRects, to: buffer).indeces
+        
+        var indeces = [UInt16](repeating: 0, count: tileRects.rects.count)
+        let data = NSData(bytesNoCopy: (indecesBuffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count, freeWhenDone: false)
+        data.getBytes(&indeces, length: MemoryLayout<UInt16>.stride * tileRects.rects.count)
+        
+        let stitchedImage = PoolTileMapperTests.stitch(images: images, imageIndeces: indeces, tileRect: tileRects)
+    }
         
     func testMulti100() {
         let redImage = UIImage(named: "RedRectangle_50x50.jpg")!
@@ -160,17 +192,20 @@ class PoolTileMapperTests: XCTestCase {
         self.continueAfterFailure = false
 
         var images = [UIImage]()
-        for i in 0..<27 {
-            images.append(UIImage(named: "Rectangle_\(i).jpg")!)
-        }
+//        for i in 0..<27 {
+//            images.append(UIImage(named: "Rectangle_\(i).jpg")!)
+//        }
         
+        images.append(UIImage(named: "Rectangle_0.jpg")!)
+        images.append(UIImage(named: "Rectangle_10.jpg")!)
+
         let poolManager = ImagePoolManager(images: images)
 
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
-        let tileRects = TileRects(numberOfTiles: 150, imageSize: CGSize(width: 150, height: 200))
+        let tileRects = TileRects(numberOfTiles: 150, imageSize: CGSize(width: 3024, height: 4032))
 
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let buffer = averageZoneColorFinder.findAverageZoneColor(on: UIImage(named: "Test_image_5.jpg")!.cgImage!, with: tileRects)
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: UIImage(named: "Test_image_6.jpg")!.cgImage!, with: tileRects)
         
         var colors = [UInt16](repeating: 0, count: tileRects.rects.count * 4)
         
