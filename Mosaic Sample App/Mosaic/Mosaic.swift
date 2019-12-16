@@ -90,7 +90,6 @@ public final class Mosaic {
     }
     
     private func mosaic(with imageSize: CGSize, _ tileRects: TileRects, _ averageColors: MTLBuffer) -> MTLTexture? {
-
         let texturePositions = imagePositionMapper.match(tileRects, to: averageColors)
         let mosaicImage = ImageStitcher().stitch(texturePositions: texturePositions, to: imageSize, numberOfTiles: tileRects.numberOfTiles)
 
