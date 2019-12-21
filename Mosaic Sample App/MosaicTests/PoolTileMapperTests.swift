@@ -192,9 +192,9 @@ class PoolTileMapperTests: XCTestCase {
         self.continueAfterFailure = false
 
         var images = [UIImage]()
-//        for i in 0..<27 {
-//            images.append(UIImage(named: "Rectangle_\(i).jpg")!)
-//        }
+        for i in 0..<27 {
+            images.append(UIImage(named: "Rectangle_\(i).jpg")!)
+        }
         
         images.append(UIImage(named: "Rectangle_0.jpg")!)
         images.append(UIImage(named: "Rectangle_10.jpg")!)
