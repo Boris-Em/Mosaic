@@ -11,16 +11,16 @@ import MetalKit
 
 /// This class provides a fast way of finding the average color of multiple zones of an image.
 class AverageZoneColorFinder {
-
-    private lazy var device: MTLDevice = {
-        return MTLCreateSystemDefaultDevice()!
-    }()
     
     private lazy var pipelineState: MTLComputePipelineState = {
-        let defaultLibrary: MTLLibrary! = self.device.makeDefaultLibrary()
-        let function = defaultLibrary.makeFunction(name: "averageColorZone_kernel")!
-        let pipelineState = try! self.device.makeComputePipelineState(function: function)
-        return pipelineState
+        let shaderLibrary = MetalResourceManager.shared.shaderLibrary
+        let function = shaderLibrary.makeFunction(name: "averageColorZone_kernel")!
+        do {
+            let pipelineState = try shaderLibrary.device.makeComputePipelineState(function: function)
+            return pipelineState
+        } catch {
+            fatalError("Could not make compute pipeline State: \(error)")
+        }
     }()
     
     func preHeat() {
@@ -28,13 +28,15 @@ class AverageZoneColorFinder {
     }
     
     func findAverageZoneColor(on image: CGImage, with imageSequence: TileRects) -> MTLBuffer {
-        let textureLoader = MTKTextureLoader(device: self.device)
+        let metalDevice = MetalResourceManager.shared.device
+        let textureLoader = MTKTextureLoader(device: metalDevice)
         let texture = try! textureLoader.newTexture(cgImage: image, options: [MTKTextureLoader.Option.SRGB: 0, MTKTextureLoader.Option.origin: MTKTextureLoader.Origin.topLeft])
         return findAverageZoneColor(on: texture, with: imageSequence)
     }
     
     func findAverageZoneColor(on texture: MTLTexture, with imageSequence: TileRects) -> MTLBuffer {
-        let commandQueue = self.device.makeCommandQueue()!
+        let metalDevice = MetalResourceManager.shared.device
+        let commandQueue = metalDevice.makeCommandQueue()!
         let commandBuffer = commandQueue.makeCommandBuffer()!
         let encoder = commandBuffer.makeComputeCommandEncoder()!
         encoder.setComputePipelineState(pipelineState)
@@ -42,7 +44,7 @@ class AverageZoneColorFinder {
         encoder.setTexture(texture, index: 0)
         
         var output = [UInt16](repeating: 0, count: imageSequence.count * 4)
-        let outputBuffer = self.device.makeBuffer(bytes: &output, length: MemoryLayout<UInt16>.stride * imageSequence.count * 4, options: [])
+        let outputBuffer = metalDevice.makeBuffer(bytes: &output, length: MemoryLayout<UInt16>.stride * imageSequence.count * 4, options: [])
         encoder.setBuffer(outputBuffer, offset: 0, index: 1)
         
         var cNumberOfTiles: UInt8 = UInt8(imageSequence.numberOfTiles)

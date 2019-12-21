@@ -22,19 +22,20 @@ class ImageStitcher {
         let texturePool: [MTLTexture]
     }
     
-    private lazy var device: MTLDevice = {
-        return MTLCreateSystemDefaultDevice()!
-    }()
-    
     private lazy var pipelineState: MTLComputePipelineState = {
-        let defaultLibrary: MTLLibrary! = self.device.makeDefaultLibrary()
-        let function = defaultLibrary.makeFunction(name: "imageStitch_kernel")!
-        let pipelineState = try! self.device.makeComputePipelineState(function: function)
-        return pipelineState
+        let shaderLibrary = MetalResourceManager.shared.shaderLibrary
+        let function = shaderLibrary.makeFunction(name: "imageStitch_kernel")!
+        do {
+            let pipelineState = try shaderLibrary.device.makeComputePipelineState(function: function)
+            return pipelineState
+        } catch {
+            fatalError("Could not make compute pipeline State: \(error)")
+        }
     }()
     
     func stitch(texturePositions: TexturePoolGuide, to size: CGSize, numberOfTiles: Int) -> MTLTexture {
-        let commandQueue = self.device.makeCommandQueue()!
+        let metalDevice = MetalResourceManager.shared.device
+        let commandQueue = metalDevice.makeCommandQueue()!
         let commandBuffer = commandQueue.makeCommandBuffer()!
         let encoder = commandBuffer.makeComputeCommandEncoder()!
         encoder.setComputePipelineState(pipelineState)
@@ -52,7 +53,7 @@ class ImageStitcher {
         outTextureDescriptor.height = Int(size.height)
         outTextureDescriptor.usage = [MTLTextureUsage.shaderWrite, MTLTextureUsage.shaderRead]
         
-        let outTexture = device.makeTexture(descriptor: outTextureDescriptor)!
+        let outTexture = metalDevice.makeTexture(descriptor: outTextureDescriptor)!
         
         encoder.setTexture(outTexture, index: 2)
         

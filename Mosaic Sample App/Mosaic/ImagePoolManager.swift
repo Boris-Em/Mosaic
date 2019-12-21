@@ -23,10 +23,6 @@ final class ImagePoolManager {
     /// Each color is reprensented by 4 elements: RGBA.
     private(set) var colors = [UInt16]()
     
-    private lazy var device: MTLDevice = {
-        return MTLCreateSystemDefaultDevice()!
-    }()
-    
     init(images: [UIImage]) {
         guard images.count >= ImagePoolManager.minImageCount else {
             fatalError("The `ImagePoolManager` should be initialized with at least \(ImagePoolManager.minImageCount) images.")
@@ -36,8 +32,6 @@ final class ImagePoolManager {
     }
     
     func preHeat(withTileSize tileSize: CGSize?) {
-        _ = device
-        
         if colors.isEmpty {
             colors = ImagePoolManager.generateImagePool(for: images)
         }
@@ -77,7 +71,7 @@ final class ImagePoolManager {
             let resizedImage = image.resize(to: tileSize)!
             let cgResizedImage = resizedImage.cgImage!
             
-            let textureLoader = MTKTextureLoader(device: device)
+            let textureLoader = MTKTextureLoader(device: MetalResourceManager.shared.device)
             let texture = try! textureLoader.newTexture(cgImage: cgResizedImage, options: [MTKTextureLoader.Option.SRGB: 1, MTKTextureLoader.Option.origin: MTKTextureLoader.Origin.topLeft])
             
             return texture

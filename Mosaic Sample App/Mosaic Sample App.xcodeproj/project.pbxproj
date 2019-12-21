@@ -8,13 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A12FE4BC238C8503002A9F5F /* ColorConversion.metal in Sources */ = {isa = PBXBuildFile; fileRef = A12FE4BB238C8503002A9F5F /* ColorConversion.metal */; };
-		A12FE4BE238C8577002A9F5F /* ColorConversion.metal in Sources */ = {isa = PBXBuildFile; fileRef = A12FE4BB238C8503002A9F5F /* ColorConversion.metal */; };
 		A12FE4F9238EF89C002A9F5F /* ColorConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = A12FE4BD238C853C002A9F5F /* ColorConversion.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		A1421D79235E2B56004C0286 /* Mosaic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A118B5CC235E233A00770A48 /* Mosaic.framework */; };
 		A1421D7A235E2B56004C0286 /* Mosaic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A118B5CC235E233A00770A48 /* Mosaic.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A1421D7C235E2EB9004C0286 /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */; };
-		A1421D85235E2FC7004C0286 /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */; };
-		A1421D86235E2FC8004C0286 /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */; };
 		A1421D8A235E3297004C0286 /* PoolTileMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1421D89235E3297004C0286 /* PoolTileMapperTests.swift */; };
 		A15783982350A10100CCAEDD /* ImageStitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15783972350A10100CCAEDD /* ImageStitcher.swift */; };
 		A157839A2350A30200CCAEDD /* ImagePoolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15783992350A30200CCAEDD /* ImagePoolManager.swift */; };
@@ -24,7 +21,6 @@
 		A15783A2235136E500CCAEDD /* Test_image_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A15783A1235136E500CCAEDD /* Test_image_1.jpg */; };
 		A15783A3235136E500CCAEDD /* Test_image_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A15783A1235136E500CCAEDD /* Test_image_1.jpg */; };
 		A19A222B236596ED00A00324 /* PoolTileMapper_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A19A222A236596ED00A00324 /* PoolTileMapper_kernel.metal */; };
-		A19A222C2365A24A00A00324 /* PoolTileMapper_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A19A222A236596ED00A00324 /* PoolTileMapper_kernel.metal */; };
 		A19FE581236A2F4B000E4BDD /* MultiRectangle_60x60.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A19FE580236A2F4A000E4BDD /* MultiRectangle_60x60.jpg */; };
 		A19FE582236A2F4B000E4BDD /* MultiRectangle_60x60.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A19FE580236A2F4A000E4BDD /* MultiRectangle_60x60.jpg */; };
 		A19FE584236A392A000E4BDD /* MultiRectangle_4x4.png in Resources */ = {isa = PBXBuildFile; fileRef = A19FE583236A392A000E4BDD /* MultiRectangle_4x4.png */; };
@@ -87,7 +83,7 @@
 		A1CE3A3C2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */; };
 		A1CE3A3D2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */; };
 		A1DA3B9D2375EFED0008B37D /* ImageStitcher.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1DA3B9C2375EFED0008B37D /* ImageStitcher.metal */; };
-		A1DA3B9E2376B83B0008B37D /* ImageStitcher.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1DA3B9C2375EFED0008B37D /* ImageStitcher.metal */; };
+		A1E87D4C23AE3513006718B4 /* MetalResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E87D4B23AE3513006718B4 /* MetalResourceManager.swift */; };
 		A1EFFD68239AC1A500917A18 /* Test_image_2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFD66239AC1A500917A18 /* Test_image_2.jpeg */; };
 		A1EFFD69239AC1A500917A18 /* Test_image_3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFD67239AC1A500917A18 /* Test_image_3.jpeg */; };
 		A1EFFD6A239AC1AB00917A18 /* Test_image_2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFD66239AC1A500917A18 /* Test_image_2.jpeg */; };
@@ -278,6 +274,7 @@
 		A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_10x10.jpg; sourceTree = "<group>"; };
 		A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_2x2.jpg; sourceTree = "<group>"; };
 		A1DA3B9C2375EFED0008B37D /* ImageStitcher.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ImageStitcher.metal; sourceTree = "<group>"; };
+		A1E87D4B23AE3513006718B4 /* MetalResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalResourceManager.swift; sourceTree = "<group>"; };
 		A1EFFD66239AC1A500917A18 /* Test_image_2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test_image_2.jpeg; sourceTree = "<group>"; };
 		A1EFFD67239AC1A500917A18 /* Test_image_3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test_image_3.jpeg; sourceTree = "<group>"; };
 		A1EFFD70239AF2B300917A18 /* Rectangle_21.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rectangle_21.jpg; sourceTree = "<group>"; };
@@ -423,6 +420,7 @@
 				A157839B2350A31F00CCAEDD /* ResizedImageManager.swift */,
 				A1CDE07623506F5F0024548F /* UIImageExtensions.swift */,
 				A1CDE07F23507D4A0024548F /* UIColorExtensions.swift */,
+				A1E87D4B23AE3513006718B4 /* MetalResourceManager.swift */,
 			);
 			path = Mosaic;
 			sourceTree = "<group>";
@@ -849,10 +847,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1DA3B9E2376B83B0008B37D /* ImageStitcher.metal in Sources */,
-				A19A222C2365A24A00A00324 /* PoolTileMapper_kernel.metal in Sources */,
-				A1421D85235E2FC7004C0286 /* AverageColorZone_kernel.metal in Sources */,
-				A12FE4BE238C8577002A9F5F /* ColorConversion.metal in Sources */,
 				A1CDE03623506DC00024548F /* ViewController.swift in Sources */,
 				A1F23F35235E52190030FAC0 /* CaptureSessionManager.swift in Sources */,
 				A1CDE03223506DC00024548F /* AppDelegate.swift in Sources */,
@@ -874,6 +868,7 @@
 			files = (
 				A157839A2350A30200CCAEDD /* ImagePoolManager.swift in Sources */,
 				A1CDE08023507D4A0024548F /* UIColorExtensions.swift in Sources */,
+				A1E87D4C23AE3513006718B4 /* MetalResourceManager.swift in Sources */,
 				A1421D7C235E2EB9004C0286 /* AverageColorZone_kernel.metal in Sources */,
 				A12FE4BC238C8503002A9F5F /* ColorConversion.metal in Sources */,
 				A157839E2350A36B00CCAEDD /* TileRects.swift in Sources */,
@@ -899,7 +894,6 @@
 				A1CDE06823506DD50024548F /* AverageColorTests.swift in Sources */,
 				A1B0E2982351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift in Sources */,
 				A1421D8A235E3297004C0286 /* PoolTileMapperTests.swift in Sources */,
-				A1421D86235E2FC8004C0286 /* AverageColorZone_kernel.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

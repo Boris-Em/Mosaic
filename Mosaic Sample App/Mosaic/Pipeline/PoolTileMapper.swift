@@ -15,15 +15,15 @@ final class PoolTileMapper {
     private let poolManager: ImagePoolManager
     private let resizedImageManager = ResizedImageManager()
     
-    private lazy var device: MTLDevice = {
-        return MTLCreateSystemDefaultDevice()!
-    }()
-    
     private lazy var pipelineState: MTLComputePipelineState = {
-        let defaultLibrary: MTLLibrary! = self.device.makeDefaultLibrary()
-        let function = defaultLibrary.makeFunction(name: "closestColor_kernel")!
-        let pipelineState = try! self.device.makeComputePipelineState(function: function)
-        return pipelineState
+        let shaderLibrary = MetalResourceManager.shared.shaderLibrary
+        let function = shaderLibrary.makeFunction(name: "closestColor_kernel")!
+        do {
+            let pipelineState = try shaderLibrary.device.makeComputePipelineState(function: function)
+            return pipelineState
+        } catch {
+            fatalError("Could not make compute pipeline State: \(error)")
+        }
     }()
     
     init(poolManager: ImagePoolManager) {
@@ -42,8 +42,9 @@ final class PoolTileMapper {
     ///   - averageColors: The average color of each tile
     func match(_ tileRects: TileRects, to averageColors: MTLBuffer) -> ImageStitcher.TexturePoolGuide {
         preHeat(withTileSize: tileRects.tileSize)
-        
-        let commandQueue = self.device.makeCommandQueue()!
+        let metalDevice = MetalResourceManager.shared.device
+
+        let commandQueue = metalDevice.makeCommandQueue()!
         let commandBuffer = commandQueue.makeCommandBuffer()!
         let encoder = commandBuffer.makeComputeCommandEncoder()!
         encoder.setComputePipelineState(pipelineState)
@@ -60,7 +61,7 @@ final class PoolTileMapper {
         encoder.setBytes(&cNumberOfImagesPool, length: MemoryLayout<UInt8>.size, index: 3)
 
         var output = [UInt16](repeating: 0, count: tileRects.count)
-        let outputBuffer = self.device.makeBuffer(bytes: &output, length: MemoryLayout<UInt16>.stride * tileRects.count, options: [])
+        let outputBuffer = metalDevice.makeBuffer(bytes: &output, length: MemoryLayout<UInt16>.stride * tileRects.count, options: [])
         encoder.setBuffer(outputBuffer, offset: 0, index: 4)
         
         let threadsPerThreadgroup = MTLSizeMake(1, 1, 1)
