@@ -12,7 +12,9 @@ import XCTest
 class AverageColorTests: XCTestCase {
 
     func testRedImage() {
-        let image = UIImage(named: "RedRectangle_500x500.jpg")!
+        let bundle = Bundle(for: type(of: self))
+        let image = UIImage(named: "RedRectangle_500x500.jpg", in: bundle, compatibleWith: nil)!
+
         let averageColorFinder = AverageColorFinder(image: image)
         let averageColor = averageColorFinder.computeAverageColor()
         
@@ -28,7 +30,9 @@ class AverageColorTests: XCTestCase {
     }
     
     func testPerformance() {
-        let image = UIImage(named: "Test_image_1.jpg")!
+        let frameworkBundle = Bundle(for: type(of: self))
+        let image = UIImage(named: "Test_image_1.jpg", in: frameworkBundle, compatibleWith: nil)!
+
         let averageColorFinder = AverageColorFinder(image: image)
 
         measure {

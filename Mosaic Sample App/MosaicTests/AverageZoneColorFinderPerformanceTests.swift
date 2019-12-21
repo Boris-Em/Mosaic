@@ -15,7 +15,8 @@ class AverageZoneColorFinderPerformanceTests: XCTestCase {
 
     func testSpeedMetal() {
         measure {
-            let image = UIImage(named: "RedRectangle_40x40.jpg")!.cgImage!
+            let bundle = Bundle(for: type(of: self))
+            let image = UIImage(named: "RedRectangle_40x40.jpg", in: bundle, compatibleWith: nil)!.cgImage!
             
             let imageSize = CGSize(width: image.width, height: image.height)
             let tileRects = TileRects(numberOfTiles: AverageZoneColorFinderPerformanceTests.numberOfTiles, imageSize: imageSize)
@@ -27,7 +28,8 @@ class AverageZoneColorFinderPerformanceTests: XCTestCase {
     
     func testSpeedConcurrent() {
         measure {
-            let image = UIImage(named: "RedRectangle_40x40.jpg")!
+            let bundle = Bundle(for: type(of: self))
+            let image = UIImage(named: "RedRectangle_40x40.jpg", in: bundle, compatibleWith: nil)!
             
             let imageSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
             let tileRects = TileRects(numberOfTiles: AverageZoneColorFinderPerformanceTests.numberOfTiles, imageSize: imageSize)

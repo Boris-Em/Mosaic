@@ -12,7 +12,8 @@ import XCTest
 class AverageZoneColorFinderTests: XCTestCase {
 
     func testAllRed() {
-        let image = UIImage(named: "RedRectangle_50x50.jpg")!.cgImage!
+        let bundle = Bundle(for: type(of: self))
+        let image = UIImage(named: "RedRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!.cgImage!
         
         let numberOfTiles = 10
         
@@ -31,7 +32,8 @@ class AverageZoneColorFinderTests: XCTestCase {
     }
     
     func testAllGreen() {
-        let image = UIImage(named: "GreenRectangle_50x50.jpg")!.cgImage!
+        let bundle = Bundle(for: type(of: self))
+        let image = UIImage(named: "GreenRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!.cgImage!
         
         let numberOfTiles = 10
         
@@ -50,7 +52,8 @@ class AverageZoneColorFinderTests: XCTestCase {
     }
     
     func testAllLightGreen() {
-        let image = UIImage(named: "LightGreenRectangle_50x50.jpg")!.cgImage!
+        let bundle = Bundle(for: type(of: self))
+        let image = UIImage(named: "LightGreenRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!.cgImage!
         
         let numberOfTiles = 10
         
@@ -69,7 +72,8 @@ class AverageZoneColorFinderTests: XCTestCase {
     }
     
     func testAllBlue() {
-        let image = UIImage(named: "BlueRectangle_50x50.jpg")!.cgImage!
+        let bundle = Bundle(for: type(of: self))
+        let image = UIImage(named: "BlueRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!.cgImage!
         
         let numberOfTiles = 50
         
@@ -88,7 +92,8 @@ class AverageZoneColorFinderTests: XCTestCase {
     }
     
     func testAllBlack() {
-        let image = UIImage(named: "BlackRectangle_50x50.jpg")!.cgImage!
+        let bundle = Bundle(for: type(of: self))
+        let image = UIImage(named: "BlackRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!.cgImage!
         
         let numberOfTiles = 50
         
@@ -107,7 +112,8 @@ class AverageZoneColorFinderTests: XCTestCase {
     }
     
     func testAllWhite() {
-        let image = UIImage(named: "WhiteRectangle_50x50.jpg")!.cgImage!
+        let bundle = Bundle(for: type(of: self))
+        let image = UIImage(named: "WhiteRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!.cgImage!
         
         let numberOfTiles = 50
         
@@ -126,7 +132,8 @@ class AverageZoneColorFinderTests: XCTestCase {
     }
 
     func testAllGray() {
-        let image = UIImage(named: "GrayRectangle_50x50.jpg")!.cgImage!
+        let bundle = Bundle(for: type(of: self))
+        let image = UIImage(named: "GrayRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!.cgImage!
         
         let numberOfTiles = 50
         
@@ -145,7 +152,8 @@ class AverageZoneColorFinderTests: XCTestCase {
     }
     
     func testMulti() {
-        let image = UIImage(named: "MultiRectangle_10x10.jpg")!.cgImage!
+        let bundle = Bundle(for: type(of: self))
+        let image = UIImage(named: "MultiRectangle_10x10.jpg", in: bundle, compatibleWith: nil)!.cgImage!
         
         let numberOfTiles = 2
 
@@ -214,7 +222,8 @@ class AverageZoneColorFinderTests: XCTestCase {
     /// It's mostly used for debug puposes.
     /// It should be verified "by hand" by comparing the original image to the one generated with zone colors.
     func testRealCase() {
-        let image = UIImage(named: "Test_image_1.jpg")!.cgImage!
+        let bundle = Bundle(for: type(of: self))
+        let image = UIImage(named: "Test_image_1.jpg", in: bundle, compatibleWith: nil)!.cgImage!
         
         let numberOfTiles = 50
 

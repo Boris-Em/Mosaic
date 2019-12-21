@@ -1,5 +1,5 @@
 //
-//  ImagePoolManagerTests.swift
+//  swift
 //  MosaicTests
 //
 //  Created by Boris Emorine on 10/21/19.
@@ -10,16 +10,32 @@ import XCTest
 @testable import Mosaic
 
 class ImagePoolManagerTests: XCTestCase {
+    
+    private lazy var bundle: Bundle = {
+        Bundle(for: type(of: self))
+    }()
 
-    static let redImage = UIImage(named: "RedRectangle_50x50.jpg")!
-    static let greenImage = UIImage(named: "GreenRectangle_50x50.jpg")!
-    static let blueImage = UIImage(named: "BlueRectangle_50x50.jpg")!
-    static let lightGreenImage = UIImage(named: "LightGreenRectangle_50x50.jpg")!
-    static let blackImage = UIImage(named: "BlackRectangle_50x50.jpg")!
-    static let whiteImage = UIImage(named: "WhiteRectangle_50x50.jpg")!
+    private lazy var redImage: UIImage = {
+        UIImage(named: "RedRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!
+    }()
+    private lazy var greenImage: UIImage = {
+        UIImage(named: "GreenRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!
+    }()
+    private lazy var blueImage: UIImage = {
+        UIImage(named: "BlueRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!
+    }()
+    private lazy var lightGreenImage: UIImage = {
+        UIImage(named: "LightGreenRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!
+    }()
+    private lazy var blackImage: UIImage = {
+        UIImage(named: "BlackRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!
+    }()
+    private lazy var whiteImage: UIImage = {
+        UIImage(named: "WhiteRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!
+    }()
     
     func testOneImage() {
-        let sut = ImagePoolManager(images: [ImagePoolManagerTests.redImage, ImagePoolManagerTests.greenImage, ImagePoolManagerTests.blueImage, ImagePoolManagerTests.lightGreenImage, ImagePoolManagerTests.blackImage, ImagePoolManagerTests.whiteImage])
+        let sut = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage, whiteImage])
         sut.preHeat(withTileSize: nil)
         
         XCTAssertEqual(sut.colors, [
@@ -33,7 +49,7 @@ class ImagePoolManagerTests: XCTestCase {
     }
     
     func testImageCount() {
-        let images = [ImagePoolManagerTests.redImage, ImagePoolManagerTests.greenImage, ImagePoolManagerTests.blueImage, ImagePoolManagerTests.lightGreenImage, ImagePoolManagerTests.blackImage, ImagePoolManagerTests.whiteImage]
+        let images = [redImage, greenImage, blueImage, lightGreenImage, blackImage, whiteImage]
         let sut = ImagePoolManager(images: images)
         sut.preHeat(withTileSize: nil)
         
