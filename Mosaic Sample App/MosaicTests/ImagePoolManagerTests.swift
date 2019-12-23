@@ -35,7 +35,7 @@ class ImagePoolManagerTests: XCTestCase {
     }()
     
     func testOneImage() {
-        let sut = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage, whiteImage])
+        let sut = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage, whiteImage], shouldCheat: false)
         sut.preHeat(withTileSize: nil)
         
         XCTAssertEqual(sut.colors, [
@@ -50,7 +50,7 @@ class ImagePoolManagerTests: XCTestCase {
     
     func testImageCount() {
         let images = [redImage, greenImage, blueImage, lightGreenImage, blackImage, whiteImage]
-        let sut = ImagePoolManager(images: images)
+        let sut = ImagePoolManager(images: images, shouldCheat: false)
         sut.preHeat(withTileSize: nil)
         
         XCTAssertEqual(sut.images.count, images.count)

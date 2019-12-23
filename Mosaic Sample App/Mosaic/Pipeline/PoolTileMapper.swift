@@ -52,6 +52,7 @@ final class PoolTileMapper {
         // Average color of each tile
         encoder.setBuffer(averageColors, offset: 0, index: 0)
         
+        // Average color of each image from the pool
         encoder.setBytes(poolManager.colors, length: MemoryLayout<UInt16>.size * poolManager.colors.count, index: 1)
         
         var cNumberOfTiles: UInt8 = UInt8(tileRects.numberOfTiles)

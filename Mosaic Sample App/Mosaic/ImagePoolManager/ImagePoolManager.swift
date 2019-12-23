@@ -12,10 +12,9 @@ import MetalKit
 /// A simple object responsible for managing a pool of images and their average colors.
 /// Those images are the ones used to create the mosaic.
 final class ImagePoolManager {
-    
-    static let minImageCount = 5
         
-    let images: [UIImage]
+    private(set) var images: [UIImage]
+    private var shouldCheat: Bool
         
     private(set) var textures = [MTLTexture]()
     
@@ -23,17 +22,32 @@ final class ImagePoolManager {
     /// Each color is reprensented by 4 elements: RGBA.
     private(set) var colors = [UInt16]()
     
-    init(images: [UIImage]) {
-        guard images.count >= ImagePoolManager.minImageCount else {
-            fatalError("The `ImagePoolManager` should be initialized with at least \(ImagePoolManager.minImageCount) images.")
-        }
-        
+    init(images: [UIImage], shouldCheat: Bool) {
         self.images = images
+        self.shouldCheat = shouldCheat
     }
     
     func preHeat(withTileSize tileSize: CGSize?) {
         if colors.isEmpty {
-            colors = ImagePoolManager.generateImagePool(for: images)
+            colors = ImagePoolManager.generateImagePool(for: images, shouldCheat: shouldCheat)
+        }
+        
+        
+        if shouldCheat {
+            defer {
+                shouldCheat = false
+            }
+            
+            let cheats = ImagePoolCheatGenerator.generateCheats(for: colors, images: images)
+            let cheatColors = cheats.flatMap { (cheat) -> [UInt16] in
+                cheat.averageColor
+            }
+            let cheatImages = cheats.map { (cheat) -> UIImage in
+                cheat.image
+            }
+            
+            colors = colors + cheatColors
+            images = images + cheatImages
         }
     
         if let tileSize = tileSize, textures.isEmpty {
@@ -42,28 +56,21 @@ final class ImagePoolManager {
     }
     
     /// Returns the colors for each image in an array where each element is RGBA.
-    private static func generateImagePool(for images: [UIImage]) -> [UInt16] {
+    private static func generateImagePool(for images: [UIImage], shouldCheat: Bool) -> [UInt16] {
         let colors = images.flatMap { (image) -> [UInt16] in
-            imageColorMap(for: image)
+            averageColor(for: image)
         }
         
         return colors
     }
     
-    private static func imageColorMap(for image: UIImage) -> [UInt16] {
+    private static func averageColor(for image: UIImage) -> [UInt16] {
         let averageImageFinder = AverageColorFinder(image: image, canResizeImage: true)
         guard let averageColor = averageImageFinder.computeAverageColor() else {
             fatalError("Could not get average color.")
         }
         
-        let colors = [
-            UInt16(averageColor.red * 255.0),
-            UInt16(averageColor.green * 255.0),
-            UInt16(averageColor.blue * 255.0),
-            UInt16(averageColor.alpha)
-        ]
-        
-        return colors
+        return averageColor.rgba
     }
     
     private func generateTextures(for images: [UIImage], tileSize: CGSize) -> [MTLTexture] {

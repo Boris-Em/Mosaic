@@ -19,7 +19,7 @@ class PoolTileMapperTests: XCTestCase {
         let lightGreenImage = UIImage(named: "LightGreenRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!
         let blackImage = UIImage(named: "BlackRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!
         
-        let poolManager = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage])
+        let poolManager = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage], shouldCheat: false)
         
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
         let tileRects = TileRects(numberOfTiles: 50, imageSize: CGSize(width: 50.0, height: 50.0))
@@ -48,7 +48,7 @@ class PoolTileMapperTests: XCTestCase {
             images.append(UIImage(named: "Rectangle_\(i).jpg", in: bundle, compatibleWith: nil)!)
         }
         
-        let poolManager = ImagePoolManager(images: images)
+        let poolManager = ImagePoolManager(images: images, shouldCheat: false)
 
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
         let tileRects = TileRects(numberOfTiles: 1, imageSize: CGSize(width: 121, height: 157))
@@ -81,7 +81,7 @@ class PoolTileMapperTests: XCTestCase {
         let lightGreenImage = UIImage(named: "LightGreenRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!
         let blackImage = UIImage(named: "BlackRectangle_50x50.jpg", in: bundle, compatibleWith: nil)!
         
-        let poolManager = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage])
+        let poolManager = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage], shouldCheat: false)
         
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
         let tileRects = TileRects(numberOfTiles: 2, imageSize: CGSize(width: 100.0, height: 100.0))
@@ -118,7 +118,7 @@ class PoolTileMapperTests: XCTestCase {
         let lightGreenImage = UIImage(named: "DarkGreenRectangle_10x10.png", in: bundle, compatibleWith: nil)!
         let blackImage = UIImage(named: "BlackRectangle_10x10.png", in: bundle, compatibleWith: nil)!
 
-        let poolManager = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage])
+        let poolManager = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage], shouldCheat: false)
 
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
         let tileRects = TileRects(numberOfTiles: 10, imageSize: CGSize(width: 100.0, height: 100.0))
@@ -160,7 +160,7 @@ class PoolTileMapperTests: XCTestCase {
         let lightGreenImage = UIImage(named: "DarkGreenRectangle_10x10.png", in: bundle, compatibleWith: nil)!
         let blackImage = UIImage(named: "BlackRectangle_10x10.png", in: bundle, compatibleWith: nil)!
 
-        let poolManager = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage])
+        let poolManager = ImagePoolManager(images: [redImage, greenImage, blueImage, lightGreenImage, blackImage], shouldCheat: false)
 
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
         let tileRects = TileRects(numberOfTiles: 100, imageSize: CGSize(width: 1000.0, height: 1000.0))
@@ -206,7 +206,7 @@ class PoolTileMapperTests: XCTestCase {
         images.append(UIImage(named: "Rectangle_0.jpg", in: bundle, compatibleWith: nil)!)
         images.append(UIImage(named: "Rectangle_10.jpg", in: bundle, compatibleWith: nil)!)
 
-        let poolManager = ImagePoolManager(images: images)
+        let poolManager = ImagePoolManager(images: images, shouldCheat: false)
 
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
         let tileRects = TileRects(numberOfTiles: 150, imageSize: CGSize(width: 3024, height: 4032))
@@ -241,7 +241,7 @@ class PoolTileMapperTests: XCTestCase {
             images.append(UIImage(named: "Rectangle_\(i).jpg", in: bundle, compatibleWith: nil)!)
         }
         
-        let poolManager = ImagePoolManager(images: images)
+        let poolManager = ImagePoolManager(images: images, shouldCheat: false)
 
         let poolTileMapper = PoolTileMapper(poolManager: poolManager)
         let tileRects = TileRects(numberOfTiles: 100, imageSize: CGSize(width: 100, height: 100))

@@ -10,6 +10,23 @@ import UIKit
 
 public final class Mosaic {
     
+    public enum CheatMode {
+        case automatic
+        case enabled
+        case disabled
+    }
+    
+    enum MosaicError: Error {
+        case imagePoolCountError(count: Int)
+        
+        var localizedDescription: String {
+            switch self {
+            case .imagePoolCountError (let count):
+                return "The `imagePool` was initialized with \(count). It should be initialized with at least \(Mosaic.minImagePoolCount) and at most \(Mosaic.maxImagePoolCount) images."
+            }
+        }
+    }
+    
     private var tileRects: TileRects?
     
     private let imagePositionMapper: PoolTileMapper
@@ -20,13 +37,27 @@ public final class Mosaic {
     /// The numbner of tiles in the mosaic per length (width & height).
     let numberOfTiles: Int = 150
     
-    public init(imagePool: [UIImage]) throws {
-        guard imagePool.count > 3 && imagePool.count < 50 else {
-            let error = NSError()
-            throw error
+    /// The minumum number of images that should be passed in at initialization via the `imagePool` parameter.
+    static let minImagePoolCount = 3
+    
+    /// The minumum number of images that should be passed in at initialization via the `imagePool` parameter.
+    static let maxImagePoolCount = 50
+    
+    /// The minumum number of images that should be passed in at initialization via the `imagePool` parameter, in order not to auto-activate cheating.
+    static let minCheatImagePoolCount = 15
+    
+    public init(imagePool: [UIImage], cheatDecision: CheatMode = .automatic) throws {
+        var shouldCheat = cheatDecision == .enabled
+        guard imagePool.count > Mosaic.minImagePoolCount && imagePool.count < Mosaic.maxImagePoolCount else {
+            throw MosaicError.imagePoolCountError(count: imagePool.count)
         }
         
-        let poolManager = ImagePoolManager(images: imagePool)
+        if imagePool.count < Mosaic.minCheatImagePoolCount, cheatDecision == .automatic {
+            print("Not enough images. The cheat mode activated.")
+            shouldCheat = true
+        }
+        
+        let poolManager = ImagePoolManager(images: imagePool, shouldCheat: shouldCheat)
         self.imagePositionMapper = PoolTileMapper(poolManager: poolManager)
     }
     

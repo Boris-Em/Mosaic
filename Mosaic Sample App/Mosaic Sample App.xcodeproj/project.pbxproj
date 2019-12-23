@@ -59,7 +59,17 @@
 		A1CE3A3A235511B700EC3E2D /* MultiRectangle_10x10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */; };
 		A1CE3A3D2355145B00EC3E2D /* MultiRectangle_2x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */; };
 		A1DA3B9D2375EFED0008B37D /* ImageStitcher.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1DA3B9C2375EFED0008B37D /* ImageStitcher.metal */; };
+		A1E71DF823AF799500F4E97F /* ColorsDistanceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E71DF723AF799500F4E97F /* ColorsDistanceCalculatorTests.swift */; };
+		A1E71DFE23AFE36A00F4E97F /* ToLab.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1E71DFC23AFE0D000F4E97F /* ToLab.metal */; };
+		A1E71DFF23AFE38700F4E97F /* ToLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E71DF923AFE09300F4E97F /* ToLabelTests.swift */; };
+		A1E71E0123AFEAD300F4E97F /* DeltaE.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1E71E0023AFEAD300F4E97F /* DeltaE.metal */; };
+		A1E71E0323AFEB4800F4E97F /* deltaETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E71E0223AFEB4800F4E97F /* deltaETests.swift */; };
 		A1E87D4C23AE3513006718B4 /* MetalResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E87D4B23AE3513006718B4 /* MetalResourceManager.swift */; };
+		A1E87D5123AE4D18006718B4 /* ImagePoolCheatGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E87D5023AE4D18006718B4 /* ImagePoolCheatGenerator.swift */; };
+		A1E87D5323AE75BB006718B4 /* ColorsDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E87D5223AE75BB006718B4 /* ColorsDistanceCalculator.swift */; };
+		A1E87D5523AF7454006718B4 /* ColorsDistanceCalculator.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1E87D5423AF7454006718B4 /* ColorsDistanceCalculator.metal */; };
+		A1EECBEE23B0D89400B4BC6F /* ColorOverlayImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EECBED23B0D89400B4BC6F /* ColorOverlayImageFilter.swift */; };
+		A1EECBF023B0DB1C00B4BC6F /* ColorOverlayImageFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EECBEF23B0DB1C00B4BC6F /* ColorOverlayImageFilterTests.swift */; };
 		A1EFFD68239AC1A500917A18 /* Test_image_2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFD66239AC1A500917A18 /* Test_image_2.jpeg */; };
 		A1EFFD69239AC1A500917A18 /* Test_image_3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFD67239AC1A500917A18 /* Test_image_3.jpeg */; };
 		A1EFFD8C239AF2B600917A18 /* Rectangle_21.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFD70239AF2B300917A18 /* Rectangle_21.jpg */; };
@@ -210,7 +220,17 @@
 		A1CE3A38235511B700EC3E2D /* MultiRectangle_10x10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_10x10.jpg; sourceTree = "<group>"; };
 		A1CE3A3B2355145B00EC3E2D /* MultiRectangle_2x2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MultiRectangle_2x2.jpg; sourceTree = "<group>"; };
 		A1DA3B9C2375EFED0008B37D /* ImageStitcher.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ImageStitcher.metal; sourceTree = "<group>"; };
+		A1E71DF723AF799500F4E97F /* ColorsDistanceCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsDistanceCalculatorTests.swift; sourceTree = "<group>"; };
+		A1E71DF923AFE09300F4E97F /* ToLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToLabelTests.swift; sourceTree = "<group>"; };
+		A1E71DFC23AFE0D000F4E97F /* ToLab.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ToLab.metal; sourceTree = "<group>"; };
+		A1E71E0023AFEAD300F4E97F /* DeltaE.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DeltaE.metal; sourceTree = "<group>"; };
+		A1E71E0223AFEB4800F4E97F /* deltaETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deltaETests.swift; sourceTree = "<group>"; };
 		A1E87D4B23AE3513006718B4 /* MetalResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalResourceManager.swift; sourceTree = "<group>"; };
+		A1E87D5023AE4D18006718B4 /* ImagePoolCheatGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePoolCheatGenerator.swift; sourceTree = "<group>"; };
+		A1E87D5223AE75BB006718B4 /* ColorsDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsDistanceCalculator.swift; sourceTree = "<group>"; };
+		A1E87D5423AF7454006718B4 /* ColorsDistanceCalculator.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorsDistanceCalculator.metal; sourceTree = "<group>"; };
+		A1EECBED23B0D89400B4BC6F /* ColorOverlayImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorOverlayImageFilter.swift; sourceTree = "<group>"; };
+		A1EECBEF23B0DB1C00B4BC6F /* ColorOverlayImageFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorOverlayImageFilterTests.swift; sourceTree = "<group>"; };
 		A1EFFD66239AC1A500917A18 /* Test_image_2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test_image_2.jpeg; sourceTree = "<group>"; };
 		A1EFFD67239AC1A500917A18 /* Test_image_3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test_image_3.jpeg; sourceTree = "<group>"; };
 		A1EFFD70239AF2B300917A18 /* Rectangle_21.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rectangle_21.jpg; sourceTree = "<group>"; };
@@ -295,6 +315,8 @@
 			children = (
 				A12FE4BB238C8503002A9F5F /* ColorConversion.metal */,
 				A12FE4BD238C853C002A9F5F /* ColorConversion.h */,
+				A1E71DFC23AFE0D000F4E97F /* ToLab.metal */,
+				A1E71E0023AFEAD300F4E97F /* DeltaE.metal */,
 			);
 			path = "Color Helpers";
 			sourceTree = "<group>";
@@ -352,7 +374,7 @@
 				A1CDE05A23506DD50024548F /* Mosaic.h */,
 				A1CDE05B23506DD50024548F /* Info.plist */,
 				A1CDE07D235076470024548F /* Mosaic.swift */,
-				A15783992350A30200CCAEDD /* ImagePoolManager.swift */,
+				A1E87D4F23AE4CEF006718B4 /* ImagePoolManager */,
 				A157839B2350A31F00CCAEDD /* ResizedImageManager.swift */,
 				A1CDE07623506F5F0024548F /* UIImageExtensions.swift */,
 				A1CDE07F23507D4A0024548F /* UIColorExtensions.swift */,
@@ -371,7 +393,10 @@
 				A1B0E2972351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift */,
 				A1F2924C2356590900B0C099 /* AverageZoneColorFinderTests.swift */,
 				A1421D89235E3297004C0286 /* PoolTileMapperTests.swift */,
+				A1EECBEF23B0DB1C00B4BC6F /* ColorOverlayImageFilterTests.swift */,
 				A1CDE06923506DD50024548F /* Info.plist */,
+				A1E71DF723AF799500F4E97F /* ColorsDistanceCalculatorTests.swift */,
+				A1E71DFB23AFE0AE00F4E97F /* Color Helpers Tests */,
 			);
 			path = MosaicTests;
 			sourceTree = "<group>";
@@ -419,6 +444,35 @@
 				A1EFFDCA239B1C9A00917A18 /* BrownRectangle_100x100.jpg */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A1E71DFB23AFE0AE00F4E97F /* Color Helpers Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A1E71DF923AFE09300F4E97F /* ToLabelTests.swift */,
+				A1E71E0223AFEB4800F4E97F /* deltaETests.swift */,
+			);
+			path = "Color Helpers Tests";
+			sourceTree = "<group>";
+		};
+		A1E71E0423AFF0D700F4E97F /* Cheats */ = {
+			isa = PBXGroup;
+			children = (
+				A1E87D5023AE4D18006718B4 /* ImagePoolCheatGenerator.swift */,
+				A1EECBED23B0D89400B4BC6F /* ColorOverlayImageFilter.swift */,
+				A1E87D5223AE75BB006718B4 /* ColorsDistanceCalculator.swift */,
+				A1E87D5423AF7454006718B4 /* ColorsDistanceCalculator.metal */,
+			);
+			path = Cheats;
+			sourceTree = "<group>";
+		};
+		A1E87D4F23AE4CEF006718B4 /* ImagePoolManager */ = {
+			isa = PBXGroup;
+			children = (
+				A1E71E0423AFF0D700F4E97F /* Cheats */,
+				A15783992350A30200CCAEDD /* ImagePoolManager.swift */,
+			);
+			path = ImagePoolManager;
 			sourceTree = "<group>";
 		};
 		A1EFFD6F239AF2AA00917A18 /* Basic Colors */ = {
@@ -739,19 +793,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				A157839A2350A30200CCAEDD /* ImagePoolManager.swift in Sources */,
+				A1E87D5123AE4D18006718B4 /* ImagePoolCheatGenerator.swift in Sources */,
 				A1CDE08023507D4A0024548F /* UIColorExtensions.swift in Sources */,
 				A1E87D4C23AE3513006718B4 /* MetalResourceManager.swift in Sources */,
+				A1E71E0123AFEAD300F4E97F /* DeltaE.metal in Sources */,
 				A1421D7C235E2EB9004C0286 /* AverageColorZone_kernel.metal in Sources */,
 				A12FE4BC238C8503002A9F5F /* ColorConversion.metal in Sources */,
 				A157839E2350A36B00CCAEDD /* TileRects.swift in Sources */,
+				A1E71DFE23AFE36A00F4E97F /* ToLab.metal in Sources */,
+				A1E87D5323AE75BB006718B4 /* ColorsDistanceCalculator.swift in Sources */,
 				A1CDE07723506F5F0024548F /* UIImageExtensions.swift in Sources */,
 				A19A222B236596ED00A00324 /* PoolTileMapper_kernel.metal in Sources */,
 				A1DA3B9D2375EFED0008B37D /* ImageStitcher.metal in Sources */,
 				A1F292772357544400B0C099 /* PoolTileMapper.swift in Sources */,
 				A1CDE07E235076470024548F /* Mosaic.swift in Sources */,
+				A1EECBEE23B0D89400B4BC6F /* ColorOverlayImageFilter.swift in Sources */,
 				A15783A02350AC7700CCAEDD /* AverageColorFinder.swift in Sources */,
 				A157839C2350A31F00CCAEDD /* ResizedImageManager.swift in Sources */,
 				A1B0E2922351C1BB0011040B /* AverageZoneColorFinder.swift in Sources */,
+				A1E87D5523AF7454006718B4 /* ColorsDistanceCalculator.metal in Sources */,
 				A15783982350A10100CCAEDD /* ImageStitcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,10 +821,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1B0E2942351C5230011040B /* ImageTileSequenceTests.swift in Sources */,
+				A1E71E0323AFEB4800F4E97F /* deltaETests.swift in Sources */,
 				A1F2924D2356590900B0C099 /* AverageZoneColorFinderTests.swift in Sources */,
 				A1F23F33235E45720030FAC0 /* ImagePoolManagerTests.swift in Sources */,
+				A1E71DFF23AFE38700F4E97F /* ToLabelTests.swift in Sources */,
 				A1CDE06823506DD50024548F /* AverageColorTests.swift in Sources */,
+				A1EECBF023B0DB1C00B4BC6F /* ColorOverlayImageFilterTests.swift in Sources */,
 				A1B0E2982351CF2B0011040B /* AverageZoneColorFinderPerformanceTests.swift in Sources */,
+				A1E71DF823AF799500F4E97F /* ColorsDistanceCalculatorTests.swift in Sources */,
 				A1421D8A235E3297004C0286 /* PoolTileMapperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

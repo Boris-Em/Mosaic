@@ -38,8 +38,6 @@ kernel void closestColor_kernel(const device uint16_t *average_colors [[buffer(0
         int poolG = pool_colors[poolIndex + 1];
         int poolB = pool_colors[poolIndex + 2];
         
-        half3 poolRGB = half3(poolR, poolG, poolB);
-        
         half3 poolLab = toLAB(poolR, poolG, poolB);
                 
         const float deltaE = deltaEWithCIE94(poolLab, referenceLab);
