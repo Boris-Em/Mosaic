@@ -24,7 +24,7 @@ struct ColorOverlayImageFilter {
             ciImage = CIImage(cgImage: cgImage)
         }
         
-        let overlayColor = CIColor(color: overlayColor.withAlphaComponent(0.95))
+        let overlayColor = CIColor(color: overlayColor.withAlphaComponent(0.90))
         let overlayParameters = [kCIInputColorKey: overlayColor]
         guard let overlayFilter = CIFilter(name: "CIConstantColorGenerator", parameters: overlayParameters) else {
             fatalError("Could not create `CIConstantColorGenerator` CIFilter.")

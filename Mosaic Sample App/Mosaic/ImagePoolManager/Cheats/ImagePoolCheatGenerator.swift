@@ -54,9 +54,10 @@ struct ImagePoolCheatGenerator {
         UIColor(red: 128.0 / 255.0, green: 255.0 / 255.0, blue: 128.0 / 255.0, alpha: 1.0), // Pale green
         UIColor(red: 128.0 / 255.0, green: 255.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0), // Pale cyan
         UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0), // Bright yellow
-        UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 128.0 / 255.0, alpha: 1.0), // Bright yellow
+        UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 128.0 / 255.0, alpha: 1.0), // Yellow
         UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0), // Bright white
         UIColor(red: 245.0 / 255.0, green: 245.0 / 255.0, blue: 220.0 / 255.0, alpha: 1.0), // Beige
+        UIColor(red: 255.0 / 255.0, green: 253.0 / 255.0, blue: 208 / 255.0, alpha: 1.0), // Beige
     ]
     
     /// Generates the missing colors and corresponding images to make sure we have a complete palette of colors.
@@ -78,7 +79,7 @@ struct ImagePoolCheatGenerator {
                 guard let cheatImage = ColorOverlayImageFilter.image(from: imageToTweak, with: color, targetSize: CGSize(width: 300.0, height: 300.0)) else {
                     continue
                 }
-                print("CHRAT BRAH")
+
                 let cheat = ImagePoolCheatGenerator.Cheat(image: cheatImage, averageColor: colorToAim.rgba)
                 cheats.append(cheat)
             }
