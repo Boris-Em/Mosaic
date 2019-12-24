@@ -43,7 +43,6 @@
 		A1CDE03923506DC00024548F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1CDE03723506DC00024548F /* Main.storyboard */; };
 		A1CDE03B23506DC10024548F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CDE03A23506DC10024548F /* Assets.xcassets */; };
 		A1CDE03E23506DC10024548F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1CDE03C23506DC10024548F /* LaunchScreen.storyboard */; };
-		A1CDE04923506DC20024548F /* Mosaic_Sample_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE04823506DC20024548F /* Mosaic_Sample_AppTests.swift */; };
 		A1CDE06823506DD50024548F /* AverageColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE06723506DD50024548F /* AverageColorTests.swift */; };
 		A1CDE06A23506DD50024548F /* Mosaic.h in Headers */ = {isa = PBXBuildFile; fileRef = A1CDE05A23506DD50024548F /* Mosaic.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A1CDE07723506F5F0024548F /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDE07623506F5F0024548F /* UIImageExtensions.swift */; };
@@ -117,13 +116,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A1CDE04523506DC20024548F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A1CDE02623506DC00024548F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A1CDE02D23506DC00024548F;
-			remoteInfo = "Mosaic Sample App";
-		};
 		A1CDE06223506DD50024548F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A1CDE02623506DC00024548F /* Project object */;
@@ -164,7 +156,6 @@
 /* Begin PBXFileReference section */
 		A118B5CB235E233A00770A48 /* Mosaic Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mosaic Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A118B5CC235E233A00770A48 /* Mosaic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mosaic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A118B5CD235E233A00770A48 /* Mosaic Sample AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mosaic Sample AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A118B5CE235E233A00770A48 /* MosaicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MosaicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12FE4BB238C8503002A9F5F /* ColorConversion.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorConversion.metal; sourceTree = "<group>"; };
 		A12FE4BD238C853C002A9F5F /* ColorConversion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorConversion.h; sourceTree = "<group>"; };
@@ -201,8 +192,6 @@
 		A1CDE03A23506DC10024548F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1CDE03D23506DC10024548F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1CDE03F23506DC10024548F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1CDE04823506DC20024548F /* Mosaic_Sample_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mosaic_Sample_AppTests.swift; sourceTree = "<group>"; };
-		A1CDE04A23506DC20024548F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1CDE05A23506DD50024548F /* Mosaic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mosaic.h; sourceTree = "<group>"; };
 		A1CDE05B23506DD50024548F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1CDE06723506DD50024548F /* AverageColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageColorTests.swift; sourceTree = "<group>"; };
@@ -286,13 +275,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A1CDE04123506DC20024548F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A1CDE05523506DD50024548F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -321,25 +303,15 @@
 			path = "Color Helpers";
 			sourceTree = "<group>";
 		};
-		A1421D77235E2B0C004C0286 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		A1CDE02523506DC00024548F = {
 			isa = PBXGroup;
 			children = (
 				A1CDE03023506DC00024548F /* Mosaic Sample App */,
-				A1CDE04723506DC20024548F /* Mosaic Sample AppTests */,
 				A1CDE05923506DD50024548F /* Mosaic */,
 				A1CDE06623506DD50024548F /* MosaicTests */,
 				A118B5CB235E233A00770A48 /* Mosaic Sample App.app */,
 				A118B5CC235E233A00770A48 /* Mosaic.framework */,
-				A118B5CD235E233A00770A48 /* Mosaic Sample AppTests.xctest */,
 				A118B5CE235E233A00770A48 /* MosaicTests.xctest */,
-				A1421D77235E2B0C004C0286 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -356,15 +328,6 @@
 				A1CDE03F23506DC10024548F /* Info.plist */,
 			);
 			path = "Mosaic Sample App";
-			sourceTree = "<group>";
-		};
-		A1CDE04723506DC20024548F /* Mosaic Sample AppTests */ = {
-			isa = PBXGroup;
-			children = (
-				A1CDE04823506DC20024548F /* Mosaic_Sample_AppTests.swift */,
-				A1CDE04A23506DC20024548F /* Info.plist */,
-			);
-			path = "Mosaic Sample AppTests";
 			sourceTree = "<group>";
 		};
 		A1CDE05923506DD50024548F /* Mosaic */ = {
@@ -567,24 +530,6 @@
 			productReference = A118B5CB235E233A00770A48 /* Mosaic Sample App.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A1CDE04323506DC20024548F /* Mosaic Sample AppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A1CDE05023506DC20024548F /* Build configuration list for PBXNativeTarget "Mosaic Sample AppTests" */;
-			buildPhases = (
-				A1CDE04023506DC20024548F /* Sources */,
-				A1CDE04123506DC20024548F /* Frameworks */,
-				A1CDE04223506DC20024548F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A1CDE04623506DC20024548F /* PBXTargetDependency */,
-			);
-			name = "Mosaic Sample AppTests";
-			productName = "Mosaic Sample AppTests";
-			productReference = A118B5CD235E233A00770A48 /* Mosaic Sample AppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		A1CDE05723506DD50024548F /* Mosaic */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1CDE06F23506DD50024548F /* Build configuration list for PBXNativeTarget "Mosaic" */;
@@ -635,10 +580,6 @@
 					A1CDE02D23506DC00024548F = {
 						CreatedOnToolsVersion = 11.1;
 					};
-					A1CDE04323506DC20024548F = {
-						CreatedOnToolsVersion = 11.1;
-						TestTargetID = A1CDE02D23506DC00024548F;
-					};
 					A1CDE05723506DD50024548F = {
 						CreatedOnToolsVersion = 11.1;
 						LastSwiftMigration = 1110;
@@ -663,7 +604,6 @@
 			projectRoot = "";
 			targets = (
 				A1CDE02D23506DC00024548F /* Mosaic Sample App */,
-				A1CDE04323506DC20024548F /* Mosaic Sample AppTests */,
 				A1CDE05723506DD50024548F /* Mosaic */,
 				A1CDE05F23506DD50024548F /* MosaicTests */,
 			);
@@ -678,13 +618,6 @@
 				A1CDE03E23506DC10024548F /* LaunchScreen.storyboard in Resources */,
 				A1CDE03B23506DC10024548F /* Assets.xcassets in Resources */,
 				A1CDE03923506DC00024548F /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A1CDE04223506DC20024548F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,14 +713,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A1CDE04023506DC20024548F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A1CDE04923506DC20024548F /* Mosaic_Sample_AppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A1CDE05423506DD50024548F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -836,11 +761,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A1CDE04623506DC20024548F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A1CDE02D23506DC00024548F /* Mosaic Sample App */;
-			targetProxy = A1CDE04523506DC20024548F /* PBXContainerItemProxy */;
-		};
 		A1CDE06323506DD50024548F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A1CDE05723506DD50024548F /* Mosaic */;
@@ -1028,50 +948,6 @@
 			};
 			name = Release;
 		};
-		A1CDE05123506DC20024548F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 67V847367C;
-				INFOPLIST_FILE = "Mosaic Sample AppTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "BEM.Mosaic-Sample-AppTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mosaic Sample App.app/Mosaic Sample App";
-			};
-			name = Debug;
-		};
-		A1CDE05223506DC20024548F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 67V847367C;
-				INFOPLIST_FILE = "Mosaic Sample AppTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "BEM.Mosaic-Sample-AppTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mosaic Sample App.app/Mosaic Sample App";
-			};
-			name = Release;
-		};
 		A1CDE07023506DD50024548F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1188,15 +1064,6 @@
 			buildConfigurations = (
 				A1CDE04E23506DC20024548F /* Debug */,
 				A1CDE04F23506DC20024548F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A1CDE05023506DC20024548F /* Build configuration list for PBXNativeTarget "Mosaic Sample AppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A1CDE05123506DC20024548F /* Debug */,
-				A1CDE05223506DC20024548F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
