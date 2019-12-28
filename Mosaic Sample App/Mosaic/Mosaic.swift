@@ -35,7 +35,7 @@ public final class Mosaic {
     // MARK: - Public
     
     /// The numbner of tiles in the mosaic per length (width & height).
-    let numberOfTiles: Int = 150
+    let numberOfTiles: Int = 70
     
     /// The minumum number of images that should be passed in at initialization via the `imagePool` parameter.
     static let minImagePoolCount = 3

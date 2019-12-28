@@ -34,13 +34,11 @@ class ViewController: UIViewController {
     private let captureSessionManager = CaptureSessionManager()
     private lazy var mosaic: Mosaic = {
         var images = [UIImage]()
-        for i in 0..<30 {
-            images.append(UIImage(named: "Rectangle_\(i).jpg")!)
+        for i in 1...38 {
+            images.append(UIImage(named: "Image_Pool_\(i).jpg")!)
         }
         
-        images = images + [#imageLiteral(resourceName: "IMG_2006.jpeg"), #imageLiteral(resourceName: "IMG_2055.jpeg"), #imageLiteral(resourceName: "IMG_3991.jpeg"), #imageLiteral(resourceName: "IMG_4414.jpeg"), #imageLiteral(resourceName: "IMG_8293.jpeg"), #imageLiteral(resourceName: "IMG_9945.jpeg"), #imageLiteral(resourceName: "IMG_9346.jpg"), #imageLiteral(resourceName: "IMG_8348.jpg"), #imageLiteral(resourceName: "IMG_9825.jpg")]
-        
-        return try! Mosaic(imagePool: images, cheatDecision: .enabled)
+        return try! Mosaic(imagePool: images)
     }()
 
     override func viewDidLoad() {
@@ -51,12 +49,10 @@ class ViewController: UIViewController {
         mosaic.preHeat()
         
         captureSessionManager.delegate = self
+//        captureSessionManager.start()
         
-        
-        captureSessionManager.start()
-        
-//        let image: UIImage = mosaic.generateMosaic(for: UIImage(named: "IMG_4635")!.cgImage!)!
-//        imageView.image = image
+        let image: UIImage = mosaic.generateMosaic(for: UIImage(named: "Base_Image.jpg")!.cgImage!)!
+        imageView.image = image
     }
     
     private func setupView() {
