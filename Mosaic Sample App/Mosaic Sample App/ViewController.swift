@@ -11,10 +11,23 @@ import Mosaic
 
 class ViewController: UIViewController {
     
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.delegate = self
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 20.0
+        scrollView.backgroundColor = .black
+        return scrollView
+    }()
+    
     lazy var imageView: UIImageView = {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 375, height: 667))
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .black
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -32,25 +45,60 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupView()
 
         mosaic.preHeat()
         
         captureSessionManager.delegate = self
         
-        view.addSubview(imageView)
         
         captureSessionManager.start()
         
-//        let image: UIImage = mosaic.generateMosaic(for: #imageLiteral(resourceName: "Test_image_1.jpg").cgImage!)!
+//        let image: UIImage = mosaic.generateMosaic(for: UIImage(named: "IMG_4635")!.cgImage!)!
 //        imageView.image = image
     }
-
+    
+    private func setupView() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(imageView)
+        
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        let constraints = [
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            
+            imageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            imageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+            imageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            imageView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
+    }
+    
 }
 
 extension ViewController: CaptureSessionManagerDelegate {
+    
     func didCapture(_ texture: MTLTexture) {
         let image: UIImage = mosaic.generateMosaic(for: texture)!
         imageView.image = image
+    }
+    
+}
+
+extension ViewController: UIScrollViewDelegate {
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
     
 }
