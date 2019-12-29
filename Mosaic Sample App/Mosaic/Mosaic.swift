@@ -35,7 +35,7 @@ public final class Mosaic {
     // MARK: - Public
     
     /// The numbner of tiles in the mosaic per length (width & height).
-    let numberOfTiles: Int = 70
+    let numberOfTiles: Int
     
     /// The minumum number of images that should be passed in at initialization via the `imagePool` parameter.
     static let minImagePoolCount = 3
@@ -46,23 +46,30 @@ public final class Mosaic {
     /// The minumum number of images that should be passed in at initialization via the `imagePool` parameter, in order not to auto-activate cheating.
     static let minCheatImagePoolCount = 15
     
-    public init(imagePool: [UIImage], cheatDecision: CheatMode = .automatic) throws {
-        var shouldCheat = cheatDecision == .enabled
+    /// Hello.
+    /// - Parameters:
+    ///    - imagePool: The images to use in order to generate the photographic mosaic.
+    ///    - cheatMode: Determines if Mosaic should "cheat" to generate the photographic mosaic.
+    ///       It can be hard to come up with a wide variety of images in the image pool. Enabling cheating, will ensure that all colors are represented.
+    ///    - numberOfTiles: The number of tiles in the photographic mosaic per length (width & height).
+    public init(imagePool: [UIImage], cheatMode: CheatMode = .automatic, numberOfTiles: Int = 75) throws {
+        var shouldCheat = cheatMode == .enabled
         guard imagePool.count > Mosaic.minImagePoolCount && imagePool.count < Mosaic.maxImagePoolCount else {
             throw MosaicError.imagePoolCountError(count: imagePool.count)
         }
         
-        if imagePool.count < Mosaic.minCheatImagePoolCount, cheatDecision == .automatic {
-            print("Not enough images. The cheat mode activated.")
+        if imagePool.count < Mosaic.minCheatImagePoolCount, cheatMode == .automatic {
+            print("Not enough images. The cheat mode is activated.")
             shouldCheat = true
         }
         
+        self.numberOfTiles = numberOfTiles
         let poolManager = ImagePoolManager(images: imagePool, shouldCheat: shouldCheat)
         self.imagePositionMapper = PoolTileMapper(poolManager: poolManager)
     }
     
-    public func generateMosaic(for texture: MTLTexture) -> UIImage? {
-        guard let texture: MTLTexture = generateMosaic(for: texture) else {
+    public func generate(for texture: MTLTexture) -> UIImage? {
+        guard let texture: MTLTexture = generate(for: texture) else {
             return nil
         }
         
@@ -71,8 +78,8 @@ public final class Mosaic {
         return image
     }
     
-    public func generateMosaic(for image: CGImage) -> UIImage? {
-        guard let texture: MTLTexture = generateMosaic(for: image) else {
+    public func generate(for image: CGImage) -> UIImage? {
+        guard let texture: MTLTexture = generate(for: image) else {
             return nil
         }
         
@@ -81,24 +88,24 @@ public final class Mosaic {
         return image
     }
 
-    public func generateMosaic(for texture: MTLTexture) -> MTLTexture? {
+    public func generate(for texture: MTLTexture) -> MTLTexture? {
         let imageSize = CGSize(width: texture.width, height: texture.height)
 
         guard let tileRects = tileRects else {
             generateTileRects(with: imageSize)
-            return generateMosaic(for: texture)
+            return generate(for: texture)
         }
 
         let averageColors = averageZoneColorFinder.findAverageZoneColor(on: texture, with: tileRects)
         return mosaic(with: imageSize, tileRects, averageColors)
     }
     
-    public func generateMosaic(for image: CGImage) -> MTLTexture? {
+    public func generate(for image: CGImage) -> MTLTexture? {
         let imageSize = CGSize(width: image.width, height: image.height)
         
         guard let tileRects = tileRects else {
             generateTileRects(with: imageSize)
-            return generateMosaic(for: image)
+            return generate(for: image)
         }
 
         let averageColors = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)

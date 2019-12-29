@@ -49,10 +49,10 @@ class ViewController: UIViewController {
         mosaic.preHeat()
         
         captureSessionManager.delegate = self
-//        captureSessionManager.start()
+        captureSessionManager.start()
         
-        let image: UIImage = mosaic.generateMosaic(for: UIImage(named: "Base_Image.jpg")!.cgImage!)!
-        imageView.image = image
+//        let image: UIImage = mosaic.generate(for: UIImage(named: "Base_Image.jpg")!.cgImage!)!
+//        imageView.image = image
     }
     
     private func setupView() {
@@ -85,7 +85,7 @@ class ViewController: UIViewController {
 extension ViewController: CaptureSessionManagerDelegate {
     
     func didCapture(_ texture: MTLTexture) {
-        let image: UIImage = mosaic.generateMosaic(for: texture)!
+        let image: UIImage = mosaic.generate(for: texture)!
         imageView.image = image
     }
     
