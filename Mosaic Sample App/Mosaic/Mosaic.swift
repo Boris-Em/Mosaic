@@ -115,7 +115,6 @@ public final class Mosaic {
     
     /// Optionally prepares the `Mosaic` instance so that it can start doing its work as fast as possible.
     /// Call this function when you know that a mosaic could be generated, but the process hasn't started yet.
-    /// @see `preHeat()`
     /// - Parameters:
     ///   - imageSize: The size of the image that will be transformed into a Mosaic.
     public func preHeat(withImageSize imageSize: CGSize? = nil) {
