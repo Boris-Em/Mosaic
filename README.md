@@ -87,3 +87,5 @@ Mosaic(imagePool: images, cheatDecision: .enabled)
 ## Communication
 
 ## License
+
+See the [License](https://github.com/Boris-Em/Mosaic/blob/master/LICENSE). You are free to make changes and use this in either personal or commercial projects. Attribution is not required, but highly appreciated. A little "Thanks!" (or something to that affect) is always welcome. If you use **Mosaic** in your one of your projects, please let us know!
