@@ -89,28 +89,26 @@ public final class Mosaic {
     }
 
     public func generate(for texture: MTLTexture) -> MTLTexture? {
-        let imageSize = CGSize(width: texture.width, height: texture.height)
-
         guard let tileRects = tileRects else {
+            let imageSize = CGSize(width: texture.width, height: texture.height)
             generateTileRects(with: imageSize)
             return generate(for: texture)
         }
 
         let averageColors = averageZoneColorFinder.findAverageZoneColor(on: texture, with: tileRects)
-        return mosaic(with: imageSize, tileRects, averageColors)
+        return mosaic(with: tileRects, averageColors)
     }
     
     public func generate(for image: CGImage) -> MTLTexture? {
-        let imageSize = CGSize(width: image.width, height: image.height)
-        
         guard let tileRects = tileRects else {
+            let imageSize = CGSize(width: image.width, height: image.height)
             generateTileRects(with: imageSize)
             return generate(for: image)
         }
 
         let averageColors = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
         
-        return mosaic(with: imageSize, tileRects, averageColors)
+        return mosaic(with: tileRects, averageColors)
     }
     
     /// Optionally prepares the `Mosaic` instance so that it can start doing its work as fast as possible.
@@ -126,9 +124,9 @@ public final class Mosaic {
         averageZoneColorFinder.preHeat()
     }
     
-    private func mosaic(with imageSize: CGSize, _ tileRects: TileRects, _ averageColors: MTLBuffer) -> MTLTexture? {
+    private func mosaic(with tileRects: TileRects, _ averageColors: MTLBuffer) -> MTLTexture? {
         let texturePositions = imagePositionMapper.match(tileRects, to: averageColors)
-        let mosaicImage = ImageStitcher().stitch(texturePositions: texturePositions, to: imageSize, numberOfTiles: tileRects.numberOfTiles)
+        let mosaicImage = ImageStitcher().stitch(texturePositions: texturePositions, to: tileRects.imageSize, numberOfTiles: tileRects.numberOfTiles)
 
         return mosaicImage
     }

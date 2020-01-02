@@ -22,10 +22,10 @@ struct TileRects {
     }
     
     init(numberOfTiles: Int, imageSize: CGSize) {
-        self.imageSize = imageSize
+        self.imageSize = TileRects.outputImageSize(for: imageSize, numberOfTiles: numberOfTiles)
         self.numberOfTiles = numberOfTiles
 
-        self.tileSize = TileRects.tileSize(for: imageSize, numberOfTiles: numberOfTiles)
+        self.tileSize = TileRects.tileSize(for: self.imageSize, numberOfTiles: numberOfTiles)
         let count = numberOfTiles * numberOfTiles
         
         self.rects = TileRects.generateRects(for: count, numberOfTiles, tileSize)
@@ -34,6 +34,19 @@ struct TileRects {
     private static func tileSize(for imageSize: CGSize, numberOfTiles: Int) -> CGSize {
         let tileSize = CGSize(width: imageSize.width / CGFloat(numberOfTiles), height: imageSize.height / CGFloat(numberOfTiles))
         return tileSize
+    }
+    
+    /// It's not always possible to output an image of the same size as the input image.
+    /// This is because the number of tiles required doesn't always fit within the size of the image.
+    /// For example, a 10x10 image, cannot fit 3 tiles of the same size.
+    /// Instead we should create a 9x9 image.
+    private static func outputImageSize(for inputImageSize: CGSize, numberOfTiles: Int) -> CGSize {
+        let widthTilePixelCount = Int(inputImageSize.width) / numberOfTiles
+        let heightTilePixelCount = Int(inputImageSize.height) / numberOfTiles
+        
+        let outputImageSize = CGSize(width: widthTilePixelCount * numberOfTiles, height: heightTilePixelCount * numberOfTiles)
+        
+        return outputImageSize
     }
     
     private static func generateRects(for count: Int, _ numberOfTiles: Int, _ tileSize: CGSize) -> [CGRect] {
