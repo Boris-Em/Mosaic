@@ -7,7 +7,7 @@
 ## Features
 - [x] Fast: capable of processing live videos
 - [x] Lightweight
-- [x] Cheat mode
+- [x] Easy to use
 
 ## Requirements
 
