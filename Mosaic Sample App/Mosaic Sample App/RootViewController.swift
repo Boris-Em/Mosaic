@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RootViewController.swift
 //  Mosaic Sample App
 //
 //  Created by Boris Emorine on 10/11/19.
@@ -9,7 +9,7 @@
 import UIKit
 import Mosaic
 
-class ViewController: UIViewController {
+class RootViewController: UIViewController {
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: CaptureSessionManagerDelegate {
+extension RootViewController: CaptureSessionManagerDelegate {
     
     func didCapture(_ texture: MTLTexture) {
         let image: UIImage = mosaic.generate(for: texture)!
@@ -91,7 +91,7 @@ extension ViewController: CaptureSessionManagerDelegate {
     
 }
 
-extension ViewController: UIScrollViewDelegate {
+extension RootViewController: UIScrollViewDelegate {
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView

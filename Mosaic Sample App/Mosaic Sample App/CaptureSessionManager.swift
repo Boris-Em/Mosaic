@@ -1,6 +1,6 @@
 //
 //  CaptureManager.swift
-//  WeScan
+//  Mosaic Sample App
 //
 //  Created by Boris Emorine on 2/8/18.
 //  Copyright © 2018 WeTransfer. All rights reserved.
