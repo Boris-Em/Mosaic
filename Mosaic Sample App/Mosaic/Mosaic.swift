@@ -10,13 +10,24 @@ import UIKit
 
 public final class Mosaic {
     
+    /// Represents the different cheat modes.
+    /// Cheat modes are here to help with image pools that don't have a wide variety of average colors.
     public enum CheatMode {
+        
+        /// `Mosaic` will attenpt to automatically determine if cheating is required or not.
         case automatic
+        
+        /// Enabled cheating. `Mosaic` will actively complete the image pool by generating new images close to the colors that are missing.
         case enabled
+        
+        /// Mosaic will use the image pool as is.
         case disabled
     }
     
-    enum MosaicError: Error {
+    /// Defines errors specific to `Mosaic`.
+    public enum MosaicError: Error {
+        
+        /// Too little or too many images were used for the image pool.
         case imagePoolCountError(count: Int)
         
         var localizedDescription: String {
@@ -27,24 +38,23 @@ public final class Mosaic {
         }
     }
     
-    private var tileRects: TileRects?
-    
+    private var tiles: Tiles?
     private let imagePositionMapper: PoolTileMapper
     private let averageZoneColorFinder = AverageZoneColorFinder()
     
     // MARK: - Public
     
     /// The numbner of tiles in the mosaic per length (width & height).
-    let numberOfTiles: Int
+    private let numberOfTiles: Int
     
     /// The minumum number of images that should be passed in at initialization via the `imagePool` parameter.
-    static let minImagePoolCount = 3
+    static private let minImagePoolCount = 3
     
     /// The minumum number of images that should be passed in at initialization via the `imagePool` parameter.
-    static let maxImagePoolCount = 50
+    static private let maxImagePoolCount = 50
     
-    /// The minumum number of images that should be passed in at initialization via the `imagePool` parameter, in order not to auto-activate cheating.
-    static let minCheatImagePoolCount = 15
+    /// The minumum number of images that should be passed in at initialization via the `imagePool` parameter in order not to auto-activate cheating.
+    static private let minCheatImagePoolCount = 15
     
     /// Hello.
     /// - Parameters:
@@ -68,47 +78,58 @@ public final class Mosaic {
         self.imagePositionMapper = PoolTileMapper(poolManager: poolManager)
     }
     
-    public func generate(for texture: MTLTexture) -> UIImage? {
-        guard let texture: MTLTexture = generate(for: texture) else {
-            return nil
-        }
-        
+    /// Generates a photographic mosaic from the passed in `MTLTexture` instance.
+    /// - Parameters:
+    ///   - texture: The image texture to generate the photographic mosaic from.
+    /// - Returns: The photographic mosaic as a `UIImage` instance.
+    public func generate(for texture: MTLTexture) -> UIImage {
+        let texture: MTLTexture = generate(for: texture)
         let image = mosaicImage(from: texture)
         
         return image
     }
     
-    public func generate(for image: CGImage) -> UIImage? {
-        guard let texture: MTLTexture = generate(for: image) else {
-            return nil
-        }
-        
+    /// Generates a photographic mosaic from the passed in `CGImage` instance.
+    /// - Parameters:
+    ///   - image: The image to generate the photographic mosaic from.
+    /// - Returns: The photographic mosaic as a `UIImage` instance.
+    public func generate(for image: CGImage) -> UIImage {
+        let texture: MTLTexture = generate(for: image)
         let image = mosaicImage(from: texture)
         
         return image
     }
 
-    public func generate(for texture: MTLTexture) -> MTLTexture? {
-        guard let tileRects = tileRects else {
+    /// Generates a photographic mosaic from the passed in `MTLTexture` instance.
+    /// This function is the fastest way of generating the mosaic as it doesn't require any image conversions.
+    /// - Parameters:
+    ///   - texture: The image texture to generate the photographic mosaic from.
+    /// - Returns: The photographic mosaic as a `MTKTexture` instance.
+    public func generate(for texture: MTLTexture) -> MTLTexture {
+        guard let tiles = tiles else {
             let imageSize = CGSize(width: texture.width, height: texture.height)
-            generateTileRects(with: imageSize)
+            generateTiles(with: imageSize)
             return generate(for: texture)
         }
 
-        let averageColors = averageZoneColorFinder.findAverageZoneColor(on: texture, with: tileRects)
-        return mosaic(with: tileRects, averageColors)
+        let averageColors = averageZoneColorFinder.findAverageZoneColor(on: texture, with: tiles)
+        return mosaic(with: tiles, averageColors)
     }
     
-    public func generate(for image: CGImage) -> MTLTexture? {
-        guard let tileRects = tileRects else {
+    /// Generates a photographic mosaic from the passed in `CGImage` instance.
+    /// - Parameters:
+    ///   - image: The image to generate the photographic mosaic from.
+    /// - Returns: The photographic mosaic as a `UIImage` instance.
+    public func generate(for image: CGImage) -> MTLTexture {
+        guard let tiles = tiles else {
             let imageSize = CGSize(width: image.width, height: image.height)
-            generateTileRects(with: imageSize)
+            generateTiles(with: imageSize)
             return generate(for: image)
         }
 
-        let averageColors = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
+        let averageColors = averageZoneColorFinder.findAverageZoneColor(on: image, with: tiles)
         
-        return mosaic(with: tileRects, averageColors)
+        return mosaic(with: tiles, averageColors)
     }
     
     /// Optionally prepares the `Mosaic` instance so that it can start doing its work as fast as possible.
@@ -117,16 +138,16 @@ public final class Mosaic {
     ///   - imageSize: The size of the image that will be transformed into a Mosaic.
     public func preHeat(withImageSize imageSize: CGSize? = nil) {
         if let imageSize = imageSize {
-            generateTileRects(with: imageSize)
+            generateTiles(with: imageSize)
         }
         
-        imagePositionMapper.preHeat(withTileSize: self.tileRects?.tileSize)
+        imagePositionMapper.preHeat(withTileSize: self.tiles?.tileSize)
         averageZoneColorFinder.preHeat()
     }
     
-    private func mosaic(with tileRects: TileRects, _ averageColors: MTLBuffer) -> MTLTexture? {
-        let texturePositions = imagePositionMapper.match(tileRects, to: averageColors)
-        let mosaicImage = ImageStitcher().stitch(texturePositions: texturePositions, to: tileRects.imageSize, numberOfTiles: tileRects.numberOfTiles)
+    private func mosaic(with tiles: Tiles, _ averageColors: MTLBuffer) -> MTLTexture {
+        let texturePositions = imagePositionMapper.match(tiles, to: averageColors)
+        let mosaicImage = ImageStitcher().stitch(texturePositions: texturePositions, to: tiles.imageSize, numberOfTiles: tiles.numberOfTiles)
 
         return mosaicImage
     }
@@ -144,8 +165,8 @@ public final class Mosaic {
         return uiImage
     }
     
-    private func generateTileRects(with imageSize: CGSize) {
-        self.tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+    private func generateTiles(with imageSize: CGSize) {
+        self.tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
     }
     
 }

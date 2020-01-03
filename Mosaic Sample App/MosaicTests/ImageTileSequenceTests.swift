@@ -15,17 +15,17 @@ class ImageTileSequenceTests: XCTestCase {
         let imageSize = CGSize(width: 100, height: 100)
         let numberOfTiles = 2
         
-        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
                 
-        for (index, rect) in tileRects.rects.enumerated() {
+        for (index, rect) in tiles.frames.enumerated() {
             if index == 0 {
-                XCTAssertEqual(rect, CGRect(x: 0, y: 0, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: 0, y: 0, width: tiles.tileSize.width, height: tiles.tileSize.height))
             } else if index == 1 {
-                XCTAssertEqual(rect, CGRect(x: tileRects.tileSize.width, y: 0, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: tiles.tileSize.width, y: 0, width: tiles.tileSize.width, height: tiles.tileSize.height))
             } else if index == 2 {
-                XCTAssertEqual(rect, CGRect(x: 0, y: tileRects.tileSize.height, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: 0, y: tiles.tileSize.height, width: tiles.tileSize.width, height: tiles.tileSize.height))
             } else if index == 3 {
-                XCTAssertEqual(rect, CGRect(x: tileRects.tileSize.width, y: tileRects.tileSize.height, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: tiles.tileSize.width, y: tiles.tileSize.height, width: tiles.tileSize.width, height: tiles.tileSize.height))
             } else {
                 XCTFail("There should only be 4 elements in the sequence.")
             }
@@ -36,17 +36,17 @@ class ImageTileSequenceTests: XCTestCase {
         let imageSize = CGSize(width: 1.5, height: 1.5)
         let numberOfTiles = 2
         
-        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
                 
-        for (index, rect) in tileRects.rects.enumerated() {
+        for (index, rect) in tiles.frames.enumerated() {
             if index == 0 {
-                XCTAssertEqual(rect, CGRect(x: 0, y: 0, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: 0, y: 0, width: tiles.tileSize.width, height: tiles.tileSize.height))
             } else if index == 1 {
-                XCTAssertEqual(rect, CGRect(x: tileRects.tileSize.width, y: 0, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: tiles.tileSize.width, y: 0, width: tiles.tileSize.width, height: tiles.tileSize.height))
             } else if index == 2 {
-                XCTAssertEqual(rect, CGRect(x: 0, y: tileRects.tileSize.height, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: 0, y: tiles.tileSize.height, width: tiles.tileSize.width, height: tiles.tileSize.height))
             } else if index == 3 {
-                XCTAssertEqual(rect, CGRect(x: tileRects.tileSize.width, y: tileRects.tileSize.height, width: tileRects.tileSize.width, height: tileRects.tileSize.height))
+                XCTAssertEqual(rect, CGRect(x: tiles.tileSize.width, y: tiles.tileSize.height, width: tiles.tileSize.width, height: tiles.tileSize.height))
             } else {
                 XCTFail("There should only be 4 elements in the sequence.")
             }

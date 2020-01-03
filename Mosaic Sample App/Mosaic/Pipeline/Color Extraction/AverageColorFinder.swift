@@ -31,7 +31,6 @@ class AverageColorFinder {
     }
     
     func computeAverageColor(for region: CGRect) -> UIColor? {
-        // TODO: Something is going on here where we need to invert the Y axis. Need investigation
         let regionExtent = CIVector(x: region.origin.x, y: image.size.height - region.origin.y - region.size.height, z: region.size.width, w: region.size.height)
         let filterName = "CIAreaAverage"
         let parameters = [

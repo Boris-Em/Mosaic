@@ -13,7 +13,6 @@ import MetalKit
 final class PoolTileMapper {
     
     private let poolManager: ImagePoolManager
-    private let resizedImageManager = ResizedImageManager()
     
     private lazy var pipelineState: MTLComputePipelineState = {
         let shaderLibrary = MetalResourceManager.shared.shaderLibrary
@@ -38,10 +37,10 @@ final class PoolTileMapper {
     /// Maps images from the pool to each tile.
     ///
     /// - Parameters:
-    ///   - tileRects: The rectangles describing each tile.
+    ///   - tiles: The rectangles describing each tile.
     ///   - averageColors: The average color of each tile
-    func match(_ tileRects: TileRects, to averageColors: MTLBuffer) -> ImageStitcher.TexturePoolGuide {
-        preHeat(withTileSize: tileRects.tileSize)
+    func match(_ tiles: Tiles, to averageColors: MTLBuffer) -> ImageStitcher.TexturePoolGuide {
+        preHeat(withTileSize: tiles.tileSize)
         let metalDevice = MetalResourceManager.shared.device
 
         let commandQueue = metalDevice.makeCommandQueue()!
@@ -55,18 +54,18 @@ final class PoolTileMapper {
         // Average color of each image from the pool
         encoder.setBytes(poolManager.colors, length: MemoryLayout<UInt16>.size * poolManager.colors.count, index: 1)
         
-        var cNumberOfTiles: UInt8 = UInt8(tileRects.numberOfTiles)
+        var cNumberOfTiles: UInt8 = UInt8(tiles.numberOfTiles)
         encoder.setBytes(&cNumberOfTiles, length: MemoryLayout<UInt8>.size, index: 2)
         
         var cNumberOfImagesPool: UInt8 = UInt8(poolManager.images.count)
         encoder.setBytes(&cNumberOfImagesPool, length: MemoryLayout<UInt8>.size, index: 3)
 
-        var output = [UInt16](repeating: 0, count: tileRects.count)
-        let outputBuffer = metalDevice.makeBuffer(bytes: &output, length: MemoryLayout<UInt16>.stride * tileRects.count, options: [])
+        var output = [UInt16](repeating: 0, count: tiles.count)
+        let outputBuffer = metalDevice.makeBuffer(bytes: &output, length: MemoryLayout<UInt16>.stride * tiles.count, options: [])
         encoder.setBuffer(outputBuffer, offset: 0, index: 4)
         
         let threadsPerThreadgroup = MTLSizeMake(1, 1, 1)
-        let threadgroupsPerGrid = MTLSize(width: tileRects.numberOfTiles, height: tileRects.numberOfTiles, depth: 1)
+        let threadgroupsPerGrid = MTLSize(width: tiles.numberOfTiles, height: tiles.numberOfTiles, depth: 1)
         
         encoder.dispatchThreadgroups(threadgroupsPerGrid, threadsPerThreadgroup: threadsPerThreadgroup)
         encoder.endEncoding()

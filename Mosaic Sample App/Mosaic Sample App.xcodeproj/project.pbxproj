@@ -15,8 +15,7 @@
 		A1421D8A235E3297004C0286 /* PoolTileMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1421D89235E3297004C0286 /* PoolTileMapperTests.swift */; };
 		A15783982350A10100CCAEDD /* ImageStitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15783972350A10100CCAEDD /* ImageStitcher.swift */; };
 		A157839A2350A30200CCAEDD /* ImagePoolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15783992350A30200CCAEDD /* ImagePoolManager.swift */; };
-		A157839C2350A31F00CCAEDD /* ResizedImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157839B2350A31F00CCAEDD /* ResizedImageManager.swift */; };
-		A157839E2350A36B00CCAEDD /* TileRects.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157839D2350A36B00CCAEDD /* TileRects.swift */; };
+		A157839E2350A36B00CCAEDD /* Tiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157839D2350A36B00CCAEDD /* Tiles.swift */; };
 		A15783A02350AC7700CCAEDD /* AverageColorFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157839F2350AC7700CCAEDD /* AverageColorFinder.swift */; };
 		A15783A3235136E500CCAEDD /* Test_image_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A15783A1235136E500CCAEDD /* Test_image_1.jpg */; };
 		A19A222B236596ED00A00324 /* PoolTileMapper_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A19A222A236596ED00A00324 /* PoolTileMapper_kernel.metal */; };
@@ -164,8 +163,7 @@
 		A1421D89235E3297004C0286 /* PoolTileMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolTileMapperTests.swift; sourceTree = "<group>"; };
 		A15783972350A10100CCAEDD /* ImageStitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStitcher.swift; sourceTree = "<group>"; };
 		A15783992350A30200CCAEDD /* ImagePoolManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePoolManager.swift; sourceTree = "<group>"; };
-		A157839B2350A31F00CCAEDD /* ResizedImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizedImageManager.swift; sourceTree = "<group>"; };
-		A157839D2350A36B00CCAEDD /* TileRects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileRects.swift; sourceTree = "<group>"; };
+		A157839D2350A36B00CCAEDD /* Tiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tiles.swift; sourceTree = "<group>"; };
 		A157839F2350AC7700CCAEDD /* AverageColorFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageColorFinder.swift; sourceTree = "<group>"; };
 		A15783A1235136E500CCAEDD /* Test_image_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test_image_1.jpg; sourceTree = "<group>"; };
 		A19A222A236596ED00A00324 /* PoolTileMapper_kernel.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PoolTileMapper_kernel.metal; sourceTree = "<group>"; };
@@ -294,6 +292,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A123983023BF8D28009C4196 /* Convenience */ = {
+			isa = PBXGroup;
+			children = (
+				A1CDE07623506F5F0024548F /* UIImageExtensions.swift */,
+				A1CDE07F23507D4A0024548F /* UIColorExtensions.swift */,
+				A1E87D4B23AE3513006718B4 /* MetalResourceManager.swift */,
+			);
+			path = Convenience;
+			sourceTree = "<group>";
+		};
 		A12FE4C0238C8787002A9F5F /* Color Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,15 +343,12 @@
 		A1CDE05923506DD50024548F /* Mosaic */ = {
 			isa = PBXGroup;
 			children = (
+				A1CDE07D235076470024548F /* Mosaic.swift */,
 				A1F292702357531A00B0C099 /* Pipeline */,
+				A1E87D4F23AE4CEF006718B4 /* Image Pool */,
+				A123983023BF8D28009C4196 /* Convenience */,
 				A1CDE05A23506DD50024548F /* Mosaic.h */,
 				A1CDE05B23506DD50024548F /* Info.plist */,
-				A1CDE07D235076470024548F /* Mosaic.swift */,
-				A1E87D4F23AE4CEF006718B4 /* ImagePoolManager */,
-				A157839B2350A31F00CCAEDD /* ResizedImageManager.swift */,
-				A1CDE07623506F5F0024548F /* UIImageExtensions.swift */,
-				A1CDE07F23507D4A0024548F /* UIColorExtensions.swift */,
-				A1E87D4B23AE3513006718B4 /* MetalResourceManager.swift */,
 			);
 			path = Mosaic;
 			sourceTree = "<group>";
@@ -432,13 +437,13 @@
 			path = Cheats;
 			sourceTree = "<group>";
 		};
-		A1E87D4F23AE4CEF006718B4 /* ImagePoolManager */ = {
+		A1E87D4F23AE4CEF006718B4 /* Image Pool */ = {
 			isa = PBXGroup;
 			children = (
 				A1E71E0423AFF0D700F4E97F /* Cheats */,
 				A15783992350A30200CCAEDD /* ImagePoolManager.swift */,
 			);
-			path = ImagePoolManager;
+			path = "Image Pool";
 			sourceTree = "<group>";
 		};
 		A1EFFD6F239AF2AA00917A18 /* Basic Colors */ = {
@@ -480,7 +485,7 @@
 			children = (
 				A12FE4C0238C8787002A9F5F /* Color Helpers */,
 				A1F292712357534300B0C099 /* Color Extraction */,
-				A157839D2350A36B00CCAEDD /* TileRects.swift */,
+				A157839D2350A36B00CCAEDD /* Tiles.swift */,
 				A15783972350A10100CCAEDD /* ImageStitcher.swift */,
 				A1DA3B9C2375EFED0008B37D /* ImageStitcher.metal */,
 				A1F292762357544400B0C099 /* PoolTileMapper.swift */,
@@ -727,7 +732,7 @@
 				A1E71E0123AFEAD300F4E97F /* DeltaE.metal in Sources */,
 				A1421D7C235E2EB9004C0286 /* AverageColorZone_kernel.metal in Sources */,
 				A12FE4BC238C8503002A9F5F /* ColorConversion.metal in Sources */,
-				A157839E2350A36B00CCAEDD /* TileRects.swift in Sources */,
+				A157839E2350A36B00CCAEDD /* Tiles.swift in Sources */,
 				A1E71DFE23AFE36A00F4E97F /* ToLab.metal in Sources */,
 				A1E87D5323AE75BB006718B4 /* ColorsDistanceCalculator.swift in Sources */,
 				A1CDE07723506F5F0024548F /* UIImageExtensions.swift in Sources */,
@@ -737,7 +742,6 @@
 				A1CDE07E235076470024548F /* Mosaic.swift in Sources */,
 				A1EECBEE23B0D89400B4BC6F /* ColorOverlayImageFilter.swift in Sources */,
 				A15783A02350AC7700CCAEDD /* AverageColorFinder.swift in Sources */,
-				A157839C2350A31F00CCAEDD /* ResizedImageManager.swift in Sources */,
 				A1B0E2922351C1BB0011040B /* AverageZoneColorFinder.swift in Sources */,
 				A1E87D5523AF7454006718B4 /* ColorsDistanceCalculator.metal in Sources */,
 				A15783982350A10100CCAEDD /* ImageStitcher.swift in Sources */,

@@ -85,7 +85,7 @@ class RootViewController: UIViewController {
 extension RootViewController: CaptureSessionManagerDelegate {
     
     func didCapture(_ texture: MTLTexture) {
-        let image: UIImage = mosaic.generate(for: texture)!
+        let image: UIImage = mosaic.generate(for: texture)
         imageView.image = image
     }
     

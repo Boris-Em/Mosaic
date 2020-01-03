@@ -1,5 +1,5 @@
 //
-//  TileRects.swift
+//  Tiles.swift
 //  Mosaic
 //
 //  Created by Boris Emorine on 10/11/19.
@@ -8,27 +8,27 @@
 
 import UIKit
 
-/// Simple wrapper arround an array of `CGRect` describing the frame of all of the tiles.
-struct TileRects {
+/// A data structure that keeps track of info around the tiles of a picture.
+struct Tiles {
     
-    let rects: [CGRect]
+    let frames: [CGRect]
     
     let tileSize: CGSize
     let imageSize: CGSize
     let numberOfTiles: Int
     
     var count: Int {
-        return rects.count
+        return frames.count
     }
     
     init(numberOfTiles: Int, imageSize: CGSize) {
-        self.imageSize = TileRects.outputImageSize(for: imageSize, numberOfTiles: numberOfTiles)
+        self.imageSize = Tiles.outputImageSize(for: imageSize, numberOfTiles: numberOfTiles)
         self.numberOfTiles = numberOfTiles
 
-        self.tileSize = TileRects.tileSize(for: self.imageSize, numberOfTiles: numberOfTiles)
+        self.tileSize = Tiles.tileSize(for: self.imageSize, numberOfTiles: numberOfTiles)
         let count = numberOfTiles * numberOfTiles
         
-        self.rects = TileRects.generateRects(for: count, numberOfTiles, tileSize)
+        self.frames = Tiles.generateRects(for: count, numberOfTiles, tileSize)
     }
     
     private static func tileSize(for imageSize: CGSize, numberOfTiles: Int) -> CGSize {

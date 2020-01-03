@@ -27,14 +27,14 @@ class AverageZoneColorFinder {
         _ = pipelineState
     }
     
-    func findAverageZoneColor(on image: CGImage, with imageSequence: TileRects) -> MTLBuffer {
+    func findAverageZoneColor(on image: CGImage, with imageSequence: Tiles) -> MTLBuffer {
         let metalDevice = MetalResourceManager.shared.device
         let textureLoader = MTKTextureLoader(device: metalDevice)
         let texture = try! textureLoader.newTexture(cgImage: image, options: [MTKTextureLoader.Option.SRGB: 0, MTKTextureLoader.Option.origin: MTKTextureLoader.Origin.topLeft])
         return findAverageZoneColor(on: texture, with: imageSequence)
     }
     
-    func findAverageZoneColor(on texture: MTLTexture, with imageSequence: TileRects) -> MTLBuffer {
+    func findAverageZoneColor(on texture: MTLTexture, with imageSequence: Tiles) -> MTLBuffer {
         let metalDevice = MetalResourceManager.shared.device
         let commandQueue = metalDevice.makeCommandQueue()!
         let commandBuffer = commandQueue.makeCommandBuffer()!

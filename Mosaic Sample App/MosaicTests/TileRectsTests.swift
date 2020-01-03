@@ -1,5 +1,5 @@
 //
-//  TileRectsTests.swift
+//  tilesTests.swift
 //  MosaicTests
 //
 //  Created by Boris Emorine on 1/2/20.
@@ -9,11 +9,11 @@
 import XCTest
 @testable import Mosaic
 
-class TileRectsTests: XCTestCase {
+class tilesTests: XCTestCase {
 
     func testImageSizeSimple() {
         let imageSize = CGSize(width: 10.0, height: 10.0)
-        let tileRect = TileRects(numberOfTiles: 9, imageSize: imageSize)
+        let tileRect = Tiles(numberOfTiles: 9, imageSize: imageSize)
         let expectedImageSize = CGSize(width: 9.0, height: 9.0)
         
         XCTAssertEqual(tileRect.imageSize, expectedImageSize)
@@ -21,7 +21,7 @@ class TileRectsTests: XCTestCase {
     
     func testImageSizeCommon() {
         let imageSize = CGSize(width: 1280, height: 1024)
-        let tileRect = TileRects(numberOfTiles: 70, imageSize: imageSize)
+        let tileRect = Tiles(numberOfTiles: 70, imageSize: imageSize)
         let expectedImageSize = CGSize(width: 1260, height: 980)
         
         XCTAssertEqual(tileRect.imageSize, expectedImageSize)

@@ -18,15 +18,15 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 10
         
         let imageSize = CGSize(width: image.width, height: image.height)
-        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tiles)
         
-        var colors = [UInt16](repeating: 0, count: tileRects.rects.count * 4)
+        var colors = [UInt16](repeating: 0, count: tiles.frames.count * 4)
         
-        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4, freeWhenDone: false)
-        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4)
+        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4, freeWhenDone: false)
+        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4)
         
         assertAll(red: 255, green: 0, blue: 0, colors: colors)
     }
@@ -38,15 +38,15 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 10
         
         let imageSize = CGSize(width: image.width, height: image.height)
-        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tiles)
         
-        var colors = [UInt16](repeating: 0, count: tileRects.rects.count * 4)
+        var colors = [UInt16](repeating: 0, count: tiles.frames.count * 4)
         
-        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4, freeWhenDone: false)
-        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4)
+        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4, freeWhenDone: false)
+        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4)
         
         assertAll(red: 0, green: 255, blue: 0, colors: colors)
     }
@@ -58,15 +58,15 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 10
         
         let imageSize = CGSize(width: image.width, height: image.height)
-        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tiles)
         
-        var colors = [UInt16](repeating: 0, count: tileRects.rects.count * 4)
+        var colors = [UInt16](repeating: 0, count: tiles.frames.count * 4)
         
-        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4, freeWhenDone: false)
-        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4)
+        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4, freeWhenDone: false)
+        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4)
         
         assertAll(red: 55, green: 165, blue: 63, colors: colors)
     }
@@ -78,15 +78,15 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 50
         
         let imageSize = CGSize(width: image.width, height: image.height)
-        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tiles)
         
-        var colors = [UInt16](repeating: 0, count: tileRects.rects.count * 4)
+        var colors = [UInt16](repeating: 0, count: tiles.frames.count * 4)
         
-        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4, freeWhenDone: false)
-        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4)
+        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4, freeWhenDone: false)
+        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4)
         
         assertAll(red: 0, green: 0, blue: 255, colors: colors)
     }
@@ -98,15 +98,15 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 50
         
         let imageSize = CGSize(width: image.width, height: image.height)
-        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tiles)
         
-        var colors = [UInt16](repeating: 0, count: tileRects.rects.count * 4)
+        var colors = [UInt16](repeating: 0, count: tiles.frames.count * 4)
         
-        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4, freeWhenDone: false)
-        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4)
+        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4, freeWhenDone: false)
+        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4)
         
         assertAll(red: 0, green: 0, blue: 0, colors: colors)
     }
@@ -118,15 +118,15 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 50
         
         let imageSize = CGSize(width: image.width, height: image.height)
-        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tiles)
         
-        var colors = [UInt16](repeating: 0, count: tileRects.rects.count * 4)
+        var colors = [UInt16](repeating: 0, count: tiles.frames.count * 4)
         
-        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4, freeWhenDone: false)
-        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4)
+        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4, freeWhenDone: false)
+        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4)
         
         assertAll(red: 255, green: 255, blue: 255, colors: colors)
     }
@@ -138,15 +138,15 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 50
         
         let imageSize = CGSize(width: image.width, height: image.height)
-        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tiles)
         
-        var colors = [UInt16](repeating: 0, count: tileRects.rects.count * 4)
+        var colors = [UInt16](repeating: 0, count: tiles.frames.count * 4)
         
-        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4, freeWhenDone: false)
-        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4)
+        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4, freeWhenDone: false)
+        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4)
         
         assertAll(red: 150, green: 150, blue: 150, colors: colors)
     }
@@ -158,15 +158,15 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 2
 
         let imageSize = CGSize(width: image.width, height: image.height)
-        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tiles)
         
-        var colors = [UInt16](repeating: 0, count: tileRects.rects.count * 4)
+        var colors = [UInt16](repeating: 0, count: tiles.frames.count * 4)
         
-        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4, freeWhenDone: false)
-        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4)
+        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4, freeWhenDone: false)
+        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4)
         
         // Red
         let topLeftRed = colors[0]
@@ -228,17 +228,17 @@ class AverageZoneColorFinderTests: XCTestCase {
         let numberOfTiles = 50
 
         let imageSize = CGSize(width: image.width, height: image.height)
-        let tileRects = TileRects(numberOfTiles: numberOfTiles, imageSize: imageSize)
+        let tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
         
         let averageZoneColorFinder = AverageZoneColorFinder()
-        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tileRects)
+        let buffer = averageZoneColorFinder.findAverageZoneColor(on: image, with: tiles)
         
-        var colors = [UInt16](repeating: 0, count: tileRects.rects.count * 4)
+        var colors = [UInt16](repeating: 0, count: tiles.frames.count * 4)
         
-        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4, freeWhenDone: false)
-        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tileRects.rects.count * 4)
+        let data = NSData(bytesNoCopy: (buffer.contents()), length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4, freeWhenDone: false)
+        data.getBytes(&colors, length: MemoryLayout<UInt16>.stride * tiles.frames.count * 4)
 
-        _ = self.image(from: colors, tileRects: tileRects)
+        _ = self.image(from: colors, tiles: tiles)
     }
 
 }
@@ -246,7 +246,7 @@ class AverageZoneColorFinderTests: XCTestCase {
 extension AverageZoneColorFinderTests {
     
     /// Gets rects and average colors, and draw those colors on the given rects.
-    func image(from colors: [UInt16], tileRects: TileRects) -> UIImage {
+    func image(from colors: [UInt16], tiles: Tiles) -> UIImage {
         var uiColors = [UIColor]()
         
         for index in 0..<colors.count / 4  {
@@ -255,9 +255,9 @@ extension AverageZoneColorFinderTests {
             uiColors.append(color)
         }
         
-        UIGraphicsBeginImageContextWithOptions(tileRects.imageSize, true, 0.0)
+        UIGraphicsBeginImageContextWithOptions(tiles.imageSize, true, 0.0)
         
-        for (index, rect) in tileRects.rects.enumerated() {
+        for (index, rect) in tiles.frames.enumerated() {
             let color = uiColors[index]
             color.setFill()
             UIRectFill(rect)
