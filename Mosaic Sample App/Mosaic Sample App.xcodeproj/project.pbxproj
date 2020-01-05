@@ -11,7 +11,7 @@
 		A12FE4BC238C8503002A9F5F /* ColorConversion.metal in Sources */ = {isa = PBXBuildFile; fileRef = A12FE4BB238C8503002A9F5F /* ColorConversion.metal */; };
 		A12FE4F9238EF89C002A9F5F /* ColorConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = A12FE4BD238C853C002A9F5F /* ColorConversion.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		A1421D79235E2B56004C0286 /* Mosaic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A118B5CC235E233A00770A48 /* Mosaic.framework */; };
-		A1421D7A235E2B56004C0286 /* Mosaic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A118B5CC235E233A00770A48 /* Mosaic.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A1421D7A235E2B56004C0286 /* Mosaic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A118B5CC235E233A00770A48 /* Mosaic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A1421D7C235E2EB9004C0286 /* AverageColorZone_kernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */; };
 		A1421D8A235E3297004C0286 /* PoolTileMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1421D89235E3297004C0286 /* PoolTileMapperTests.swift */; };
 		A15783982350A10100CCAEDD /* ImageStitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15783972350A10100CCAEDD /* ImageStitcher.swift */; };
@@ -585,7 +585,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1110;
-				LastUpgradeCheck = 1110;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Boris Emorine";
 				TargetAttributes = {
 					A1CDE02D23506DC00024548F = {
