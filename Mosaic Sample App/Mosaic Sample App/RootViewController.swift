@@ -11,7 +11,7 @@ import Mosaic
 
 class RootViewController: UIViewController {
     
-    lazy var scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.delegate = self
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +23,7 @@ class RootViewController: UIViewController {
         return scrollView
     }()
     
-    lazy var imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .black
@@ -32,13 +32,25 @@ class RootViewController: UIViewController {
     }()
     
     private let captureSessionManager = CaptureSessionManager()
+    
     private lazy var mosaic: Mosaic = {
         var images = [UIImage]()
         for i in 1...38 {
-            images.append(UIImage(named: "Image_Pool_\(i).jpg")!)
+            let imageName = "Image_Pool_\(i).jpg"
+            
+            guard let image = UIImage(named: imageName) else {
+                fatalError("Could not initialize image named \(imageName) from bundle for image pool.")
+            }
+            
+            images.append(image)
         }
         
-        return try! Mosaic(imagePool: images)
+        do {
+            let mosaic = try Mosaic(imagePool: images)
+            return mosaic
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }()
 
     override func viewDidLoad() {
@@ -85,8 +97,12 @@ class RootViewController: UIViewController {
 extension RootViewController: CaptureSessionManagerDelegate {
     
     func didCapture(_ texture: MTLTexture) {
-        let image: UIImage = mosaic.generate(for: texture)
-        imageView.image = image
+        do {
+            let image: UIImage = try mosaic.generate(for: texture)
+            imageView.image = image
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }
     
 }

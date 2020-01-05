@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A123983223C0A89A009C4196 /* MTLTextureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A123983123C0A89A009C4196 /* MTLTextureExtensions.swift */; };
 		A12FE4BC238C8503002A9F5F /* ColorConversion.metal in Sources */ = {isa = PBXBuildFile; fileRef = A12FE4BB238C8503002A9F5F /* ColorConversion.metal */; };
 		A12FE4F9238EF89C002A9F5F /* ColorConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = A12FE4BD238C853C002A9F5F /* ColorConversion.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		A1421D79235E2B56004C0286 /* Mosaic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A118B5CC235E233A00770A48 /* Mosaic.framework */; };
@@ -157,6 +158,7 @@
 		A118B5CB235E233A00770A48 /* Mosaic Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mosaic Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A118B5CC235E233A00770A48 /* Mosaic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mosaic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A118B5CE235E233A00770A48 /* MosaicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MosaicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A123983123C0A89A009C4196 /* MTLTextureExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLTextureExtensions.swift; sourceTree = "<group>"; };
 		A12FE4BB238C8503002A9F5F /* ColorConversion.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorConversion.metal; sourceTree = "<group>"; };
 		A12FE4BD238C853C002A9F5F /* ColorConversion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorConversion.h; sourceTree = "<group>"; };
 		A1421D7B235E2EB9004C0286 /* AverageColorZone_kernel.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = AverageColorZone_kernel.metal; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				A1CDE07623506F5F0024548F /* UIImageExtensions.swift */,
 				A1CDE07F23507D4A0024548F /* UIColorExtensions.swift */,
 				A1E87D4B23AE3513006718B4 /* MetalResourceManager.swift */,
+				A123983123C0A89A009C4196 /* MTLTextureExtensions.swift */,
 			);
 			path = Convenience;
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 			files = (
 				A157839A2350A30200CCAEDD /* ImagePoolManager.swift in Sources */,
 				A1E87D5123AE4D18006718B4 /* ImagePoolCheatGenerator.swift in Sources */,
+				A123983223C0A89A009C4196 /* MTLTextureExtensions.swift in Sources */,
 				A1CDE08023507D4A0024548F /* UIColorExtensions.swift in Sources */,
 				A1E87D4C23AE3513006718B4 /* MetalResourceManager.swift in Sources */,
 				A1E71E0123AFEAD300F4E97F /* DeltaE.metal in Sources */,

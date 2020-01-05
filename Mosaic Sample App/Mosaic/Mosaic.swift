@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// The `Mosaic` class is the entry point to generate beautiful photographic mosaics.
 public final class Mosaic {
     
     /// Represents the different cheat modes.
@@ -30,10 +31,15 @@ public final class Mosaic {
         /// Too little or too many images were used for the image pool.
         case imagePoolCountError(count: Int)
         
+        /// Something went wrong generating the photographic mosaic.
+        case mosaicGenerationError
+        
         var localizedDescription: String {
             switch self {
             case .imagePoolCountError (let count):
                 return "The `imagePool` was initialized with \(count). It should be initialized with at least \(Mosaic.minImagePoolCount) and at most \(Mosaic.maxImagePoolCount) images."
+            case .mosaicGenerationError:
+                return "Could not generate photographic mosaic."
             }
         }
     }
@@ -41,9 +47,7 @@ public final class Mosaic {
     private var tiles: Tiles?
     private let imagePositionMapper: PoolTileMapper
     private let averageZoneColorFinder = AverageZoneColorFinder()
-    
-    // MARK: - Public
-    
+        
     /// The numbner of tiles in the mosaic per length (width & height).
     private let numberOfTiles: Int
     
@@ -51,10 +55,12 @@ public final class Mosaic {
     static private let minImagePoolCount = 3
     
     /// The minumum number of images that should be passed in at initialization via the `imagePool` parameter.
-    static private let maxImagePoolCount = 50
+    static private let maxImagePoolCount = 70
     
     /// The minumum number of images that should be passed in at initialization via the `imagePool` parameter in order not to auto-activate cheating.
     static private let minCheatImagePoolCount = 15
+    
+    // MARK: - Life Cycle
     
     /// Hello.
     /// - Parameters:
@@ -78,26 +84,36 @@ public final class Mosaic {
         self.imagePositionMapper = PoolTileMapper(poolManager: poolManager)
     }
     
+    // MARK: - Public Functions
+    // MARK: Mosaic Generation
+    
     /// Generates a photographic mosaic from the passed in `MTLTexture` instance.
     /// - Parameters:
     ///   - texture: The image texture to generate the photographic mosaic from.
     /// - Returns: The photographic mosaic as a `UIImage` instance.
-    public func generate(for texture: MTLTexture) -> UIImage {
+    public func generate(for texture: MTLTexture) throws -> UIImage {
         let texture: MTLTexture = generate(for: texture)
-        let image = mosaicImage(from: texture)
         
-        return image
+        do {
+            let image = try texture.toImage()
+            return image
+        } catch {
+            throw MosaicError.mosaicGenerationError
+        }
     }
     
     /// Generates a photographic mosaic from the passed in `CGImage` instance.
     /// - Parameters:
     ///   - image: The image to generate the photographic mosaic from.
     /// - Returns: The photographic mosaic as a `UIImage` instance.
-    public func generate(for image: CGImage) -> UIImage {
+    public func generate(for image: CGImage) throws -> UIImage {
         let texture: MTLTexture = generate(for: image)
-        let image = mosaicImage(from: texture)
-        
-        return image
+        do {
+            let image = try texture.toImage()
+            return image
+        } catch {
+            throw MosaicError.mosaicGenerationError
+        }
     }
 
     /// Generates a photographic mosaic from the passed in `MTLTexture` instance.
@@ -108,7 +124,7 @@ public final class Mosaic {
     public func generate(for texture: MTLTexture) -> MTLTexture {
         guard let tiles = tiles else {
             let imageSize = CGSize(width: texture.width, height: texture.height)
-            generateTiles(with: imageSize)
+            self.tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
             return generate(for: texture)
         }
 
@@ -123,7 +139,7 @@ public final class Mosaic {
     public func generate(for image: CGImage) -> MTLTexture {
         guard let tiles = tiles else {
             let imageSize = CGSize(width: image.width, height: image.height)
-            generateTiles(with: imageSize)
+            self.tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
             return generate(for: image)
         }
 
@@ -132,41 +148,28 @@ public final class Mosaic {
         return mosaic(with: tiles, averageColors)
     }
     
+    // MARK: Pre Heat
+    
     /// Optionally prepares the `Mosaic` instance so that it can start doing its work as fast as possible.
     /// Call this function when you know that a mosaic could be generated, but the process hasn't started yet.
     /// - Parameters:
     ///   - imageSize: The size of the image that will be transformed into a Mosaic.
     public func preHeat(withImageSize imageSize: CGSize? = nil) {
         if let imageSize = imageSize {
-            generateTiles(with: imageSize)
+            self.tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
         }
         
         imagePositionMapper.preHeat(withTileSize: self.tiles?.tileSize)
         averageZoneColorFinder.preHeat()
     }
     
+    // MARK: - Private Functions
+    
     private func mosaic(with tiles: Tiles, _ averageColors: MTLBuffer) -> MTLTexture {
         let texturePositions = imagePositionMapper.match(tiles, to: averageColors)
         let mosaicImage = ImageStitcher().stitch(texturePositions: texturePositions, to: tiles.imageSize, numberOfTiles: tiles.numberOfTiles)
 
         return mosaicImage
-    }
-        
-    // MARK: - Convenience
-    
-    private func mosaicImage(from texture: MTLTexture) -> UIImage {
-        let kciOptions = [CIImageOption.colorSpace: CGColorSpaceCreateDeviceRGB(),
-                          CIContextOption.outputPremultiplied: true,
-                          CIContextOption.useSoftwareRenderer: false] as! [CIImageOption : Any]
-        
-        let ciImage = CIImage(mtlTexture: texture, options: kciOptions)!.oriented(CGImagePropertyOrientation.downMirrored)
-        let uiImage = UIImage(ciImage: ciImage)
-
-        return uiImage
-    }
-    
-    private func generateTiles(with imageSize: CGSize) {
-        self.tiles = Tiles(numberOfTiles: numberOfTiles, imageSize: imageSize)
     }
     
 }

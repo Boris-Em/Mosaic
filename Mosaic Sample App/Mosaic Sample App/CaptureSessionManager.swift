@@ -15,12 +15,19 @@ final class CaptureSessionManager: NSObject, AVCaptureVideoDataOutputSampleBuffe
     
     private let captureSession = AVCaptureSession()
     
-    var textureCache: CVMetalTextureCache!
-    var metalDevice = MTLCreateSystemDefaultDevice()!
+    private var textureCache: CVMetalTextureCache!
     
+    private lazy var metalDevice: MTLDevice = {
+        guard let device = MTLCreateSystemDefaultDevice() else {
+            fatalError("Could not create Metal device.")
+        }
+        
+        return device
+    }()
+
     weak var delegate: CaptureSessionManagerDelegate?
     
-    var exposure: Float {
+    private var exposure: Float {
         guard let inputDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
             fatalError("Could not get input device")
         }
@@ -28,7 +35,7 @@ final class CaptureSessionManager: NSObject, AVCaptureVideoDataOutputSampleBuffe
         return 1 / (Float(inputDevice.exposureDuration.value) / Float(inputDevice.exposureDuration.timescale))
     }
     
-    var iso: Float {
+    private var iso: Float {
         guard let inputDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
             fatalError("Could not get input device")
         }
@@ -36,7 +43,7 @@ final class CaptureSessionManager: NSObject, AVCaptureVideoDataOutputSampleBuffe
         return inputDevice.iso
     }
     
-    var minISO: Float {
+    private var minISO: Float {
         guard let inputDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
             fatalError("Could not get input device")
         }
@@ -44,7 +51,7 @@ final class CaptureSessionManager: NSObject, AVCaptureVideoDataOutputSampleBuffe
         return inputDevice.activeFormat.minISO
     }
     
-    var maxISO: Float {
+    private var maxISO: Float {
         guard let inputDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
             fatalError("Could not get input device")
         }
@@ -52,7 +59,7 @@ final class CaptureSessionManager: NSObject, AVCaptureVideoDataOutputSampleBuffe
         return inputDevice.activeFormat.maxISO
     }
     
-    var minExposure: Float {
+    private var minExposure: Float {
         guard let inputDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
             fatalError("Could not get input device")
         }
@@ -60,7 +67,7 @@ final class CaptureSessionManager: NSObject, AVCaptureVideoDataOutputSampleBuffe
         return 1 / (Float(inputDevice.activeFormat.minExposureDuration.value) / Float(inputDevice.activeFormat.minExposureDuration.timescale))
     }
     
-    var maxExposure: Float {
+    private var maxExposure: Float {
         guard let inputDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
             fatalError("Could not get input device")
         }
@@ -150,7 +157,7 @@ final class CaptureSessionManager: NSObject, AVCaptureVideoDataOutputSampleBuffe
     // MARK: Capture Session Life Cycle
     
     /// Starts the camera and detecting quadrilaterals.
-    internal func start() {
+    func start() {
         let authorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         
         switch authorizationStatus {
@@ -167,7 +174,7 @@ final class CaptureSessionManager: NSObject, AVCaptureVideoDataOutputSampleBuffe
         }
     }
     
-    internal func stop() {
+    func stop() {
         captureSession.stopRunning()
     }
         
@@ -180,11 +187,14 @@ final class CaptureSessionManager: NSObject, AVCaptureVideoDataOutputSampleBuffe
         
         let width = CVPixelBufferGetWidth(pixelBuffer)
         let height = CVPixelBufferGetHeight(pixelBuffer)
-        var textureRef : CVMetalTexture?
+        var textureRef : CVMetalTexture!
         
         CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, textureCache, pixelBuffer, nil, .bgra8Unorm, width, height, 0, &textureRef)
-        let texture = CVMetalTextureGetTexture(textureRef!)!
-
+        
+        guard let texture = CVMetalTextureGetTexture(textureRef) else {
+            fatalError("Could not create texture.")
+        }
+        
         DispatchQueue.main.async {
             self.delegate?.didCapture(texture)
         }
