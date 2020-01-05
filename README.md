@@ -1,6 +1,6 @@
 # Mosaic
 
-**Mosaic** makes it easy to create [Photographic mosaics](https://en.wikipedia.org/wiki/Photographic_mosaic) on still images or live video feeds.
+**Mosaic** makes it easy to create <a href="https://en.wikipedia.org/wiki/Photographic_mosaic" target="_blank">Photographic mosaics</a> on still images or live video feeds.
 
 <p align="center"><img src="https://github.com/Boris-Em/Mosaic/blob/master/Assets/Mosaic_Example.jpg"/></p>
 
