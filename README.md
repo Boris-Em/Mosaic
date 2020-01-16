@@ -13,12 +13,12 @@
     </a>
 </p>
 
-## Demo
-
 ## Features
 - [x] Fast: capable of processing live videos
 - [x] Lightweight
 - [x] Easy to use
+
+## Demo
 
 ## Requirements
 
@@ -92,10 +92,6 @@ Mosaic(imagePool: images, cheatDecision: .enabled)
 **Mosaic** takes an image to transform into a mosaic, as well as a pool of images. It recreates the image to transform using the pool of images.
 
 <p align="center"><img src="https://github.com/Boris-Em/Mosaic/blob/master/Assets/Mosaic_Diagram.jpg"/></p>	
-
-## Contributing
-
-## Communication
 
 ## License
 
