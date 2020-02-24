@@ -20,9 +20,8 @@
 
 ## Demo
 
-## Requirements
-
-## Installation
+<p align="center"><img src="https://github.com/Boris-Em/Mosaic/blob/master/Assets/Mosaic_Live_Demo.gif"/></p>
+<p align="center">Demo of real time mosaic generation.</p>
 
 ## Usage
 ### Quick Start
